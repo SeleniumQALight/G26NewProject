@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>G26NewProject</groupId>
   <artifactId>G26NewProject</artifactId>
-  <packaging>jar</packaging>
+  <packaging>pom</packaging>
   <version>1.0-SNAPSHOT</version>
   <name>G26NewProject</name>
   <url>http://maven.apache.org</url>
@@ -12,7 +12,6 @@
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <version>3.8.1</version>
-      <scope>pom</scope>
     </dependency>
   </dependencies>
 </project>
