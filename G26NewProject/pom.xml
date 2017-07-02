@@ -16,5 +16,9 @@
   </dependencies>
   <modules>
     <module>BeresukProj</module>
+    <module>BoikoProj</module>
+    <module>VolkoresovaProj</module>
+    <module>DubrovaProj</module>
+    <module>ZamoghniyProj</module>
   </modules>
 </project>
