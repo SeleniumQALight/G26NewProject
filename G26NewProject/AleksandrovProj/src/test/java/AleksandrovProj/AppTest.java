@@ -1,4 +1,4 @@
-package AlexsandrovProj;
+package AleksandrovProj;
 
 import junit.framework.Test;
 import junit.framework.TestCase;

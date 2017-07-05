@@ -1,4 +1,4 @@
-package AlexsandrovProj;
+package AleksandrovProj;
 
 /**
  * Hello world!
