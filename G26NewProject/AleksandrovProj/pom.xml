@@ -8,7 +8,7 @@
     <version>1.0-SNAPSHOT</version>
   </parent>
   <groupId>AleksandrovProj</groupId>
-  <artifactId>AlexsandrovProj</artifactId>
+  <artifactId>AleksandrovProj</artifactId>
   <version>1.0-SNAPSHOT</version>
   <name>AleksandrovProj</name>
   <url>http://maven.apache.org</url>
