@@ -5,6 +5,7 @@
   <parent>
     <groupId>G26NewProject</groupId>
     <artifactId>G26NewProject</artifactId>
+    hf
     <version>1.0-SNAPSHOT</version>
   </parent>
   <groupId>PrisProj</groupId>
