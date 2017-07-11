@@ -14,7 +14,7 @@
   <url>http://maven.apache.org</url>
   <dependencies>
     <dependency>
-ccc
+
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
 
