@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="AleksandrovProj" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="AleksandrovProj" target="1.5" />
+      <module name="BeresukProj" target="1.5" />
+      <module name="BoikoProj" target="1.5" />
+      <module name="DubrovaProj" target="1.5" />
+      <module name="G26NewProject" target="1.5" />
+      <module name="IasinskaiaProj" target="1.5" />
+      <module name="IvanitskiiProj" target="1.5" />
+      <module name="KiriakProj" target="1.5" />
+      <module name="KompantsevProj" target="1.5" />
+      <module name="KotsiubaProj" target="1.5" />
+      <module name="MorosovaProj" target="1.5" />
+      <module name="OliynikProj" target="1.5" />
+      <module name="OverAll" target="1.5" />
+      <module name="PrisProj" target="1.5" />
+      <module name="RibitvaProj" target="1.5" />
+      <module name="RodionovaProj" target="1.5" />
+      <module name="RomartchukProj" target="1.5" />
+      <module name="RoskrutProj" target="1.5" />
+      <module name="ShabanovProj" target="1.5" />
+      <module name="ShepelProj" target="1.5" />
+      <module name="StepanenkoProj" target="1.5" />
+      <module name="TomkoProj" target="1.5" />
+      <module name="VolkoresovaProj" target="1.5" />
+      <module name="ZamoghniyProj" target="1.5" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

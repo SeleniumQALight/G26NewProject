@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/BeresukProj/BeresukProj.iml" filepath="$PROJECT_DIR$/BeresukProj/BeresukProj.iml" />
+      <module fileurl="file://$PROJECT_DIR$/BoikoProj/BoikoProj.iml" filepath="$PROJECT_DIR$/BoikoProj/BoikoProj.iml" />
+      <module fileurl="file://$PROJECT_DIR$/DubrovaProj/DubrovaProj.iml" filepath="$PROJECT_DIR$/DubrovaProj/DubrovaProj.iml" />
+      <module fileurl="file://$PROJECT_DIR$/G26NewProject.iml" filepath="$PROJECT_DIR$/G26NewProject.iml" />
+      <module fileurl="file://$PROJECT_DIR$/IasinskaiaProj/IasinskaiaProj.iml" filepath="$PROJECT_DIR$/IasinskaiaProj/IasinskaiaProj.iml" />
+      <module fileurl="file://$PROJECT_DIR$/IvanitskiiProj/IvanitskiiProj.iml" filepath="$PROJECT_DIR$/IvanitskiiProj/IvanitskiiProj.iml" />
+      <module fileurl="file://$PROJECT_DIR$/KiriakProj/KiriakProj.iml" filepath="$PROJECT_DIR$/KiriakProj/KiriakProj.iml" />
+      <module fileurl="file://$PROJECT_DIR$/KompantsevProj/KompantsevProj.iml" filepath="$PROJECT_DIR$/KompantsevProj/KompantsevProj.iml" />
+      <module fileurl="file://$PROJECT_DIR$/KotsiubaProj/KotsiubaProj.iml" filepath="$PROJECT_DIR$/KotsiubaProj/KotsiubaProj.iml" />
+      <module fileurl="file://$PROJECT_DIR$/MorosovaProj/MorosovaProj.iml" filepath="$PROJECT_DIR$/MorosovaProj/MorosovaProj.iml" />
+      <module fileurl="file://$PROJECT_DIR$/OliynikProj/OliynikProj.iml" filepath="$PROJECT_DIR$/OliynikProj/OliynikProj.iml" />
+      <module fileurl="file://$PROJECT_DIR$/OverAll/OverAll.iml" filepath="$PROJECT_DIR$/OverAll/OverAll.iml" />
+      <module fileurl="file://$PROJECT_DIR$/PrisProj/PrisProj.iml" filepath="$PROJECT_DIR$/PrisProj/PrisProj.iml" />
+      <module fileurl="file://$PROJECT_DIR$/RibitvaProj/RibitvaProj.iml" filepath="$PROJECT_DIR$/RibitvaProj/RibitvaProj.iml" />
+      <module fileurl="file://$PROJECT_DIR$/RodionovaProj/RodionovaProj.iml" filepath="$PROJECT_DIR$/RodionovaProj/RodionovaProj.iml" />
+      <module fileurl="file://$PROJECT_DIR$/RomartchukProj/RomartchukProj.iml" filepath="$PROJECT_DIR$/RomartchukProj/RomartchukProj.iml" />
+      <module fileurl="file://$PROJECT_DIR$/RoskrutProj/RoskrutProj.iml" filepath="$PROJECT_DIR$/RoskrutProj/RoskrutProj.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ShabanovProj/ShabanovProj.iml" filepath="$PROJECT_DIR$/ShabanovProj/ShabanovProj.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ShepelProj/ShepelProj.iml" filepath="$PROJECT_DIR$/ShepelProj/ShepelProj.iml" />
+      <module fileurl="file://$PROJECT_DIR$/StepanenkoProj/StepanenkoProj.iml" filepath="$PROJECT_DIR$/StepanenkoProj/StepanenkoProj.iml" />
+      <module fileurl="file://$PROJECT_DIR$/TomkoProj/TomkoProj.iml" filepath="$PROJECT_DIR$/TomkoProj/TomkoProj.iml" />
+      <module fileurl="file://$PROJECT_DIR$/VolkoresovaProj/VolkoresovaProj.iml" filepath="$PROJECT_DIR$/VolkoresovaProj/VolkoresovaProj.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ZamoghniyProj/ZamoghniyProj.iml" filepath="$PROJECT_DIR$/ZamoghniyProj/ZamoghniyProj.iml" />
+      <module fileurl="file://$PROJECT_DIR$/AleksandrovProj/AleksandrovProj.iml" filepath="$PROJECT_DIR$/AleksandrovProj/AleksandrovProj.iml" />
+    </modules>
+  </component>
+</project>
