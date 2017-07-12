@@ -1,0 +1,17 @@
+
+Login.Email.Input=xpath(".//input[@placeholder='Email']”)
+Login.Password.Input=xpath(".//input[@placeholder='Password'] ”)
+Login.Submit.Button=xpath(".//button[@ type='submit'] ”)
+
+Sidebar.Deal.Button=xpath(".//a[@href='/deal'] ”)
+Deal.ListEdit.Button=xpath(".//button[@name='save']”)
+
+Sidebar.Deal.Button=xpath(".//a[span='Словари'] ”)
+Sidebar.Dictionary.Option=xpath(".//a[@href="/dictionary/workers"]”)
+
+Dictionary.Workers.Input=xpath(".//tr[1]/td[1]”)
+Dictionary.WorkersEdit.Input=xpath("//id="workers_workerSurname"]”) 
+
+Report.Statistic.Input=xpath(".//a[@href="/statistic"]”)
+Report.StatisticChart.Input=xpath(".//canvas[@id='salesChart']”)
+
