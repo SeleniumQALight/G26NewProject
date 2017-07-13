@@ -1,6 +1,7 @@
 package LoginTests;
 
 import org.junit.Test;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
@@ -28,5 +29,8 @@ public class LoginTestWitOutObject {
         webDriver.get("http://v3.qalight.com.ua/"); // берет и вставляет нащ урл в адресную строку
         System.out.println("Page was opened");
         webDriver.quit(); //close закрывает только вкладку. Quit закрывает браузер
+
+        //вывести ниже в новый класс не валидный логин
+        //webDriver.findElement(By.xpath("..//*[@name='_name']")).sendKeys("Student"); //sendKeys введи посимвольно
     }
 }
