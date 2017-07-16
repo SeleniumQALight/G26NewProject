@@ -11,7 +11,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * Created by romas on 13.07.2017.
  */
-public class LoginTestWitOutObject {
+public class LoginTestWithOutObject {
 
     WebDriver webDriver;
 
