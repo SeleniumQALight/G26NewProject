@@ -1,5 +1,7 @@
-package LoginTests;
+package loginTests;
 
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -13,6 +15,16 @@ import java.util.concurrent.TimeUnit;
  */
 public class LoginTestWithOutPageObject {
     WebDriver webDriver;
+
+    @Before
+    public void setUp(){
+
+    }
+
+    @After
+    public void tearDown(){
+
+    }
 
     @Test
     public void validLogOn() {
