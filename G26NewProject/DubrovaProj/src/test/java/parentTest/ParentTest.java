@@ -12,10 +12,9 @@ import java.util.concurrent.TimeUnit;
  * Created by Kleine-Hexe on 17.07.2017.
  */
 public class ParentTest {
-    WebDriver webDriver;
+    public WebDriver webDriver;
 
-    public ParentTest(WebDriver webDriver) {
-        this.webDriver = webDriver;
+    public ParentTest() {
     }
 
     @Before
