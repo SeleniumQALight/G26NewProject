@@ -1,25 +1,34 @@
-package LoginTests;
+package parrentTest;
 
-import org.junit.Test;
+import org.junit.After;
+import org.junit.Before;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.io.File;
 import java.util.concurrent.TimeUnit;
 
+/**
+ * Created by Нов on 17.07.2017.
+ */
+public class ParrentTest {
+    public WebDriver webDriver;
 
-public class LoginTestWithOutPageObject {
-    private WebDriver webDriver;
+    public ParrentTest() {
+    }
 
-    @Test
-    public void validLogOn() {
+
+    @Before
+    public void setUp() {
         File fileFF = new File(".././drivers/chromedriver.exe");
         System.setProperty("webdriver.chrome.driver", fileFF.getAbsolutePath());
         webDriver = new ChromeDriver();
         webDriver.manage().window().maximize();
         webDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        webDriver.get("http://v3.qalight.com.ua/login");
-        System.out.println("Page was opened");
+    }
+
+    @After
+    public void tearDown() {
         webDriver.quit();
     }
 }
