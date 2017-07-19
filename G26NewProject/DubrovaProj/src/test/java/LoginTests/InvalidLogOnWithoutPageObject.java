@@ -3,6 +3,7 @@ package LoginTests;
 import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
+import pages.LoginPage;
 import parentTest.ParentTest;
 
 /**
@@ -16,15 +17,19 @@ public class InvalidLogOnWithoutPageObject extends ParentTest {
 
     @Test
     public void invalidLogOn() {
-        webDriver.get("http://v3.qalight.com.ua/");
-        webDriver.findElement(By.xpath(".//*[@name='_username']")).sendKeys("Student");
+        loginPage.openLoginPage();
+      //  webDriver.get("http://v3.qalight.com.ua/");
+        loginPage.enterLoginToInput("Student");
+      //  webDriver.findElement(By.xpath(".//*[@name='_username']")).sendKeys("Student");
         webDriver.findElement(By.xpath(".//input[@id='password']")).sendKeys("222");
         webDriver.findElement(By.xpath(".//button")).click();
         //Assert.assertTrue(webDriver.findElement(By.xpath(".//*[@class='login-box-body']")).isDisplayed());
         // Assert.assertTrue(!webDriver.findElement(By.xpath(".//a[@class='dropdown-toggle']")).isDisplayed());
-        Assert.assertTrue("Assert work", webDriver.findElement(
+        checkAC("Text 'Учет запчастей' not found", webDriver.findElement(By.xpath(".//*[text()='Учет запчастей']")).isDisplayed(),
+                true);
+        /*Assert.assertTrue("Assert work", webDriver.findElement(
                 By.xpath(".//*[text()='Учет запчастей']")
-        ).isDisplayed());
+        ).isDisplayed());*/
 
     }
 
