@@ -17,8 +17,10 @@ public class InvalidLogInWithoutPageObject extends ParentTest {
 
     @Test
     public void invalidLogIn() {
-        webDriver.get("http://v3.qalight.com.ua/");
-        webDriver.findElement(By.xpath(".//*[@name='_username']")).sendKeys("Student");
+        logInPage.openLoginPage();
+        logInPage.enterLoginToInput("Student");
+        //webDriver.get("http://v3.qalight.com.ua/");
+        //webDriver.findElement(By.xpath(".//*[@name='_username']")).sendKeys("Student");
         webDriver.findElement(By.xpath(".//*[@id='password']")).sendKeys("2222");
         webDriver.findElement(By.xpath(".//button[@type='submit']")).click();
         //is displayed - метод который показывает найдено ли такое сообщение
@@ -26,7 +28,9 @@ public class InvalidLogInWithoutPageObject extends ParentTest {
         //if TRUE = найдет
         //Assert(boolean type true-false)
         //если добавить !webDriver.findElement(By.xpath... - ! делает инвертацию = из true cделать false
-        Assert.assertTrue(webDriver.findElement(By.xpath(".//*[text()='Учет запчастей']")).isDisplayed());
+        //Assert это acceptance criteria
+        //Assert.assertTrue(webDriver.findElement(By.xpath(".//*[text()='Учет запчастей']")).isDisplayed());
+        checkAcceptanceCriteria("Text 'Учет запчастей' not found", webDriver.findElement(By.xpath(".//*[text()='Учет запчастей']")).isDisplayed(), true);
     }
 
 
