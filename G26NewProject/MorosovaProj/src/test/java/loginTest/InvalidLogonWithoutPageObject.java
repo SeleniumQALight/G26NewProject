@@ -1,11 +1,8 @@
 package loginTest;
 
-import org.junit.After;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import parentTest.ParentTest;
 
 /**
@@ -13,10 +10,11 @@ import parentTest.ParentTest;
  */
 public class InvalidLogonWithoutPageObject extends ParentTest
         {
-        WebDriver webDriver;
 
-            public InvalidLogonWithoutPageObject(WebDriver webDriver) {
-                super(webDriver);
+
+            public InvalidLogonWithoutPageObject()
+            {
+
             }
 
             @Test

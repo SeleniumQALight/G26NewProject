@@ -15,10 +15,11 @@ import java.util.concurrent.TimeUnit;
  */
 public class ParentTest
 {
-    WebDriver webDriver;
+    public WebDriver webDriver;
 
-    public ParentTest(WebDriver webDriver) {
-        this.webDriver = webDriver;
+    public ParentTest()
+    {
+
     }
 
     @Before
