@@ -12,11 +12,18 @@ public class InvalidLogOnWithoutPageObject extends ParrentTest{
     }
 
     @Test
-    public void invalidLogIn() {
+    public void invalidLogOn() {
+        loginPage.openLoginPage();
+        loginPage.enterLoginToInput("Student");
+
         webDriver.get("http://v3.qalight.com.ua/");
-        webDriver.findElement(By.xpath(".//input[@name='_username']")).sendKeys("Student1");
+        //webDriver.findElement(By.xpath(".//input[@name='_username']")).sendKeys("Student1");
+
         webDriver.findElement(By.xpath(".//input[@name='_password']")).sendKeys("9090");
         webDriver.findElement(By.xpath(".//button[@type='submit']")).click();
-        Assert.assertTrue("Assert work", webDriver.findElement(By.xpath(".//b[text()='Учет запчастей']")).isDisplayed());
+
+        checkAC("Text 'Учет запчастей' not found",webDriver.findElement(By.xpath(".//b[text()='Учет запчастей']")).isDisplayed(),true);
+
+        //Assert.assertTrue("Assert work", webDriver.findElement(By.xpath(".//b[text()='Учет запчастей']")).isDisplayed());
     }
 }
