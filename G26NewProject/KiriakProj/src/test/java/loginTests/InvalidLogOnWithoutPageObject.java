@@ -1,25 +1,14 @@
 package loginTests;
 
-import org.junit.After;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import parrentTest.ParrentTest;
 
-import java.io.File;
-import java.util.concurrent.TimeUnit;
 
-/**
- * Created by Anya on 17.07.2017.
- */
 public class InvalidLogOnWithoutPageObject extends ParrentTest{
-    WebDriver webDriver;
 
-    public InvalidLogOnWithoutPageObject(WebDriver webDriver) {
-        super(webDriver);
+    public InvalidLogOnWithoutPageObject() {
     }
 
     @Test
