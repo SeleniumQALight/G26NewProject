@@ -3,10 +3,14 @@ package loginTests;
 import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
+import pages.LogInPage;
 import parentTest.ParentTest;
 
 /**
  * Created by romas on 17.07.2017.
+ *
+ * Метод который вставляет логин в поле логина
+ *
  */
 public class InvalidLogOnWithOutPageObject extends ParentTest { //Альт + Ентер чтоб создать конструктор нашего класса
 
@@ -18,12 +22,28 @@ public class InvalidLogOnWithOutPageObject extends ParentTest { //Альт + Е�
 
     @Test
     public void invalidLogOn() {
-        webDriver.get("http://v3.qalight.com.ua/"); //если все кейсы на этой странице то можно вынести в прекондишины
-        webDriver.findElement(By.xpath(".//*[@name='_username']"))
-                .sendKeys("Student");
-        webDriver.findElement(By.xpath(".//*[@id='password']"))
-                .sendKeys("3455");
-        webDriver.findElement(By.xpath(".//button")).click();
+
+        logInPage.openLoginPage();
+        logInPage.enterLoginToInput("Student"); //создает объект через альт ентер в логин пейдже
+
+
+        //webDriver.get("http://v3.qalight.com.ua/"); //если все кейсы на этой странице то можно вынести в прекондишины. Заменена на вышестоящую
+        //webDriver.findElement(By.xpath(".//*[@name='_username']"))
+        //        .sendKeys("Student");
+        logInPage.enterLoginToInput("2222"); // заменили нижестоящий методом
+        //webDriver.findElement(By.xpath(".//*[@id='password']"))
+        //        .sendKeys("3455");
+
+        logInPage.clickOnSubmitButton(); //через альт + ентер создаем метод в логин пейдж
+                                        //заменяем нижестоящий метод
+        //webDriver.findElement(By.xpath(".//button")).click();
+
+        checkAC("Text 'Запчастей' not found",
+                logInPage.isElementWithTextPresent("Учет запчастей"),true); // создаем метод isElementWithTextPresent через альт ентер
+        //webDriver.findElement(By.xpath(".//b[text()='Учет запчастей']")).isDisplayed(),true); //аксептанс критерии
+                //закоментили часть и заменили вышестоящим методом
+
+        //перенесли в ПарентТест
         Assert.assertTrue("Assert work", webDriver.findElement(By.xpath(".//b[text()='Учет запчастей']")).isDisplayed()); //метод который спрашивает у драйвера нашел ли он элемент.
         //таким образом isDisplayed() делает выражением логически верным. Без него метод assertTrue не запустится тк мы просим найти элемент по xPath
         //те может быть что он не найдет. Нет булена
