@@ -2,6 +2,7 @@ package pages;
 
 import org.apache.log4j.Logger;
 import org.junit.Assert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 /**
@@ -15,6 +16,10 @@ public class ParentPages {
         logger = Logger.getLogger(getClass());
     }
 
+    /**
+     * Methods open url
+     * @param url
+     */
     public void open(String url){
         try{
             webDriver.get(url);
@@ -25,4 +30,15 @@ public class ParentPages {
         }
 
     }
-}
+
+    public void buttonClick(){
+        try{
+            webDriver.findElement(By.xpath(".//button")).click();
+            logger.info("button was clicked ");
+        }catch(Exception e){
+            logger.info("button can not clicked");
+            Assert.fail("button can not clicked");
+        }
+    }
+    }
+
