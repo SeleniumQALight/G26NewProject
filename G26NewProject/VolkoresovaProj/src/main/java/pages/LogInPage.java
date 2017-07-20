@@ -1,14 +1,23 @@
 package pages;
 
-import org.junit.Assert;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
 
 /**
  * Created by tatyanavolkorezova on 19.07.17.
  */
 public class LogInPage extends ParentPage{
+
+    @FindBy(name = "_username")
+    private WebElement loginInput;
+
+    @FindBy(id = "password")
+    private WebElement inputPass;
+
+    @FindBy(xpath = ".//button")
+    private WebElement buttonSubmit;
 
     public LogInPage(WebDriver webDriver) {
         super(webDriver);
@@ -23,13 +32,29 @@ public class LogInPage extends ParentPage{
      * @param login
      */
     public void enterLogInToInput(String login) {
-        try {
-            webDriver.findElement(By.xpath(".//*[@name='_username']")).sendKeys(login);
-            logger.info(login+"was inputed into Input Login");
+        actionsWithOurElements.enterText(loginInput,login);
+//        try {
+//            loginInput.sendKeys(login);
+//            logger.info(login+"was inputed into Input Login");
+//
+//        }catch(Exception e){
+//            logger.error("Cannot work with input");
+//            Assert.fail("Cannot work with input");
+//        }
+    }
 
-        }catch(Exception e){
-            logger.error("Cannot work with input");
-            Assert.fail("Cannot work with input");
-        }
+
+    public  void enterPassWordToInput(String passWord){
+        actionsWithOurElements.enterText(inputPass, passWord);
+    }
+
+    public void clickOnSubmitButton() {
+        actionsWithOurElements.clickOnElement(buttonSubmit);
+
+    }
+
+    public boolean isElementWithTextPresent(String text) {
+
+        return actionsWithOurElements.isElementPresent(".//*[contains(text(),'"+text+"')]");
     }
 }
