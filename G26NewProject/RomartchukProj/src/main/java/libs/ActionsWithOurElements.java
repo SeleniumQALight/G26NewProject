@@ -43,8 +43,8 @@ public class ActionsWithOurElements {
 
     public boolean isElementPresent(String locatorWithText) {
         try{
-            webDriver.findElement(By.xpath(locatorWithText)).isDisplayed();
-            return true;
+            return webDriver.findElement(By.xpath(locatorWithText)).isDisplayed();
+
         }catch(Exception e){
             return false;
         }

@@ -47,6 +47,6 @@ public class LoginPage extends ParentPages {
     }
 
     public boolean isElementWithTextPresent(String text) {
-        return actionsWithOurElements.isElementPresent(".//*[contains(text),'" + text + "']");
+        return actionsWithOurElements.isElementPresent(".//*[contains(text(),'" + text + "')]");
     }
 }
