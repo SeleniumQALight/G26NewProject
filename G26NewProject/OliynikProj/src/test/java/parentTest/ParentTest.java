@@ -12,9 +12,6 @@ import java.util.concurrent.TimeUnit;
 
 import static org.hamcrest.CoreMatchers.is;
 
-/**
- * Created by andrey.aleksandrov on 17.07.2017.
- */
 public class ParentTest {
     public WebDriver webDriver;
     public LoginPage logInPage;

@@ -4,9 +4,7 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 import parentTest.ParentTest;
 
-/**
- * Created by andrey.aleksandrov on 17.07.2017.
- */
+
 public class InvalidLogOnWithoutPageObject extends ParentTest {
 
     public InvalidLogOnWithoutPageObject() {
@@ -16,15 +14,15 @@ public class InvalidLogOnWithoutPageObject extends ParentTest {
     @Test
     public void invalidLogOn() {
         logInPage.openLoginPage();
-//        webDriver.get( "http://v3.qalight.com.ua/" );
         logInPage.enterLoginToInput("student");
-//        webDriver.findElement( By.xpath( "//input[@name='_username']" ) )
-//                .sendKeys( "student" );
-//        webDriver.findElement( By.xpath( "//input[@id='password']" ) )
-//                .sendKeys( "wrongPassword" );
-//        webDriver.findElement( By.xpath( "//button" ) ).click();
+        logInPage.enterLoginToInput("2222");
+        logInPage.clickOnSubmitButton();
+        //alt+enter- sozdat metod v
 //        Assert.assertTrue( webDriver.findElement( By.xpath( "//*[contains(text(),'Учет запчастей')]" ) ).isDisplayed() );
-        checkAcceptanceCriteria( "Text 'Учет запчастей' not found", webDriver.findElement( By.xpath( "//*[contains(text(),'Учет запчастей')]" ) ).isDisplayed() , true);
+        checkAcceptanceCriteria( "Text 'Учет запчастей' not found",
+              logInPage.isElementWithTextPresent("Учет запчастей")
+              //  webDriver.findElement( By.xpath( "//*[contains(text(),'Учет запчастей')]" ) ).isDisplayed()
+                , true);
 
     }
 

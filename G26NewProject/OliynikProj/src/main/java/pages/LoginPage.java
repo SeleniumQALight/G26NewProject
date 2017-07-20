@@ -3,11 +3,16 @@ package pages;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
-/**
- * Created by andrey.aleksandrov on 19.07.2017.
- */
 public class LoginPage extends ParentPage {
+    @FindBy(name = "_username")
+    private WebElement loginInput;
+    @FindBy(id = "password")
+    private WebElement inputPass;
+    @FindBy(xpath = ".//button")
+    private WebElement buttonSubmit;
 
     public LoginPage(WebDriver webDriver) {
         super( webDriver );
@@ -22,14 +27,21 @@ public class LoginPage extends ParentPage {
      * @param login
      */
     public void enterLoginToInput(String login) {
-        try {
+        actionsWithOurElements.enterText(loginInput,login);
 
-            webDriver.findElement( By.xpath( "//input[@name='_username']" ) )
-                    .sendKeys( login );
-            logger.info( login + " was sent to Login input" );
-        } catch (Exception e) {
-            logger.error( "Can't work with login input" );
-            Assert.fail( "Can't work with login input" );
-        }
+
+    }
+    public void enterPasswordIntoElement(String password){
+actionsWithOurElements.enterText(inputPass, password);
+
+    }
+
+    public void clickOnSubmitButton() {
+        //alt+enter- sozdat metod field
+        actionsWithOurElements.clickOnElement(buttonSubmit);
+    }
+
+    public boolean isElementWithTextPresent(String text) {
+        return actionsWithOurElements.isElementPresent(".//*[contains(text(),'"+text+"')]");
     }
 }
