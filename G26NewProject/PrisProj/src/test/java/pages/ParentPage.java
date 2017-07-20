@@ -1,9 +1,10 @@
 package pages;
 
+import libs.ActionWithOurElements;
 import org.apache.log4j.Logger;
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
-
+import org.openqa.selenium.support.PageFactory;
 
 
 /**
@@ -13,10 +14,15 @@ import org.openqa.selenium.WebDriver;
 public class ParentPage {
     WebDriver webDriver;
     Logger logger;
+    ActionWithOurElements actionWithOurElements;
 
     public ParentPage(WebDriver webDriver) { //Создали конструктор для того чтобы передать webDriver
         this.webDriver = webDriver; //webDriver перетащит webDriver который перейдет из вне
         logger = Logger.getLogger(getClass());
+        //создали обьект благодаря которому в каждой Page мы будем с ним работать
+        actionWithOurElements = new ActionWithOurElements(webDriver);
+        //инициализировать елементы(@FindBy) того класса который к ней обращается через оператор this
+        PageFactory.initElements(webDriver, this);
     }
 
     /**
