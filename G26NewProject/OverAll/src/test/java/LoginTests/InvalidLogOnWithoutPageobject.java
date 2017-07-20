@@ -13,14 +13,25 @@ public class InvalidLogOnWithoutPageobject extends ParentTest{
 
     @Test
     public void invalidLogOn(){
-        webDriver.get("http://v3.qalight.com.ua/");
-        webDriver.findElement(By.xpath(".//*[@name='_username']"))
-                .sendKeys("Student");
-        webDriver.findElement(By.xpath(".//*[@id='password']"))
-                .sendKeys("2222");
-        webDriver.findElement(By.xpath(".//button")).click();
-        Assert.assertTrue("Assert work",webDriver.findElement(
-                By.xpath(".//*[text()='Учет запчастей']")).isDisplayed());
+
+        logInPage.openLoginPage();
+//        webDriver.get("http://v3.qalight.com.ua/");
+        logInPage.enterLoginToInput("Student");
+//        webDriver.findElement(By.xpath(".//*[@name='_username']"))
+//                .sendKeys("Student");
+        logInPage.enterPassWordToInput("2222");
+//        webDriver.findElement(By.xpath(".//*[@id='password']"))
+//                .sendKeys("2222");
+        logInPage.clickOnSubmitButton();
+//        webDriver.findElement(By.xpath(".//button")).click();
+        checkAC("Text 'Учет запчастей' not found",
+                    logInPage.isElementWithTextPresent("Учет запчастей")
+//                webDriver.findElement(By.xpath(".//*[text()='Учет запчастей']"))
+//                        .isDisplayed()
+                ,true
+                );
+//        Assert.assertTrue("Assert work",webDriver.findElement(
+//                By.xpath(".//*[text()='Учет запчастей']")).isDisplayed());
     }
 
 }
