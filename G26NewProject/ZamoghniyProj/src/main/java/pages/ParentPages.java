@@ -1,9 +1,11 @@
 package pages;
 
+import libs.ActionsWithOurElements;
 import org.apache.log4j.Logger;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.PageFactory;
 
 /**
  * Created by Asus on 19.07.2017.
@@ -11,9 +13,13 @@ import org.openqa.selenium.WebDriver;
 public class ParentPages {
     WebDriver webDriver;
     Logger logger;
+    ActionsWithOurElements actionsWithOurElements;
+
     public ParentPages(WebDriver webDriver) {
         this.webDriver = webDriver;
         logger = Logger.getLogger(getClass());
+        actionsWithOurElements = new ActionsWithOurElements(webDriver);
+        PageFactory.initElements(webDriver, this); // инициализирует создание Файнд Бай и Веб элементы в текущем пейдже
     }
 
     /**
@@ -31,14 +37,6 @@ public class ParentPages {
 
     }
 
-    public void buttonClick(){
-        try{
-            webDriver.findElement(By.xpath(".//button")).click();
-            logger.info("button was clicked ");
-        }catch(Exception e){
-            logger.info("button can not clicked");
-            Assert.fail("button can not clicked");
-        }
-    }
+
     }
 
