@@ -34,7 +34,7 @@ public class ParentTest {
         webDriver.quit();
     }
 
-    public void checkAC(String message, boolean actualResult, boolean expectedResult){
+    public void checkAC(String message, boolean actualResult, boolean expectedResult) {
         Assert.assertThat(message, actualResult, is(expectedResult));
     }
 }
