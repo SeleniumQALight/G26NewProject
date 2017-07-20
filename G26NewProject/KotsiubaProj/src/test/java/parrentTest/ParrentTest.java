@@ -18,7 +18,8 @@ import static org.hamcrest.CoreMatchers.is;
 public class ParrentTest {
     public WebDriver webDriver;
     // добавили в public что б LoginPage loginPage был виден везде
-public LoginPage loginPage;
+    public LoginPage loginPage;
+
     public ParrentTest() {
     }
 
@@ -45,6 +46,6 @@ public LoginPage loginPage;
     public void checkAC(String message, boolean actualResult, boolean expectedResult) {
         // import static org.hamcrest.CoreMatchers.is;
         // ПРОВЕРКА АКТУАЛЬНОГО РЕЗУЛЬТАТА ПОЭТОМУ ОН В ParrentTest - проверка актуального и ожидаемого результата
-        Assert.assertThat(message, actualResult, is(expectedResult) );
+        Assert.assertThat(message, actualResult, is(expectedResult));
     }
 }

@@ -3,8 +3,25 @@ package pages;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
 public class LoginPage extends ParrentPage {
+    // Для кадого мы прописуем FindBy
+    @FindBy(name = "_username")
+    // это строка создает обьект вебелмент ( т.е. 1 строка что то ищет,а 2 создает)
+    private WebElement loginInput;
+
+
+    // Дописуем пусть id = "password" ( Это то что мы должны найти)
+    @FindBy(id = "password")
+    private WebElement inputPass;
+
+
+    @FindBy(xpath = ".//button")
+    // Object заменяем на WebElement И делаем @FindBy
+    private WebElement buttonSubmit;
+
     public LoginPage(WebDriver webDriver) {
         super(webDriver);
 
@@ -23,16 +40,42 @@ public class LoginPage extends ParrentPage {
 
     /**
      * mathod input login to input
+     *
      * @param login
      */
     public void enterLoginToInput(String login) {
-        try {
-            webDriver.findElement(By.xpath(".//input[@name='_username']")).sendKeys(login);
-            logger.info(login + "was inputed into Input Login");
-        } catch (Exception e){
-            logger.error("Can not with input");
-            Assert.fail("Can not with input");
-        }
+        // все нижнее мы заменяем этой одной строкой
+        actionsWithOurElements.enterText(loginInput, login);
+//        try {
+//            // этот инпут как обьект
+//            loginInput.sendKeys(login);
+//            logger.info(login + "was inputed into Input Login");
+//        } catch (Exception e){
+//            logger.error("Can not with input");
+//            Assert.fail("Can not with input");
+//        }
 
+    }
+    // метод который будет вводить в пассворd
+
+    public void enterPassWordToInput(String passWord) {
+        // inputPass + alt Enter - field
+        // потом идем на верх и пишем файндБу
+        actionsWithOurElements.enterText(inputPass, passWord);
+    }
+
+
+    // метод клика на ПРИМЕНИТЬ кнопку
+    public void clickOnSubmitButton() {
+        // buttonSubmit -> alt+enter
+
+        // потом на clickOnElement - создать метод
+        actionsWithOurElements.clickOnElement(buttonSubmit);
+    }
+
+    public boolean isElementWithTextPresent(String text) {
+//text - это параметр
+        // ".//*[contains(text(),'"+text+"')]" - поиск любого передаваемого текста на странице
+        return actionsWithOurElements.isElementPresent(".//*[contains(text(),'"+text+"')]");
     }
 }
