@@ -9,10 +9,9 @@ import java.io.File;
 import java.util.concurrent.TimeUnit;
 
 public class ParentTest {
-    WebDriver webDriver; // объявили объеkт -браузера
+    public WebDriver webDriver; // объявили объеkт -браузера
 
-    public ParentTest(WebDriver webDriver) { // создали конструтор наведя курсор на ParentTest и нажали Alt+Ins, создали чтобы могли использовать его в тестах
-        this.webDriver = webDriver;
+    public ParentTest() {
     }
 
     @Before
