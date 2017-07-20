@@ -8,9 +8,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import java.io.File;
 import java.util.concurrent.TimeUnit;
 
-/**
- * Created by zuzu on 7/13/2017.
- */
+
 public class LoginTestWithoutPageObject
 {
     private WebDriver webDriver;
