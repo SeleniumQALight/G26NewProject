@@ -38,7 +38,7 @@ public class ParentTest {
         webDriver.quit();
     }
 
-    public void checkAcceptanceCriteria(String message, boolean actualResult, boolean expectedResult){
-        Assert.assertThat( message, actualResult, is(expectedResult) );
+    public void checkAcceptanceCriteria(String message, boolean actualResult, boolean expectedResult) {
+        Assert.assertThat( message, actualResult, is( expectedResult ) );
     }
 }

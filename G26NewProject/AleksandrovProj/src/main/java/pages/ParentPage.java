@@ -18,14 +18,15 @@ public class ParentPage {
 
     /**
      * Method opens url with webDriver
+     *
      * @param url
      */
     public void open(String url) {
         try {
             webDriver.get( url );
-        }catch (Exception e){
-            logger.error( "Page not opened " + url  );
-            Assert.fail("Page not opened " + url);
+        } catch (Exception e) {
+            logger.error( "Page not opened " + url );
+            Assert.fail( "Page not opened " + url );
         }
     }
 }
