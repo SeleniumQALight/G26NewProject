@@ -31,4 +31,25 @@ public class LoginPage extends ParentPage{
         }
 
     }
+
+    public void enterPasswordToInput(String password) {
+        try{
+            webDriver.findElement(By.xpath(".//input[@name='_password']")).sendKeys(password);
+            logger.info(password + " was inputed into Password Login");
+        }catch (Exception e){
+            logger.error("Can not work with input");
+            Assert.fail("Can not work with input");
+        }
+    }
+
+    public void pressButtonSubmit() {
+        try{
+            webDriver.findElement(By.xpath(".//button[@type='submit']")).click();
+            logger.info("Button was clicked");
+        }catch (Exception e){
+            logger.error("Can not work with button");
+            Assert.fail("Can not work with button");
+        }
+    }
 }
+
