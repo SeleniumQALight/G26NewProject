@@ -19,12 +19,16 @@ public class InvalidLogOnWithoutPadeobject extends ParentTest{
         loginPage.enterLoginToInput("Student");
 //        webDriver.findElement(By.xpath(".//*[@name='_username']"))
 //                .sendKeys("Student");
-        webDriver.findElement(By.xpath(".//*[@id='password']"))
-                .sendKeys("2222");
-        webDriver.findElement(By.xpath(".//button")).click();
+        loginPage.enterPassWordToInput("2222");
+//        webDriver.findElement(By.xpath(".//*[@id='password']"))
+//                .sendKeys("2222");
+        loginPage.clickOnSubmitButton();
+//        webDriver.findElement(By.xpath(".//button")).click();
         checkAC("Text 'Учет запчастей' not found",
-                webDriver.findElement(By.xpath(".//b[text()='Учет запчастей']"))
-                        .isDisplayed(), true );
+                    loginPage.isElementWithTextPresent("Учет запчастей")
+//                webDriver.findElement(By.xpath(".//b[text()='Учет запчастей']"))
+//                        .isDisplayed()
+                , true );
 //        Assert.assertTrue(webDriver.findElement(By.xpath(".//b[text()='Учет запчастей']")).isDisplayed());
     }
 
