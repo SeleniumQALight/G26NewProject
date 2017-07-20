@@ -1,6 +1,5 @@
 package LoginTests;
 
-import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import parentTest.ParentTest;
@@ -18,11 +17,23 @@ public class InvalidLogInWithoutPageObject extends ParentTest {
     @Test
     public void invalidLogIn() {
         logInPage.openLoginPage();
-        logInPage.enterLoginToInput("Student");
+
+        //вместо:
         //webDriver.get("http://v3.qalight.com.ua/");
         //webDriver.findElement(By.xpath(".//*[@name='_username']")).sendKeys("Student");
-        webDriver.findElement(By.xpath(".//*[@id='password']")).sendKeys("2222");
-        webDriver.findElement(By.xpath(".//button[@type='submit']")).click();
+        //используем:
+        logInPage.enterLoginToInput("Student");
+
+        //вместо:
+        //webDriver.findElement(By.xpath(".//*[@id='password']")).sendKeys("2222");
+        //используем:
+        logInPage.enterPassWordToInput("2222");
+
+        //вместо:
+        //webDriver.findElement(By.xpath(".//button[@type='submit']")).click();
+        //используем:
+        logInPage.clickOnSubmitButton();
+
         //is displayed - метод который показывает найдено ли такое сообщение
         //Asseert - библиотека которая сравнивает ER c AR -->
         //if TRUE = найдет
@@ -30,7 +41,13 @@ public class InvalidLogInWithoutPageObject extends ParentTest {
         //если добавить !webDriver.findElement(By.xpath... - ! делает инвертацию = из true cделать false
         //Assert это acceptance criteria
         //Assert.assertTrue(webDriver.findElement(By.xpath(".//*[text()='Учет запчастей']")).isDisplayed());
-        checkAcceptanceCriteria("Text 'Учет запчастей' not found", webDriver.findElement(By.xpath(".//*[text()='Учет запчастей']")).isDisplayed(), true);
+
+        checkAcceptanceCriteria("Text 'Учет запчастей' not found",
+                logInPage.isElementWithTextPresent("Учет запчастей")
+                //webDriver.findElement(By.xpath(".//*[text()='Учет запчастей']"))
+                // .isDisplayed()
+                , true
+        );
     }
 
 
