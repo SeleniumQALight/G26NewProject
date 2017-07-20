@@ -18,7 +18,7 @@ public class ParentPage {
         public ParentPage(WebDriver webDriver) {
             this.webDriver = webDriver;
             logger = Logger.getLogger(getClass());
-            actionsWithOurElements = new ActionsWithOurElements(webDriver;)
+            actionsWithOurElements = new ActionsWithOurElements(webDriver);
             PageFactory.initElements(webDriver, this);
         }
 
