@@ -1,8 +1,10 @@
 package pages;
 
+import libs.ActionsWithOurElements;
 import org.apache.log4j.Logger;
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.PageFactory;
 
 /**
  * Created by Оля on 19.07.2017.
@@ -10,10 +12,13 @@ import org.openqa.selenium.WebDriver;
 public class ParentPage {
     WebDriver webDriver;
     Logger logger;
+    ActionsWithOurElements actionsWithOurElements;
 
     public ParentPage(WebDriver webDriver) {
         this.webDriver = webDriver;
         logger = Logger.getLogger(getClass());
+        actionsWithOurElements = new ActionsWithOurElements(webDriver);
+        PageFactory.initElements(webDriver, this); //инициализирует переменные того класа который к ней обращается
     }
 
     /**
