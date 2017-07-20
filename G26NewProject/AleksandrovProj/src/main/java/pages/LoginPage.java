@@ -3,11 +3,21 @@ package pages;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
 /**
  * Created by andrey.aleksandrov on 19.07.2017.
  */
 public class LoginPage extends ParentPage {
+    @FindBy(name = "_username")
+    private WebElement loginInput;
+
+    @FindBy(id = "password")
+    private WebElement passwordInput;
+
+    @FindBy(xpath = "//button")
+    private WebElement submitButton;
 
     public LoginPage(WebDriver webDriver) {
         super( webDriver );
@@ -23,14 +33,7 @@ public class LoginPage extends ParentPage {
      * @param login
      */
     public void enterLoginToInput(String login) {
-        try {
-            webDriver.findElement( By.xpath( "//input[@name='_username']" ) )
-                    .sendKeys( login );
-            logger.info( login + " was sent to Login input" );
-        } catch (Exception e) {
-            logger.error( "Can't work with login input" );
-            Assert.fail( "Can't work with login input" );
-        }
+        actionsWithOurElements.enterText( loginInput, login );
     }
 
     /**
@@ -40,28 +43,17 @@ public class LoginPage extends ParentPage {
      */
 
     public void enterPasswordToInput(String password) {
-        try {
-            webDriver.findElement( By.xpath( "//input[@id='password']" ) )
-                    .sendKeys( password );
-            logger.info( password + " was sent to Password input" );
-        } catch (Exception e) {
-            logger.error( "Can't work with Password input" );
-            Assert.fail( "Can't work with Password input" );
-        }
+        actionsWithOurElements.enterText( passwordInput, password );
     }
 
     /**
      * Method makes mouse click on submit button
      */
     public void clickButton() {
-        try {
-            webDriver.findElement( By.xpath( "//button" ) ).click();
-
-            logger.info( "Button was clicked" );
-        } catch (Exception e) {
-            logger.error( "Can't work with button" );
-            Assert.fail( "Can't work with button" );
-        }
+        actionsWithOurElements.mouseClickElement( submitButton );
     }
 
+    public boolean isElementWithTextPresent(String text) {
+        return actionsWithOurElements.isElementPresent( ".//*[contains(text(),'" + text + "')]" );
+    }
 }
