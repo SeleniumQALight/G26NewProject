@@ -55,7 +55,7 @@ public class LoginPage extends ParentPage{
 //            Assert.fail("Can not work with input");
 //        }
 //    }
-
+    }
     public void pressButtonSubmit() {
         actionsWithOurElements.clickOnElement(buttonSubmit);
 //        try{
