@@ -45,13 +45,21 @@ public class LoginPage extends ParentPage {
         //        }
     }
 
+    /**
+     * Method input password
+     * @param passWord
+     */
     public void enterPasswordToInput(String passWord) {
         actionsWithOurElements.enterText(inputPass, passWord);
     }
 
+    /**
+     * Method click on button
+     */
     public void clickOnSubmitButton() {
         actionsWithOurElements.clickOnElement(buttonSubmit);
     }
+
 
     public boolean isElementWithTestPresent(String text) {
         return actionsWithOurElements.isElementPresent(".//*[contains(text(),'" + text + "')]");
