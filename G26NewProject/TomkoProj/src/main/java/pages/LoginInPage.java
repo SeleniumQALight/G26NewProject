@@ -3,8 +3,12 @@ package pages;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.FindBy;
 
 public class LoginInPage extends ParenPage {
+    @FindBy(name = "username") // в () указываем по каким признакам будем искать (name, xpath)
+    WebDriver loginInput; //эти две строки всегда парой, все что наша первая строка она записывает в эту переменную loginInput как объкты
+
     public LoginInPage(WebDriver webDriver) { //конструктор, тут: в LoginInPage -передаем webDriver с теста
         super(webDriver); //  а эта строка передаст этот же вебдрайвер в ParenTest
     }                      //т.е через все классы должен пройти один и тот же webDriver

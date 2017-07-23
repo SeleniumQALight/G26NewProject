@@ -3,6 +3,7 @@ package pages;
 import org.apache.log4j.Logger;
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.PageFactory;
 
 public class ParenPage {  // сюда выносим все общее что есть на pages
     WebDriver webdriver; // объявили webdriver локальный
@@ -12,6 +13,7 @@ public class ParenPage {  // сюда выносим все общее что е
       this.webdriver = webDriver;    //     this.webdriver = тому webdriver что в параметре указан и который к нам прийдет из вне
       logger = Logger.getLogger(getClass()); // получи имя класса в котором ты сейчас находишься, этот логер объявлен один раз,  а будет работать во всех pages
                                              // и сам будет получать имя той пейджи где он сейчас находиться
+        PageFactory.initElements(webDriver,this);//эта строка будет инициализировать все эелементы кот.описаны в классе
         }
 
     /**
