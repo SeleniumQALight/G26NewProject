@@ -1,33 +1,37 @@
 package LoginTests;
 
+
+import org.junit.Assert;
 import org.junit.Test;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.By;
 import parentTest.ParentTest;
 
-/**
- * Created by shepel_av on 17.07.2017.
- */
-public class InvalidLogOnWithoutPageobject extends ParentTest{
-    WebDriver webDriver;
 
-    public InvalidLogOnWithoutPageobject(WebDriver webDriver) {
-        super(webDriver);
-    }
+public class InvalidLogOnWithoutPageobject extends ParentTest{
+
+    public InvalidLogOnWithoutPageobject()  {   }
 
     @Test
-    public void invalidLogOn() {
+    public void invalidLogOn(){
+
         logInPage.openLoginPage();
-//        webDriver.findElement(By.xpath(".//*[@name='_username']")).sendKeys("Student");
-        logInPage.enterPasswordToInput("2222");
-//        webDriver.findElement(By.xpath(".//*[@name='_password']")).sendKeys("2222");
+//        webDriver.get("http://v3.qalight.com.ua/");
+        logInPage.enterLoginToInput("Student");
+//        webDriver.findElement(By.xpath(".//*[@name='_username']"))
+//                .sendKeys("Student");
+        logInPage.enterPassWordToInput("2222");
+//        webDriver.findElement(By.xpath(".//*[@id='password']"))
+//                .sendKeys("2222");
         logInPage.clickOnSubmitButton();
 //        webDriver.findElement(By.xpath(".//button")).click();
-//        Assert.assertTrue("Assert is working",webDriver.findElement(
-//                By.xpath(".//*[text()='Учет запчастей']")).isDisplayed()); // делаем проверку віведен ли на єкран текст
-        checkAC("Text 'Учет запчастей' not found"),
-                logInPage.isElementWithTextPresent("Учет запчастей"),
-                true);
-
+        checkAC("Text 'Учет запчастей' not found",
+                logInPage.isElementWithTextPresent("Учет запчастей")
+//                webDriver.findElement(By.xpath(".//*[text()='Учет запчастей']"))
+//                        .isDisplayed()
+                ,true
+        );
+//        Assert.assertTrue("Assert work",webDriver.findElement(
+//                By.xpath(".//*[text()='Учет запчастей']")).isDisplayed());
     }
 
 }
