@@ -1,6 +1,7 @@
 package loginTests;
 
 import org.junit.Test;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
@@ -34,10 +35,17 @@ public class LoginTestWithOutPageObject {
         //Вствляет URL в адресную строку браузера
         webDriver.get("http://v3.qalight.com.ua/");
 
+        //Найди мне елемент по xpath -> указать локатор и всттавь мне данные(sendKeys) в поле
+        webDriver.findElement(By.xpath(".//input[@class='form-control' and @placeholder='Email']")).sendKeys("Student");
+        webDriver.findElement(By.xpath(".//input[@class='form-control' and @placeholder='Password']")).sendKeys("909090");
+        webDriver.findElement(By.xpath(".//button[text()='Вход']")).click();
+        webDriver.findElement(By.xpath(".//h1"));
+        webDriver.findElement(By.xpath(".//li[@class='dropdown user user-menu']")).click();
+        webDriver.findElement(By.xpath(".//div[2][@class='pull-right']//a[@href='/logout']")).click();
         System.out.println("Page was opened");
 
         //Дать команду webDriver -> close - закрывает вкладку quit - закрывает браузер
-        webDriver.quit();
+        //webDriver.quit();
 
     }
 }
