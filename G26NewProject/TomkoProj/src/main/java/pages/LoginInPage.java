@@ -1,5 +1,7 @@
 package pages;
 
+import org.junit.Assert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class LoginInPage extends ParenPage {
@@ -8,6 +10,22 @@ public class LoginInPage extends ParenPage {
     }                      //т.е через все классы должен пройти один и тот же webDriver
 
     public void openLoginPage(){// в парамитрe ничего не должно быть ,он будет открывать свой url
-        open("http://v3.qalight.com.ua/");
+        open("http://v3.qalight.com.ua/");// это метод которым создан в ParentPage
+    }
+
+    /**
+     * Method input login to input
+     * @param login
+     */
+    public void enterLoginToInput(String login) {
+        try{
+            webdriver.findElement(By.xpath(".//*[@name='_username']"))
+                    .sendKeys(login);
+            logger.info(login + "was inputed into Input Login"); //метод enterLoginToInput, научили обрабатывать Exception и ссобщать в лог, и assert сесли подребуется остановит тест и сообщит об этом
+
+        }catch (Exception e){
+            logger.error("Can not work with input");
+            Assert.fail("Can not work with input");
+        }
     }
 }
