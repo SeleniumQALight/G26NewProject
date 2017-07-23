@@ -1,0 +1,5 @@
+(“.//input [@name='_username']”)
+(“.//input [@id='password']”)
+(“.//button[@type='submit']”)
+(“.//a [@href='/dictionary/apparat']”)
+(“.//a[@href='/dictionary/workers']”)
