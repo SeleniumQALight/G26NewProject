@@ -39,4 +39,11 @@
     <module>RodionovaProj</module>
     <module>OverAll</module>
   </modules>
+  <build>
+    <resources>
+      <resource>
+        <directory>../src</directory>
+      </resource>
+    </resources>
+  </build>
 </project>

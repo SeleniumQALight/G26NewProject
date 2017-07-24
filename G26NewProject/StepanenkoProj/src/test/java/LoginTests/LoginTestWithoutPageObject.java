@@ -1,5 +1,7 @@
 package LoginTests;
 
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -9,6 +11,16 @@ import java.util.concurrent.TimeUnit;
 
 public class LoginTestWithoutPageObject {
     WebDriver webDriver;
+
+    //аннотация JUnit означает Preconditions. Написав это 1 раз вверху страницы теста, запускается перед каждым тестом
+    @Before
+    public void setUp() {
+    }
+
+    //аннотация junit, означает PostConditions. Написав это 1 раз вверху страницы теста, запускается после каждого теста
+    @After
+    public void tearDown() {
+    }
 
     //аннотация JUnit
     @Test
