@@ -1,6 +1,7 @@
 package LoginTests;
 
 
+import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -11,6 +12,14 @@ import java.util.concurrent.TimeUnit;
 
 public class LoginTestWithoutPageObject {
     WebDriver webDriver;
+
+   /* @Before   - это аннотация для пре-кондишнз
+    public void setUp(){};*/
+
+   /*@After - это уже пост-кондишнз
+   public void tearDown(){};*/
+
+   // @Before @After пишутся вверху один раз, но при этом они будут выполняться для каждого последующего теста
     @Test
     public void validLogOn(){
         File fileFF = new File(".././drivers/chromedriver.exe");

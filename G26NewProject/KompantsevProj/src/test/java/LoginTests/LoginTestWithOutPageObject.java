@@ -11,7 +11,7 @@ public class LoginTestWithOutPageObject {
     WebDriver webDriver;
 
     @Test
-    public void validLogOn(){
+    public void validLogOn() {
         File fileFF = new File(".././drivers/chromedriver.exe");
         System.setProperty("webdriver.chrome.driver", fileFF.getAbsolutePath());
         webDriver = new ChromeDriver();
