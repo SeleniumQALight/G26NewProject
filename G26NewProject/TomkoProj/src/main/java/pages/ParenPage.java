@@ -1,5 +1,6 @@
 package pages;
 
+import libs.ActionsWithOurElements;
 import org.apache.log4j.Logger;
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
@@ -8,14 +9,20 @@ import org.openqa.selenium.support.PageFactory;
 public class ParenPage {  // сюда выносим все общее что есть на pages
     WebDriver webdriver; // объявили webdriver локальный
     Logger logger; // аппачевский логер выбрать в подсказке, тут объявили ллогер локальный
+    ActionsWithOurElements actionsWithOurElements;// создаем объект класса ActionsWithOurElements, т.к мы будем использовать его в каждой page
 
     public ParenPage(WebDriver webDriver) {  // конструктор, чтоб создать надо навести курсор на ParenPage и нажать Alt+Ins,и в параметры передаем webdriver из вне сюда
       this.webdriver = webDriver;    //     this.webdriver = тому webdriver что в параметре указан и который к нам прийдет из вне
       logger = Logger.getLogger(getClass()); // получи имя класса в котором ты сейчас находишься, этот логер объявлен один раз,  а будет работать во всех pages
                                              // и сам будет получать имя той пейджи где он сейчас находиться
-        PageFactory.initElements(webDriver,this);//эта строка будет инициализировать все эелементы кот.описаны в классе
-        }
+       actionsWithOurElements = new ActionsWithOurElements(webDriver); //создали объект с помощью которого каждая pages, которая наследуется от ParenPage,
+         // сможет с ним работать; в (конструтор) передаем наш webDriver (кот.гуляет по всему проекту)
 
+        PageFactory.initElements(webDriver,this);//строка PageFactory будет инициализировать (физически создает, ч/з оператор this)
+                                                  // все эелементы кот.описаны в классе Page с помощью Findby, создает объекты того класса кот.
+                                                   // к ней обращаются; пройдется по всем эллементам что объявлены ч/з Fineby и инициализирует их
+        }                                          //в параметрах пишем (какой драйвер, какую page); this -подразусевается кто обратиться тому и дать
+                                                    // initElements-это метод, PageFactory-объект библиотеки
     /**
      * Method opens url, will be available from every pages
      * @param url
