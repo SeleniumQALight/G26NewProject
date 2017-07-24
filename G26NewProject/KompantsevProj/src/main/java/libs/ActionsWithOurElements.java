@@ -35,7 +35,7 @@ public class ActionsWithOurElements {
     public void clickOnElement(WebElement element) {
         try {
             element.click();
-            logger.info(element + " was clicked");
+            logger.info("Element was clicked");
 
         } catch (Exception e) {
             logger.error("Can`t work with element " + element);
