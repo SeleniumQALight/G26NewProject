@@ -1,28 +1,21 @@
 package parentTest;
 
-import org.hamcrest.Matcher;
-import org.junit.After;
-import org.junit.Assert;
 import org.junit.Before;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import pages.LoginPage;
+import pages.MainPage;
+import parentTest.ParentTest;
 
 import java.io.File;
 import java.util.concurrent.TimeUnit;
 
-import static org.hamcrest.CoreMatchers.is;
-
 /**
- * Created by Kleine-Hexe on 17.07.2017.
+ * Created by Kleine-Hexe on 23.07.2017.
  */
-public class ParentTest {
-    public WebDriver webDriver;
-    public LoginPage loginPage;
-
-    public ParentTest() {
+public class ParentTestLoginSetUp extends ParentTest {
+    public MainPage mainPage;
+    public ParentTestLoginSetUp() {
     }
-
     @Before
     public void setUp(){
         File fileFF = new File(".././drivers/chromedriver.exe");
@@ -31,17 +24,12 @@ public class ParentTest {
         webDriver.manage().window().maximize();
         webDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         loginPage = new LoginPage(webDriver);
+        loginPage.openLoginPage();
+        loginPage.enterLoginToInput("Student");
+        loginPage.enterPasswordToInput("909090");
+        loginPage.clickOnSubmitButton();
+        mainPage = new MainPage(webDriver);
+        //checkAC("Text 'Учет запчастей' not found", loginPage.isElementWithTextPresent("Учет запчастей"),true);
     }
-
-    @After
-    public void tearDown(){
-  //      webDriver.quit();
-
-            }
-    public void checkAC(String message, boolean actualResult, boolean expectedResult){
-        Assert.assertThat(message,actualResult, is (expectedResult));
-
-    }
-
 
 }
