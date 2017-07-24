@@ -1,5 +1,6 @@
-package LoginTest;
+package loginTest;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -8,12 +9,18 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import java.io.File;
 import java.util.concurrent.TimeUnit;
 
-/**
- * Created by zuzu on 7/13/2017.
- */
+
 public class LoginTestWithoutPageObject
 {
     private WebDriver webDriver;
+
+    @Before
+    public void setup()
+    {
+
+    }
+
+
 
     @Test
     public void validLogOn()
