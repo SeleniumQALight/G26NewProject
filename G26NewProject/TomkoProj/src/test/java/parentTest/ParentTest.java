@@ -43,6 +43,7 @@ public class ParentTest {
         webDriver.manage().window().maximize(); // тут мы изменяем размер экрана до максимального
         webDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS); // задаем время ожидания. наш браузер будет на протяжении 10с искать логин -элемент, если не найдет за 10с то будет ексепшин
         loginInPage = new LoginInPage(webDriver); // создан объкт LoginInPage и передает параметры : webDriver = new ChromeDriver
+        homePage = new HomePage(webDriver);
     }
     @After
 
@@ -54,7 +55,7 @@ public class ParentTest {
 
     }
     public void checkAC(String massage, boolean actualResult, boolean expectedResult){ // проверка результата в тестах
-        // Assert.assertThat(massage,actualResult,is(expectedResult)); //
+        Assert.assertThat(massage,actualResult,is(expectedResult));
     }
 
 
