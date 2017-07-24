@@ -26,7 +26,7 @@ public class ActionsWithOurElements {
         try{
             element.clear();
             element.sendKeys(text);
-            logger.info(text+"was inputed");
+            logger.info(text+" was inputed");
         }catch(Exception e){
             logger.error("Can not work with element"+ element);
             Assert.fail("Page cannot opened"+ element);
@@ -42,8 +42,8 @@ public class ActionsWithOurElements {
             logger.info("Element was clicked");
 
         }catch(Exception e){
-            logger.error("Can not work with element"+ element);
-            Assert.fail("Page cannot opened"+ element);
+            logger.error("Can not work with element "+ element);
+            Assert.fail("Page cannot opened" + element);
         }
 
     }
@@ -51,6 +51,16 @@ public class ActionsWithOurElements {
     public boolean isElementPresent(String locatorWithText) {
         try{
             return webDriver.findElement(By.xpath(locatorWithText)).isDisplayed();
+
+        }catch(Exception e){
+            return false;
+        }
+
+    }
+
+    public boolean isElementPresent(WebElement element) {
+        try{
+            return element.isDisplayed();
 
         }catch(Exception e){
             return false;
