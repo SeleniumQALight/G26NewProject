@@ -49,9 +49,9 @@ public class ParentTest {
 
     @After
     public void tearDown(){
-        if (!(webDriver==null))
-            utils.screenShot(pathToScreenShot, webDriver);
-        webDriver.quit();
+       // if (!(webDriver==null))
+         //   utils.screenShot(pathToScreenShot, webDriver);
+       // webDriver.quit();
 
             }
     public void checkAC(String message, boolean actualResult, boolean expectedResult){

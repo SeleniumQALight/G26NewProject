@@ -12,10 +12,10 @@ public class SuccessfullLogout extends ParentTestLoginSetUp{
     @Test
     public void successfullLogout(){
     mainPage.clickOnAvatar();
-//    Assert.assertTrue("Profile Pop-up not displayed", mainPage.isProfilePopUpPresent());
+    Assert.assertTrue("Profile Pop-up not displayed", mainPage.isProfilePopUpPresent());
     mainPage.clickOnLogoutButton();
-    checkAC("Text 'Учет запчастей' not found",
-                loginPage.isElementWithTextPresent("Учет запчастей"), true);
+   checkAC("Text 'Учет запчастей' not found",
+              loginPage.isElementWithTextPresent("Учет запчастей"), true);
 
     }
 

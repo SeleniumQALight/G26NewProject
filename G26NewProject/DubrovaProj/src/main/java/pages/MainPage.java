@@ -24,7 +24,7 @@ public class MainPage extends ParentPage {
     }
 
     public void clickOnAvatar(){
-      webDriver.findElement(By.xpath(".//ul[@class='dropdown-menu']")).click();
+      webDriver.findElement(By.xpath(".//img[@class='user-image']")).click();
     }
 
     public boolean isProfilePopUpPresent(){
