@@ -35,6 +35,7 @@ public class InvalidLogOnWithoutPageObject extends ParentTest {
         checkAC("text'учет запчастей' not found)", loginPage.isElementWithTextPresent("Учет запчастей")
        //         webDriver.findElement(By.xpath(".//*[text()='Учет запчастей']")).isDisplayed()
                 , true);
+
     }
 }
 
