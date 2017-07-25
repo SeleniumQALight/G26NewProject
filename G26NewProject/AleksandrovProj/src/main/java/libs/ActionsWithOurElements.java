@@ -50,4 +50,12 @@ public class ActionsWithOurElements {
             return false;
         }
     }
+
+    public boolean isElementPresent(WebElement element) {
+        try {
+            return element.isDisplayed();
+        }catch (Exception e){
+            return false;
+        }
+    }
 }
