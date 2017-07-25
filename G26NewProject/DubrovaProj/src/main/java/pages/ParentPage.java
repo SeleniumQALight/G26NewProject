@@ -28,4 +28,8 @@ public class ParentPage {
             Assert.fail("Page cannot be opened " + url);
         }
     }
+
+    public void checkTitle(String title){
+        Assert.assertEquals(webDriver.getTitle(), title);
+            }
 }
