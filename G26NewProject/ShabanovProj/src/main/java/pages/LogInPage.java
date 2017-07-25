@@ -57,6 +57,6 @@ public class LogInPage extends ParentPage {
 
     public boolean isElementWithTextPresent(String text) {
 
-        return actionsWithOurElements.isElementPresent(".//*[contains(text),'+text+']"); // разделили наш локатор. Икспас универсальный.
+        return actionsWithOurElements.isElementPresent(".//*[contains(text,'"+text+"')]"); // разделили наш локатор. Икспас универсальный.
     }
 }
