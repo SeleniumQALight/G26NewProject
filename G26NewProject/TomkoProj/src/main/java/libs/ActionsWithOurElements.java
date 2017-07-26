@@ -66,7 +66,7 @@ public class ActionsWithOurElements {
     public void checkTextInElement(String xpath, String text) {
         try {
             String textFromElement = webDriver.findElement(By.xpath(xpath)).getText();
-            Assert.assertThat("Text in elementnotmatched", textFromElement,
+            Assert.assertThat("Text in element not matched", textFromElement,
                     is(text));
         } catch (Exception e) {// надо предусмотреть если что-то пошло не так
             logger.error("Can not work with element ");
