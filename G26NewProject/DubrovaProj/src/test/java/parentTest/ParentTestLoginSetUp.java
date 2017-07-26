@@ -29,7 +29,7 @@ public class ParentTestLoginSetUp extends ParentTest {
         loginPage.enterPasswordToInput("909090");
         loginPage.clickOnSubmitButton();
         mainPage = new MainPage(webDriver);
-        //checkAC("Text 'Учет запчастей' not found", loginPage.isElementWithTextPresent("Учет запчастей"),true);
+
     }
 
 }

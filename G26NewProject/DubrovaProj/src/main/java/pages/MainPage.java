@@ -11,13 +11,13 @@ import org.openqa.selenium.support.FindBy;
 public class MainPage extends ParentPage {
 
     @FindBy(xpath = ".//a[@class='dropdown-toggle']")
-    public WebElement Avatar;
+    public WebElement avatar;
 
     @FindBy(xpath = ".//ul[@class='dropdown-menu']")
-    private WebElement ProfilePopUp;
+    private WebElement profilePopUp;
 
     @FindBy(xpath = ".//ul[@class='dropdown-menu']//a[@href='/logout']")
-    private WebElement LogoutButton;
+    private WebElement logoutButton;
 
     public MainPage(WebDriver webDriver) {
         super(webDriver);
