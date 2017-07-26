@@ -5,10 +5,8 @@ import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import static org.hamcrest.CoreMatchers.is;
 
-/**
- * Created by Kleine-Hexe on 20.07.2017.
- */
 public class ActionsWithOurElements {
     WebDriver webDriver;
     Logger logger;
@@ -58,6 +56,17 @@ public class ActionsWithOurElements {
             return element.isDisplayed();
         }catch (Exception e){
             return false;
+        }
+    }
+
+    public void checkTextInElement(String xPath, String text) {
+        try{
+            String textFromElement = webDriver.findElement(By.xpath(xPath)).getText();
+            Assert.assertThat("Text in element does not match", textFromElement, is(text));
+        }
+        catch (Exception e) {
+            logger.error("Cannot work with element " );
+            Assert.fail("Cannot work with element ");
         }
     }
 }
