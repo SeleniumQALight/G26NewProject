@@ -1,10 +1,10 @@
 package libs;
 
-import org.apache.log4j.Logger;
-import org.junit.Assert;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+        import org.apache.log4j.Logger;
+        import org.junit.Assert;
+        import org.openqa.selenium.By;
+        import org.openqa.selenium.WebDriver;
+        import org.openqa.selenium.WebElement;
 
 
 public class ActionsWithOurElements {
@@ -55,5 +55,23 @@ public class ActionsWithOurElements {
             return false;
         }
     }
+
+    public boolean isElementPresent(WebElement element) {
+        try {
+            return element.isDisplayed();
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    public boolean getTitle(WebElement url) {
+        try {
+            return getTitle(url);
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+
 }
 
