@@ -6,6 +6,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import static org.hamcrest.CoreMatchers.is;
+
 
 // для работы с нашим классом нам нужен driver, поэтому создаем конструкторЖ
 public class ActionsWithOurElements {
@@ -46,7 +48,7 @@ public class ActionsWithOurElements {
 
     public boolean isElementPresent(String locatorWithText) {
         try {
-           return webDriver.findElement(By.xpath(locatorWithText)).isDisplayed();
+            return webDriver.findElement(By.xpath(locatorWithText)).isDisplayed();
         } catch (Exception e) {
             return false;
         }
@@ -54,11 +56,21 @@ public class ActionsWithOurElements {
     }
 
     public boolean isElementPresent(WebElement element) {
-        try{
+        try {
             return element.isDisplayed();
-        }catch (Exception e) {
+        } catch (Exception e) {
             return false;
         }
-        }
-
     }
+
+    public void checkTextInElement(String xpath, String text) {
+        try {
+            String textFromElement = webDriver.findElement(By.xpath(xpath)).getText();
+            Assert.assertThat("Text in elementnotmatched", textFromElement,
+                    is(text));
+        } catch (Exception e) {// надо предусмотреть если что-то пошло не так
+            logger.error("Can not work with element ");
+            Assert.fail("Can not work with element ");
+        }
+    }
+}

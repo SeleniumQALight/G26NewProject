@@ -11,6 +11,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import pages.HomePage;
 import pages.LoginInPage;
+import pages.SparePage;
 
 import java.io.File;
 import java.util.concurrent.TimeUnit;
@@ -24,7 +25,10 @@ public class ParentTest {
     private Utils utils = new Utils();
     private String pathToScreenShot;
 
+    private boolean isTestPass; //2607, переменная отвечающая за инфо: еслитест прошел то нам скриншот не нужен,а если завалился то нужен
     public HomePage homePage;
+    public SparePage sparePage; //2607
+
     public ParentTest() {
     }
     @Rule
@@ -44,19 +48,25 @@ public class ParentTest {
         webDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS); // задаем время ожидания. наш браузер будет на протяжении 10с искать логин -элемент, если не найдет за 10с то будет ексепшин
         loginInPage = new LoginInPage(webDriver); // создан объкт LoginInPage и передает параметры : webDriver = new ChromeDriver
         homePage = new HomePage(webDriver);
+        sparePage = new SparePage(webDriver);// передаем вебдравер в класс SparePage (pageObject)
     }
     @After
 
     public void tearDown(){ // закрытие вкладки и сам браузер+скриншот, даже если тест не прошел
-          if (!(webDriver==null)) {
-              utils.screenShot(pathToScreenShot,webDriver);
+          if (!(webDriver==null)) { //2607 криншот будет в случае Fail
+              if(!isTestPass) {
+                  utils.screenShot(pathToScreenShot, webDriver);
+              }
                webDriver.quit();
     }
 
     }
     public void checkAC(String massage, boolean actualResult, boolean expectedResult){ // проверка результата в тестах
         Assert.assertThat(massage,actualResult,is(expectedResult));
+        setTestPass(); //2607
     }
 
-
+    private void setTestPass(){ //2607
+        isTestPass = true;
+  }
 }
