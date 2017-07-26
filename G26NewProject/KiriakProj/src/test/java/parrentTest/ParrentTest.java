@@ -1,21 +1,22 @@
 package parrentTest;
 
-        import libs.Utils;
-        import org.apache.log4j.Logger;
-        import org.junit.After;
-        import org.junit.Assert;
-        import org.junit.Before;
-        import org.junit.Rule;
-        import org.junit.rules.TestName;
-        import org.openqa.selenium.WebDriver;
-        import org.openqa.selenium.chrome.ChromeDriver;
-        import pages.HomePage;
-        import pages.LoginPage;
+import libs.Utils;
+import org.apache.log4j.Logger;
+import org.junit.After;
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Rule;
+import org.junit.rules.TestName;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import pages.HomePage;
+import pages.LoginPage;
 
-        import java.io.File;
-        import java.util.concurrent.TimeUnit;
+import java.io.File;
+import java.util.concurrent.TimeUnit;
 
-        import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.is;
 
 
 public class ParrentTest {
@@ -27,6 +28,7 @@ public class ParrentTest {
 
     public LoginPage loginPage;
     public HomePage homePage;
+
 
     public ParrentTest() {
 
@@ -61,8 +63,7 @@ public class ParrentTest {
         }
     }
 
-    public void checkAC(String message, boolean actualResult, boolean expectedResult){
+    public void checkAC(String message, boolean actualResult, boolean expectedResult) {
         Assert.assertThat(message, actualResult, is(expectedResult));
     }
-
 }

@@ -64,5 +64,14 @@ public class ActionsWithOurElements {
         }
     }
 
+    public boolean getTitle(WebElement url) {
+        try {
+            return getTitle(url);
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+
 }
 
