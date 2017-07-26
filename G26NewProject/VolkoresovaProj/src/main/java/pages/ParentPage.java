@@ -32,11 +32,11 @@ public class ParentPage {
             try{
 
                 webDriver.get(url);
-                logger.info("Page was opened" + url);
+                logger.info("Page was opened " + url);
 
             }catch (Exception e){
-                logger.error("Page cannot opened"+url);
-                Assert.fail("Page cannot opened"+url);
+                logger.error("Page cannot opened "+url);
+                Assert.fail("Page cannot opened "+url);
 
             }
         }

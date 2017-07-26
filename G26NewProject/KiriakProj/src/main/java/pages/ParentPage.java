@@ -27,10 +27,10 @@ public class ParentPage {
     public void open(String url) {
         try {
             webDriver.get(url);
-            logger.info("Page was open" + url);
+            logger.info("Page was open " + url);
         } catch (Exception e) {
-            logger.error("Page can not open" + url);
-            Assert.fail("Page can not open" + url);
+            logger.error("Page can not open " + url);
+            Assert.fail("Page can not open " + url);
         }
 
     }

@@ -60,4 +60,18 @@ public class ActionsWithOurElements {
             return false;
         }
     }
+// меняем на element
+    // void -> boolean
+
+    // мы спрашиваем может ли найти на странице аватарку, если да то возвращает, если нет - то фолс
+    public boolean isElementPresent(WebElement element) {
+        try {
+            // Должен вернуть елмент
+            return element.isDisplayed();
+
+        }catch (Exception e) {
+            return false;
+        }
+
+    }
 }
