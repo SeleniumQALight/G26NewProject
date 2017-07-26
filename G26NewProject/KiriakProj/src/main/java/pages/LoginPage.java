@@ -18,7 +18,6 @@ public class LoginPage extends ParentPage {
     @FindBy(xpath = ".//button")
     private WebElement buttonSubmit;
 
-
     public LoginPage(WebDriver webDriver) {
         super(webDriver);
     }

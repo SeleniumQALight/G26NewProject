@@ -35,7 +35,7 @@ public class ActionsWithOurElements {
     public void clickOnElement(WebElement element) {
         try {
             element.click();
-            logger.info(element + " was clicked");
+            logger.info("Element was clicked");
 
         } catch (Exception e) {
             logger.error("Can`t work with element " + element);
@@ -46,6 +46,14 @@ public class ActionsWithOurElements {
     public boolean isElementPresent(String locatorWithText) {
         try {
             return webDriver.findElement(By.xpath(locatorWithText)).isDisplayed();
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    public boolean isElementPresent(WebElement element) {
+        try {
+            return element.isDisplayed();
         } catch (Exception e) {
             return false;
         }
