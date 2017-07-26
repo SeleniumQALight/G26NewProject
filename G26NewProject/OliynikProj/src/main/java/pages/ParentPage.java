@@ -6,9 +6,7 @@ import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
-/**
- * Created by andrey.aleksandrov on 19.07.2017.
- */
+
 public class ParentPage {
     WebDriver webDriver;
     Logger logger;

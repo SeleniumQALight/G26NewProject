@@ -10,9 +10,7 @@ import org.openqa.selenium.interactions.Actions;
 import java.io.File;
 import java.util.concurrent.TimeUnit;
 
-/** Test class for webDriver first example
- * Created by andrey.aleksandrov on 13.07.2017.
- */
+
 public class LoginTestWithoutPageObject {
     WebDriver webDriver;
     Actions action;

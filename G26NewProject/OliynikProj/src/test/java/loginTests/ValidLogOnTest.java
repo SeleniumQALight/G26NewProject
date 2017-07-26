@@ -15,7 +15,6 @@ public class ValidLogOnTest extends ParentTest {
         logInPage.clickOnSubmitButton();
         checkAcceptanceCriteria("Avatar is not present on Page",homePage.isAvatarPresent(),true);
 
-
     }
 
 }

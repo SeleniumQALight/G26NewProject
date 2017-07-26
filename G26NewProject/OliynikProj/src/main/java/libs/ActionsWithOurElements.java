@@ -6,9 +6,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-/**
- * Created by User on 20.07.2017.
- */
+
 public class ActionsWithOurElements {
     WebDriver webDriver;
     Logger logger;
