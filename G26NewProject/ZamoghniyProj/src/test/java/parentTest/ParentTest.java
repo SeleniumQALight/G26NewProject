@@ -56,8 +56,9 @@ public class ParentTest {
     }
     @After
     public void tearDown(){
+        utils.screenShot(pathToScreenShot,webDriver);
          if(!(webDriver == null)){ webDriver.quit();} // снимает скриншот при завершении теста и закрытии вебдрайвера
-          //utils.screenShot(pathToScreenShot,webDriver);
+
     }
 
     /**
@@ -68,9 +69,11 @@ public class ParentTest {
      */
     public void checkAC(String message, boolean actualResult, boolean expectedResult){
 
-       // if(!( actualResult == expectedResult)){
-          //  utils.screenShot(pathToScreenShot,webDriver);
-        //}
+       if(!( actualResult == expectedResult)){
+            utils.screenShot(pathToScreenShot,webDriver);
+        }
         Assert.assertThat(message, actualResult,is(expectedResult));
     }
+
+
 }
