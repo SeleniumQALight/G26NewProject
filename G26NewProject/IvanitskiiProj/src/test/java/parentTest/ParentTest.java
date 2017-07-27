@@ -1,4 +1,4 @@
-package parrentTest;
+package parentTest;
 
 import libs.Utils;
 import org.apache.log4j.Logger;
@@ -8,74 +8,55 @@ import org.junit.Before;
 import org.junit.Rule;
 import org.junit.rules.TestName;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import pages.HomePage;
-import pages.LoginPage;
-import pages.SparePage;
+import pages.LogInPage;
 
 import java.io.File;
 import java.util.concurrent.TimeUnit;
 
 import static org.hamcrest.CoreMatchers.is;
 
-
-public class ParrentTest {
+public class ParentTest {
     public WebDriver webDriver;
-
     private Logger logger = Logger.getLogger(getClass());
     private Utils utils = new Utils();
     private String pathToScreenShot;
 
-    private boolean isTestPass = false;
-
-    public LoginPage loginPage;
+    public LogInPage logInPage;
     public HomePage homePage;
-    public SparePage sparePage;
 
-    public ParrentTest() {
-
+    public ParentTest() {
     }
 
     @Rule
     public TestName testName = new TestName();
 
-
     @Before
     public void setUp() {
         File file = new File("");
-        pathToScreenShot = file.getAbsolutePath() + "\\target\\screenshots\\"
-                + this.getClass().getPackage().getName() + "\\"
-                + this.getClass().getSimpleName() + "\\"
-                + this.testName.getMethodName() + ".jpg";
-
+        pathToScreenShot = file.getAbsolutePath() + "\\target\\screenshot\\" + this.getClass().getPackage().getName() + "\\" + this.getClass().getSimpleName()
+                + "\\" + this.testName.getMethodName() + ".jpeg";
         File fileFF = new File(".././drivers/chromedriver.exe");
         System.setProperty("webdriver.chrome.driver", fileFF.getAbsolutePath());
         webDriver = new ChromeDriver();
         webDriver.manage().window().maximize();
         webDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        loginPage = new LoginPage(webDriver);
+        logInPage = new LogInPage(webDriver);
         homePage = new HomePage(webDriver);
-        sparePage = new SparePage(webDriver);
     }
 
     @After
     public void tearDown() {
         if (!(webDriver == null)) {
-            if(!isTestPass) {
-                utils.screenShot(pathToScreenShot, webDriver);
-            }
-            webDriver.quit();
+            utils.screenShot(pathToScreenShot, webDriver);
+            webDriver.close();
         }
     }
 
-    public void checkAC(String message, boolean actualResult, boolean expectedResult) {
+    public void checkAC(String message, Boolean actualResult, Boolean expectedResult) {
         Assert.assertThat(message, actualResult, is(expectedResult));
-        setTestPass();
-    }
 
-    private void setTestPass() {
-        isTestPass = true;
     }
 
 
