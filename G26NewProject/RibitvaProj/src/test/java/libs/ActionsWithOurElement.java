@@ -6,15 +6,22 @@ import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import static org.hamcrest.CoreMatchers.is;
 
 
 public class ActionsWithOurElement {
     WebDriver webDriver;
     Logger logger;
+    WebDriverWait webDriverWait15;
 
     public ActionsWithOurElement(WebDriver webDriver) {
         this.webDriver = webDriver;
         logger = Logger.getLogger(getClass());
+        webDriverWait15 = new WebDriverWait(webDriver, 25);
     }
 
     /**
@@ -36,6 +43,7 @@ public class ActionsWithOurElement {
 
     public void clickOnElement(WebElement element) {
         try {
+            webDriverWait15.until(ExpectedConditions.elementToBeClickable(element));
             element.click();
             logger.info("element was clicked");
 
@@ -57,8 +65,36 @@ public class ActionsWithOurElement {
     public boolean isElementPresent(WebElement element) {
         try {
             return element.isDisplayed();
-        }catch (Exception e) {
+        } catch (Exception e) {
             return false;
+        }
+    }
+
+    public void checkTextInElement(String xPath, String text) {
+        try {
+            webDriverWait15.until(
+                    ExpectedConditions.textToBePresentInElement(By.xpath(xPath), text));
+            String texFromElement = webDriver.findElement(By.xpath(xPath))
+                    .getText();
+            Assert.assertThat("Text in element not matched",
+                    texFromElement,
+                    is(text));
+
+        } catch (Exception e) {
+            logger.error("Can not work with element ");
+            Assert.fail("Can not work with element ");
+
+        }
+    }
+
+    public void selectTextInDDByText(WebElement dropDown, String text) {
+        try {
+            Select optionsFromDD = new Select(dropDown);
+            optionsFromDD.selectByVisibleText(text);
+            logger.info(text + " was selected in DropDown");
+        } catch (Exception e) {
+            logger.error("Can not work with DropDown ");
+            Assert.fail("Can not work with DropDown ");
         }
     }
 }
