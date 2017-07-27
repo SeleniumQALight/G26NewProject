@@ -10,9 +10,11 @@ import org.junit.Rule;
 import org.junit.rules.TestName;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import pages.AddNewSparePage;
 import pages.HomePage;
 import pages.LoginPage;
 import pages.SparePage;
+import spare.AddNewSpare;
 
 import java.io.File;
 import java.util.concurrent.TimeUnit;
@@ -31,6 +33,7 @@ public class ParentTest {
     public LoginPage loginPage;
     public HomePage homePage;
     public SparePage sparePage;
+    public AddNewSparePage addNewSparePage;
 
     public ParentTest() {
     }
@@ -52,6 +55,7 @@ public class ParentTest {
         loginPage = new LoginPage(webDriver);
         homePage = new HomePage(webDriver);
         sparePage = new SparePage(webDriver);
+        addNewSparePage = new AddNewSparePage(webDriver);
     }
 
     @After

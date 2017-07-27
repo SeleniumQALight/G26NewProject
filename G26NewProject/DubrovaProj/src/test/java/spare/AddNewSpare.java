@@ -10,8 +10,15 @@ public class AddNewSpare extends ParentTest {
     public void addNewSpare(){
     loginPage.loginUser("Student","909090");
     homePage.clickOnMenuDictionary();
-    homePage.clickOnSubMenu();
+    homePage.clickOnSubMenuSpares();
     sparePage.checkTitle("Учет запчастей");
     sparePage.checkTitleH1PresentOnPageWithText("Запчасти Список");
+    sparePage.clickOnButtonPlus();
+    addNewSparePage.checkTitleH1PresentOnPageWithText("Словарь");
+    addNewSparePage.enterSpareName("Spare1");
+    addNewSparePage.selectElementFromDDSpareType("Датчики івіфв");
+    addNewSparePage.clickButtonCreate();
+    sparePage.checkTitleH1PresentOnPageWithText("Запчасти Список");
+    checkAC("Cannot find the spare in list", sparePage.isSpareInList("Spare1"),true);
     }
 }
