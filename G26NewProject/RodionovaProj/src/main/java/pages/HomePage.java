@@ -4,35 +4,34 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class HomePage extends ParentPage {
-    @FindBy(xpath = ".//img[@class='user-image']")
-    WebElement rightAvatar;
+/**
+ * Created by Yuliya_Rodionova on 7/24/2017.
+ */
+public class HomePage extends ParentPage{
+    @FindBy(xpath = ".//img=[@class='user-image']")
+    WebElement correctAvatar;
 
-    @FindBy(xpath=".//a[@href='http://v3.qalight.com.ua/']")
-    WebElement urlElement;
-
-    @FindBy(xpath=".//*[@id='dictionary']/a")
+    @FindBy(xpath = ".//*[@id='dictionary']/a")
     private WebElement menuDictionary;
 
     @FindBy(id = "spares")
     private WebElement sparesSubMenu;
 
-    public HomePage(WebDriver webDriver){
+    public HomePage(WebDriver webDriver) {
         super(webDriver);
     }
 
-
-    public boolean isAvatarPresent(){
-        return actionsWithOurElements.isElementPresent(rightAvatar);
+    public boolean isAvatarPresnt() {
+        return actionsWithOurElements.isElementPresent(correctAvatar);
     }
 
     public void clickOnMenuDictionary(){
         actionsWithOurElements.clickOnElement(menuDictionary);
     }
 
-    public void clickOnSubMenuSpares(){
+    public void clickOnSparesSubMenu(){
         actionsWithOurElements.clickOnElement(sparesSubMenu);
     }
 
-}
 
+}
