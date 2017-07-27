@@ -12,6 +12,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import pages.HomePage;
 import pages.LoginPage;
+import pages.SparePage;
 
 import java.io.File;
 import java.util.concurrent.TimeUnit;
@@ -26,9 +27,11 @@ public class ParrentTest {
     private Utils utils = new Utils();
     private String pathToScreenShot;
 
+    private boolean isTestPass = false;
+
     public LoginPage loginPage;
     public HomePage homePage;
-
+    public SparePage sparePage;
 
     public ParrentTest() {
 
@@ -53,17 +56,28 @@ public class ParrentTest {
         webDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         loginPage = new LoginPage(webDriver);
         homePage = new HomePage(webDriver);
+        sparePage = new SparePage(webDriver);
     }
 
     @After
     public void tearDown() {
         if (!(webDriver == null)) {
-            utils.screenShot(pathToScreenShot, webDriver);
+            if(!isTestPass) {
+                utils.screenShot(pathToScreenShot, webDriver);
+            }
             webDriver.quit();
         }
     }
 
     public void checkAC(String message, boolean actualResult, boolean expectedResult) {
         Assert.assertThat(message, actualResult, is(expectedResult));
+        setTestPass();
     }
+
+    private void setTestPass() {
+        isTestPass = true;
+    }
+
+
+
 }

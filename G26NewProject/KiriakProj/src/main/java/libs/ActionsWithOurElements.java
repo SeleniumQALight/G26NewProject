@@ -6,6 +6,10 @@ package libs;
         import org.openqa.selenium.WebDriver;
         import org.openqa.selenium.WebElement;
 
+        import java.awt.*;
+
+        import static org.hamcrest.CoreMatchers.is;
+
 
 public class ActionsWithOurElements {
     WebDriver webDriver;
@@ -72,6 +76,14 @@ public class ActionsWithOurElements {
         }
     }
 
-
+    public void checkTextInElement(String xpath, String text) {
+        try{
+            String textFromElement = webDriver.findElement(By.xpath(xpath)).getText();
+            Assert.assertThat("Text in element not matched",textFromElement, is(text));
+        } catch (Exception e){
+            logger.error("Can not work with text");
+            Assert.fail("Can not work with text");
+        }
+    }
 }
 
