@@ -9,8 +9,10 @@ import org.junit.Rule;
 import org.junit.rules.TestName;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import pages.AddNewSparePage;
 import pages.HomePage;
 import pages.LoginPage;
+import pages.SparePage;
 
 import java.io.File;
 import java.util.concurrent.TimeUnit;
@@ -27,6 +29,9 @@ public class ParentTest {
     private String pathToScreenShot;
     public LoginPage loginPage;
     public HomePage homePage;
+    public SparePage sparePage;
+    public AddNewSparePage addNewSparePage;
+    private boolean isTestPass = false;
 
     public ParentTest() {
 
@@ -47,19 +52,28 @@ public class ParentTest {
         webDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         loginPage = new LoginPage(webDriver);
         homePage = new HomePage(webDriver);
+        sparePage = new SparePage(webDriver);
+        addNewSparePage = new AddNewSparePage(webDriver);
     }
 
     @After
     public void tearDown() {
         if(!(webDriver == null)) {
-            utils.screenShot(pathToScreenShot,webDriver);
+            if(!isTestPass) {
+                utils.screenShot(pathToScreenShot, webDriver);
+            }
             webDriver.quit();
         }
 
     }
     public void checkAC(String messages,boolean actualResult, boolean expectedResult){
         Assert.assertThat(messages,actualResult,is(expectedResult));
+        setTestPass();
 
+    }
+
+    private void setTestPass() {
+        isTestPass = true;
     }
 
 }
