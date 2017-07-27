@@ -9,8 +9,10 @@ import org.junit.Rule;
 import org.junit.rules.TestName;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import pages.AddNewSpare;
 import pages.HomePage;
 import pages.LoginPage;
+import pages.SparePage;
 
 import java.io.File;
 import java.util.concurrent.TimeUnit;
@@ -23,11 +25,15 @@ import static org.hamcrest.CoreMatchers.is;
 public class ParentTest {
     public WebDriver webDriver;
     public LoginPage loginPage;
+    public AddNewSpare addNewSpare;
     public HomePage homePage;
-    public Utils utils;
+    public SparePage sparePage;
+    public Utils utils = new Utils() ;
     public Logger logger = Logger.getLogger(getClass());
     private String pathToScreenShot; // инициация создания переменной Пути к скриншоту
-
+    private boolean isTestPass = false;
+    // implicityWait(webDriver.manage().timeouts().implicitlyWait)  : Thread.sleep(3000)
+    //Явное ожидание - explicityWait
 
     public ParentTest() {
 
@@ -50,14 +56,16 @@ public class ParentTest {
         webDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS );
         loginPage = new LoginPage(webDriver);
         homePage = new HomePage(webDriver);
-        utils = new Utils();
+        sparePage = new SparePage(webDriver);
+        addNewSpare = new AddNewSpare(webDriver);
 
 
     }
     @After
     public void tearDown(){
-        utils.screenShot(pathToScreenShot,webDriver);
-         if(!(webDriver == null)){ webDriver.quit();} // снимает скриншот при завершении теста и закрытии вебдрайвера
+       if (!isTestPass) {utils.screenShot(pathToScreenShot,webDriver);}
+
+        if(!(webDriver == null)){ webDriver.quit();} // снимает скриншот при завершении теста и закрытии вебдрайвера
 
     }
 
@@ -73,6 +81,11 @@ public class ParentTest {
             utils.screenShot(pathToScreenShot,webDriver);
         }
         Assert.assertThat(message, actualResult,is(expectedResult));
+       setTestPass();
+    }
+
+    private void setTestPass() {
+        isTestPass = true;
     }
 
 

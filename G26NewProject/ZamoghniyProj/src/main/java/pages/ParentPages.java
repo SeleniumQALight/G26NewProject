@@ -3,13 +3,12 @@ package pages;
 import libs.ActionsWithOurElements;
 import org.apache.log4j.Logger;
 import org.junit.Assert;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
-/**
- * Created by Asus on 19.07.2017.
- */
+import static org.hamcrest.CoreMatchers.is;
+
+
 public class ParentPages {
     WebDriver webDriver;
     Logger logger;
@@ -35,6 +34,17 @@ public class ParentPages {
             Assert.fail("Page can not opened" + url);
         }
 
+    }
+    public void checkTitle(String expectedTitle){
+        try{
+            Assert.assertThat("Title not matched", webDriver.getTitle(),is (expectedTitle));
+        }catch (Exception e){
+            logger.error("Can not work with page");
+            Assert.fail("Can not work with page");
+        }
+    }
+    public void checkTitleH1WithText(String text){
+        actionsWithOurElements.checkTextinElement(".//H1",text);
     }
 
 
