@@ -11,6 +11,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import pages.HomePage;
 import pages.LoginPage;
+import pages.SparePage;
 
 import java.io.File;
 import java.util.concurrent.TimeUnit;
@@ -24,6 +25,13 @@ public class ParentTest {
     private Logger logger = Logger.getLogger(getClass());
     private Utils utils = new Utils();
     private String pathToScreenshot;
+
+
+    private boolean isTestPass = false;
+
+    //public LoginPage loginPage;-повторяется
+   // public HomePage homePage;
+    public SparePage sparePage;
 
     public ParentTest() {
 
@@ -41,18 +49,28 @@ public TestName testName = new TestName();
         webDriver.manage().timeouts().implicitlyWait( 10, TimeUnit.SECONDS );
         logInPage = new LoginPage( webDriver );
         homePage = new HomePage(webDriver);
+        sparePage = new SparePage(webDriver);
     }
 
     @After
     public void tearDown() {
-        if (!(webDriver==null))
+        if (!(webDriver==null)){
+
+        if (!isTestPass) {
             utils.screenShot(pathToScreenshot, webDriver);
+        }
         webDriver.quit();
+    }
     }
 
     public void checkAcceptanceCriteria(String message, boolean actualResult, boolean expectedResult){
-        if (!(actualResult==expectedResult))
-        Assert.assertThat( message, actualResult, is(expectedResult) );
-
+        //v versii 2507
+        //if (!(actualResult==expectedResult))
+        //Assert.assertThat( message, actualResult, is(expectedResult) );
+Assert.assertThat(message,actualResult,is(expectedResult));
+setTestPass();
+    }
+    private void setTestPass(){
+        isTestPass = true;
     }
 }

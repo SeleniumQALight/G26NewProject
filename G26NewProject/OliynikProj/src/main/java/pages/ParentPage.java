@@ -6,6 +6,8 @@ import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
+import static org.hamcrest.CoreMatchers.is;
+
 
 public class ParentPage {
     WebDriver webDriver;
@@ -32,4 +34,17 @@ public class ParentPage {
             Assert.fail("Page not opened " + url);
         }
     }
+    public  void checkTitle(String expectedTitle){
+        try {
+            Assert.assertThat("Title not matched", webDriver.getTitle(),is(expectedTitle));
+        }catch (Exception e){
+            logger.error( "Can not work with page "  );
+            Assert.fail("Can not work with page");
+        }
+
+    }
+public void checkTitleH1OnPage(String text){
+        actionsWithOurElements.checkTextInElement(".//h1",text);
+}
+
 }

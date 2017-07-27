@@ -30,6 +30,7 @@ public class LoginPage extends ParentPage {
         actionsWithOurElements.enterText(loginInput,login);
 
 
+
     }
     public void enterPasswordIntoElement(String password){
 actionsWithOurElements.enterText(inputPass, password);
@@ -43,5 +44,14 @@ actionsWithOurElements.enterText(inputPass, password);
 
     public boolean isElementWithTextPresent(String text) {
         return actionsWithOurElements.isElementPresent(".//*[contains(text(),'"+text+"')]");
+    }
+
+    public void loginUser(String login, String password){
+openLoginPage();
+enterLoginToInput(login);
+enterPasswordIntoElement(password);
+clickOnSubmitButton();
+checkTitle("Учет запчастей");
+
     }
 }
