@@ -6,6 +6,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import static org.hamcrest.CoreMatchers.is;
+
 /**
  * Created by Yuliya_Rodionova on 7/20/2017.
  */
@@ -47,6 +49,25 @@ public class ActionsWithOurElements {
 
         }catch (Exception e){
             return false;
+        }
+    }
+
+    public boolean isElementPresent(WebElement element) {
+        try{
+            return  element.isDisplayed();
+
+        }catch (Exception e){
+            return false;
+        }
+    }
+
+    public void checkTextInElement(String xpath, String text){
+        try{
+            String textFromElement = webDriver.findElement(By.xpath(xpath)).getText();
+            Assert.assertThat("Text in element is not matched",textFromElement,is(text));
+        } catch (Exception e){
+            logger.error("Can not work with text!");
+            Assert.fail("Can not work with text!");
         }
     }
 }
