@@ -9,6 +9,7 @@ import org.junit.Rule;
 import org.junit.rules.TestName;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import pages.AddNewSparePage;
 import pages.HomePage;
 import pages.LoginInPage;
 import pages.SparePage;
@@ -28,14 +29,16 @@ public class ParentTest {
     private boolean isTestPass; //2607, переменная отвечающая за инфо: еслитест прошел то нам скриншот не нужен,а если завалился то нужен
     public HomePage homePage;
     public SparePage sparePage; //2607
+    public AddNewSparePage addNewSparePage; //2707 добавили новую page AddNewSparePage
 
     public ParentTest() {
     }
+
     @Rule
     public TestName testName = new TestName(); // получает информацию о тесте который сейчас запущен, дает имя его.
 
     @Before
-    public void setUp(){
+    public void setUp() {
         File file = new File(""); // создали файл, внутри нашего проектв,  без пути
         pathToScreenShot = file.getAbsolutePath() + "\\target\\screenshots"
                 + this.getClass().getPackage().getName() + "\\"
@@ -49,24 +52,28 @@ public class ParentTest {
         loginInPage = new LoginInPage(webDriver); // создан объкт LoginInPage и передает параметры : webDriver = new ChromeDriver
         homePage = new HomePage(webDriver);
         sparePage = new SparePage(webDriver);// передаем вебдравер в класс SparePage (pageObject)
+        addNewSparePage = new AddNewSparePage(webDriver);
+
     }
+
     @After
 
-    public void tearDown(){ // закрытие вкладки и сам браузер+скриншот, даже если тест не прошел
-          if (!(webDriver==null)) { //2607 криншот будет в случае Fail
-              if(!isTestPass) {
-                  utils.screenShot(pathToScreenShot, webDriver);
-              }
-               webDriver.quit();
-    }
+    public void tearDown() { // закрытие вкладки и сам браузер+скриншот, даже если тест не прошел
+        if (!(webDriver == null)) { //2607 криншот будет в случае Fail
+            if (!isTestPass) {
+                utils.screenShot(pathToScreenShot, webDriver);
+            }
+            webDriver.quit();
+        }
 
     }
-    public void checkAC(String massage, boolean actualResult, boolean expectedResult){ // проверка результата в тестах
-        Assert.assertThat(massage,actualResult,is(expectedResult));
+
+    public void checkAC(String massage, boolean actualResult, boolean expectedResult) { // проверка результата в тестах
+        Assert.assertThat(massage, actualResult, is(expectedResult));
         setTestPass(); //2607
     }
 
-    private void setTestPass(){ //2607
+    private void setTestPass() { //2607
         isTestPass = true;
-  }
+    }
 }

@@ -6,7 +6,7 @@ import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
-import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.is; //суть гармонирует(перевод)
 
 public class ParenPage {  // сюда выносим все общее что есть на pages
     WebDriver webdriver; // объявили webdriver локальный
