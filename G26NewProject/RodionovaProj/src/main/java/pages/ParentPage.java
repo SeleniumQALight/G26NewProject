@@ -2,9 +2,12 @@ package pages;
 
 import libs.ActionsWithOurElements;
 import org.apache.log4j.Logger;
+import org.hamcrest.Matcher;
 import org.openqa.selenium.WebDriver;
 import org.junit.Assert;
 import org.openqa.selenium.support.PageFactory;
+
+import static org.hamcrest.CoreMatchers.is;
 
 public class ParentPage {
     WebDriver webDriver;
@@ -28,4 +31,17 @@ public class ParentPage {
         }
     }
 
- }
+    public void checkTitle(String expectedTitle){
+        try {
+        Assert.assertThat("Title is not matched",webDriver.getTitle(),is(expectedTitle));
+        } catch (Exception e){
+            logger.error("Can not work with page");
+            Assert.fail("Can not work with page");
+        }
+    }
+
+    public void chackTitleh1PresentOnPageWithText(String text){
+        actionsWithOurElements.checkTextInElement(".//h1", text);
+    }
+
+}
