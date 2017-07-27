@@ -11,6 +11,12 @@ public class HomePage extends ParentPage {
     @FindBy(xpath=".//a[@href='http://v3.qalight.com.ua/']")
     WebElement urlElement;
 
+    @FindBy(xpath=".//*[@id='dictionary']/a")
+    private WebElement menuDictionary;
+
+    @FindBy(id = "spares")
+    private WebElement sparesSubMenu;
+
     public HomePage(WebDriver webDriver){
         super(webDriver);
     }
@@ -20,9 +26,13 @@ public class HomePage extends ParentPage {
         return actionsWithOurElements.isElementPresent(rightAvatar);
     }
 
-//    public void isTitlePresent(WebElement element){
-//        actionsWithOurElements.getTitle(urlElement);
-//    }
+    public void clickOnMenuDictionary(){
+        actionsWithOurElements.clickOnElement(menuDictionary);
+    }
+
+    public void clickOnSubMenuSpares(){
+        actionsWithOurElements.clickOnElement(sparesSubMenu);
+    }
 
 }
 
