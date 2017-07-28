@@ -13,7 +13,7 @@ public class AddNewSpare extends ParentTest {
         homePage.clickOnMenuDictionary();
         homePage.clickOnSubMenuSpares();
         sparePage.ckeckTitle("Учет запчастей");
-        sparePage.checkTitleH1PresentOnPageWithText("Запчасти Cписoк");
+        sparePage.checkTitleH1PresentOnPageWithText("Запчасти Список");
         sparePage.clickOnButtonPlus();
         addNewSparePage.checkTitleH1PresentOnPageWithText("Словарь");
         addNewSparePage.enterSpareName("Spare1");
@@ -21,7 +21,7 @@ public class AddNewSpare extends ParentTest {
         addNewSparePage.clickButtonCreat();
         sparePage.checkTitleH1PresentOnPageWithText("Запчасти Список");
         checkAC("Can not find spare in list",
-                sparePage.isSpareInList("Sparel")
+                sparePage.isSpareInList("Spare1")
                 , true);
     }
 }

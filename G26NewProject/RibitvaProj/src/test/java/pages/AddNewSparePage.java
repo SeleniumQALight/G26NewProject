@@ -27,7 +27,7 @@ public class AddNewSparePage extends ParentPage {
     }
 
     public void clickButtonCreat(){
-        actionsWithOurElement.clickOnElement(buttonDelete);
+        actionsWithOurElement.clickOnElement(buttonCreate);
     }
 
     public void selectElementFromDDSpareType(String nameOfType){

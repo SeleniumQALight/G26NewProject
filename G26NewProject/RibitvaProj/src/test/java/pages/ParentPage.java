@@ -48,7 +48,7 @@ public class ParentPage {
     }
 
     public void checkTitleH1PresentOnPageWithText (String text){
-        actionsWithOurElement.checkTextInElement(".//H1", text);
+        actionsWithOurElement.checkTextInElement(".//H1",text);
     }
 }
 
