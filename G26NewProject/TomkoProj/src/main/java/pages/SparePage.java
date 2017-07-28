@@ -19,6 +19,6 @@ public class SparePage extends ParenPage { //2707
     }
 
     public boolean isSpareInList(String nameOfSpare) {
-        return actionsWithOurElements.isElementPresent(".//*[text()=]'" + nameOfSpare + "']");
+        return actionsWithOurElements.isElementPresent(".//*[text()='" + nameOfSpare + "']");
     }
 }

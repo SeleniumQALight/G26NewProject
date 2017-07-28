@@ -19,7 +19,7 @@ public class AddNewSpare extends ParentTest {
      addNewSparePage.clickButtonCreate();
 
 
-     sparePage.checkTitleH1PresentOnPage("Запчасти Список");
+     sparePage.checkTitleH1PresentOnPage("Запчасти Список"); // у всех это- checkTitleH1PresentOnPageWithText
      checkAC("Can not find spare in list",sparePage.isSpareInList("Spare1"),true);
     }
 

@@ -69,7 +69,7 @@ public class ParentTest {
     }
 
     public void checkAC(String massage, boolean actualResult, boolean expectedResult) { // проверка результата в тестах
-        Assert.assertThat(massage, actualResult, is(expectedResult));
+        Assert.assertThat(massage,actualResult,is(expectedResult));
         setTestPass(); //2607
     }
 
