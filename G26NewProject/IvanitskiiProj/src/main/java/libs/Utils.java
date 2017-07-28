@@ -12,17 +12,18 @@ import java.io.IOException;
 public class Utils {
     private Logger log;
 
-    public Utils(){
+    public Utils() {
         log = Logger.getLogger(getClass());
     }
 
     /**
      * Taking screenshot into .//target// + pathToScreenShot
+     *
      * @param pathToScreenShot
      * @param driver
      */
-    public void screenShot(String pathToScreenShot, WebDriver driver){
-        File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+    public void screenShot(String pathToScreenShot, WebDriver driver) {
+        File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
         try {
             FileUtils.copyFile(scrFile, new File(pathToScreenShot));
             log.info("ScreenShot: " + pathToScreenShot);
@@ -33,9 +34,10 @@ public class Utils {
 
     /**
      * Hard wait
+     *
      * @param second
      */
-    public static void waitABit(int second){
+    public static void waitABit(int second) {
         try {
             Thread.sleep(second);
         } catch (InterruptedException e) {

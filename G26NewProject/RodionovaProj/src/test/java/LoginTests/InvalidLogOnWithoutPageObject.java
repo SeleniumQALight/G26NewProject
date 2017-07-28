@@ -17,7 +17,7 @@ public class InvalidLogOnWithoutPageObject extends ParentTest{
     public void invalidLogOn(){
         loginPage.openLoginPage();
         loginPage.enterLoginToInput("Student");
-        loginPage.enterPasswordToInput("909090");
+        loginPage.enterPasswordToInput("90909");
         loginPage.clickOnSubmitButton();
 
        // webDriver.findElement(By.xpath(".//*[@name='_username']"))
