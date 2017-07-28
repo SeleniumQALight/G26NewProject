@@ -54,4 +54,12 @@ public class LoginPage extends ParentPage {
 
         return actionsWithOurElement.isElementPresent(".//*[contains(text(),'"+text+"')]");
     }
+
+    public void loginUser(String login, String password) {
+        openloginPage();
+        enterLoginToInput(login);
+        enterPassWordToInput(password);
+        clickOnSubmitButton();
+        ckeckTitle("Учет запчастей");
+    }
 }
