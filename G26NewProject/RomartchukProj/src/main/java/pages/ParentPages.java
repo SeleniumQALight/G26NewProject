@@ -5,17 +5,22 @@ import org.apache.log4j.Logger;
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import static org.hamcrest.core.Is.is;
 
 public class ParentPages {
     WebDriver webDriver;
     Logger logger;
-    ActionsWithOurElements actionsWithOurElements;
+ //   WebDriverWait webDriverWait15;
+    public ActionsWithOurElements actionsWithOurElements;
 
     public ParentPages(WebDriver webDriver){
         this.webDriver = webDriver;
         logger = Logger.getLogger(getClass());
         actionsWithOurElements = new ActionsWithOurElements(webDriver);
         PageFactory.initElements(webDriver,this);
+      //  webDriverWait15 = new WebDriverWait(webDriver,15);
     }
 
     /**
@@ -32,5 +37,18 @@ public class ParentPages {
             Assert.fail("Page can  not open " + url);
         }
 
+    }
+    public void checkTitle(String expectedTitle){
+        try {
+            Assert.assertThat("Title not matched",
+                    webDriver.getTitle(),
+                    is(expectedTitle));
+        }catch (Exception e){
+            logger.error("Can not work with page");
+            Assert.fail("Can not work with page");
+        }
+    }
+    public void checkTitleH1PresentOnPageWithText(String text) {
+        actionsWithOurElements.checkTextInElement(".//h1", text);
     }
 }
