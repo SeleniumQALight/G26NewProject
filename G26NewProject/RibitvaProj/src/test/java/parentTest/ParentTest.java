@@ -10,8 +10,10 @@ import org.junit.Rule;
 import org.junit.rules.TestName;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import pages.AddNewSparePage;
 import pages.HomePage;
 import pages.LoginPage;
+import pages.SparePage;
 
 import java.io.File;
 import java.util.concurrent.TimeUnit;
@@ -25,8 +27,13 @@ public class ParentTest {
     private Utils utils = new Utils();
     private String pathToScreenShot;
 
+    private boolean isTestPass = false;
+
     public LoginPage loginPage;
     public HomePage homePage;
+    public SparePage sparePage;
+    public AddNewSparePage addNewSparePage;
+
     public ParentTest() {
 
     }
@@ -39,7 +46,7 @@ public class ParentTest {
     @Before
     public void setUp() {
         File file = new File("");
-        pathToScreenShot = file.getAbsolutePath() + "\\taget\\screenshots"
+        pathToScreenShot = file.getAbsolutePath() + "\\target\\screenshots"
                 + this.getClass().getPackage().getName() + "\\"
                 + this.getClass().getSimpleName() + "\\"
                 + this.testName.getMethodName() + ".jpg";
@@ -51,16 +58,25 @@ public class ParentTest {
         webDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         loginPage = new LoginPage(webDriver);
         homePage = new HomePage(webDriver);
+        sparePage = new SparePage(webDriver);
+        addNewSparePage = new AddNewSparePage(webDriver);
     }
     @After
     public void tearDown() {
         if (!(webDriver==null)){
-            utils.screenShot(pathToScreenShot, webDriver);
+            if (!isTestPass) {
+                utils.screenShot(pathToScreenShot, webDriver);
+            }
         webDriver.quit();
         }
     }
 
     public void checkAC(String message, boolean actualResult, boolean expectedResult) {
         Assert.assertThat(message, actualResult, is (expectedResult));
+        setTestPass();
+    }
+
+    private void setTestPass() {
+        isTestPass = true;
     }
 }
