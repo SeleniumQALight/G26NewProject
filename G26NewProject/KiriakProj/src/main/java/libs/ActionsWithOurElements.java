@@ -1,10 +1,14 @@
 package libs;
 
-import org.apache.log4j.Logger;
-import org.junit.Assert;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+        import org.apache.log4j.Logger;
+        import org.junit.Assert;
+        import org.openqa.selenium.By;
+        import org.openqa.selenium.WebDriver;
+        import org.openqa.selenium.WebElement;
+
+        import java.awt.*;
+
+        import static org.hamcrest.CoreMatchers.is;
 
 
 public class ActionsWithOurElements {
@@ -53,6 +57,32 @@ public class ActionsWithOurElements {
             return webDriver.findElement(By.xpath(locatorWithText)).isDisplayed();
         } catch (Exception e) {
             return false;
+        }
+    }
+
+    public boolean isElementPresent(WebElement element) {
+        try {
+            return element.isDisplayed();
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    public boolean getTitle(WebElement url) {
+        try {
+            return getTitle(url);
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    public void checkTextInElement(String xpath, String text) {
+        try{
+            String textFromElement = webDriver.findElement(By.xpath(xpath)).getText();
+            Assert.assertThat("Text in element not matched",textFromElement, is(text));
+        } catch (Exception e){
+            logger.error("Can not work with text");
+            Assert.fail("Can not work with text");
         }
     }
 }
