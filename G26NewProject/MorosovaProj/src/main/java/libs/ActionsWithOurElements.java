@@ -21,6 +21,7 @@ public class ActionsWithOurElements
     {
         this.webDriver = webDriver;
         logger = Logger.getLogger(getClass());
+        webDriverWait20 = new WebDriverWait(webDriver, 20);
     }
 
     /**
@@ -35,7 +36,7 @@ public class ActionsWithOurElements
             element.clear();
             element.sendKeys(text);
             logger.info(text + " was inputed");
-            webDriverWait20 = new WebDriverWait(webDriver, 20);
+            
         }
         catch (Exception e)
         {
@@ -103,7 +104,7 @@ public class ActionsWithOurElements
         try
         {
             Select optionsFromDD = new Select(dropDown);
-            optionsFromDD.deselectByVisibleText (text);
+            optionsFromDD.selectByVisibleText(text);
             logger.info(text + "was selected by DropDown");
         }
         catch (Exception e)
