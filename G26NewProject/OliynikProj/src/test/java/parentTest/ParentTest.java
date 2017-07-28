@@ -9,6 +9,7 @@ import org.junit.Rule;
 import org.junit.rules.TestName;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import pages.AddNewSparePage;
 import pages.HomePage;
 import pages.LoginPage;
 import pages.SparePage;
@@ -19,22 +20,19 @@ import java.util.concurrent.TimeUnit;
 import static org.hamcrest.CoreMatchers.is;
 
 public class ParentTest {
+    //добавляем пейджы
     public WebDriver webDriver;
     public LoginPage logInPage;
     public HomePage homePage;
+    public SparePage sparePage;
+    public AddNewSparePage addNewSparePage;
     private Logger logger = Logger.getLogger(getClass());
     private Utils utils = new Utils();
     private String pathToScreenshot;
 
-
     private boolean isTestPass = false;
 
-    //public LoginPage loginPage;-повторяется
-   // public HomePage homePage;
-    public SparePage sparePage;
-
     public ParentTest() {
-
     }
 @Rule
 public TestName testName = new TestName();
@@ -50,6 +48,7 @@ public TestName testName = new TestName();
         logInPage = new LoginPage( webDriver );
         homePage = new HomePage(webDriver);
         sparePage = new SparePage(webDriver);
+        addNewSparePage = new AddNewSparePage(webDriver);
     }
 
     @After
