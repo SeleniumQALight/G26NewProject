@@ -7,7 +7,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy; // FindBy имопорт
 
 public class LoginInPage extends ParenPage {
-    @FindBy(name = "username") // в () указываем по какому признакам будем искать (name, xpath, id и т.д); после того как найдет его надо куда-то записать, это будет WebDriver loginInput; при импорте выбрать библиотеку (org.openqa.selenium.support)
+    @FindBy(name = "_username") // в () указываем по какому признакам будем искать (name, xpath, id и т.д); после того как найдет его надо куда-то записать, это будет WebDriver loginInput; при импорте выбрать библиотеку (org.openqa.selenium.support)
     private WebElement loginInput; //эти две строки (WebElement+@FindBy) всегда создаються парой, все что @FindBy найдет loginInput записывает в эту переменную loginInput как объкты;
 
     @FindBy(id = "password")

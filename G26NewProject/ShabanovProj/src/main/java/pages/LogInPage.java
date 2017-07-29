@@ -57,6 +57,15 @@ public class LogInPage extends ParentPage {
 
     public boolean isElementWithTextPresent(String text) {
 
-        return actionsWithOurElements.isElementPresent(".//*[contains(text),'+text+']"); // разделили наш локатор. Икспас универсальный.
+        return actionsWithOurElements.isElementPresent(".//*[contains(text(),'"+text+"')]"); // разделили наш локатор. Икспас универсальный.
+    }
+
+    public void loginUser(String login, String password) { //создаем метод у которого будут параметры логина и пароля
+        openLoginPage();
+        enterLoginToInput(login);
+        enterPasswordToInput(password);
+        clickOnSubmitButton();
+        checkTitle("Учет запчастей");
+        //научили ЛогинЮзер выполнять все действия для того чтоб залогинится
     }
 }
