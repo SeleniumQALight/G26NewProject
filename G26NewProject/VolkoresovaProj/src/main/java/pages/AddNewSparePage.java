@@ -41,4 +41,8 @@ public class AddNewSparePage extends ParentPage {
 
         actionsWithOurElements.selectTextInDDByText(spareTypeDropDown, nameOfType);
     }
+
+    public void selectElementFromDDTypeOfSpareByValue(String  valuaFromDD){
+        actionsWithOurElements.selectTextInDDByValue(spareTypeDropDown, valuaFromDD);
+    }
 }

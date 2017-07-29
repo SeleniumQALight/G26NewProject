@@ -16,7 +16,7 @@ public class SparePage extends ParentPage {
         super(webDriver);
     }
 
-    public void clickOnButtonPlus(){
+    public void clickOnButtonPlus() {
         actionsWithOurElements.clickOnElement(buttonPlus);
     }
 
@@ -24,4 +24,8 @@ public class SparePage extends ParentPage {
     public boolean isSpareInList(String nameOfSpare) {
         return actionsWithOurElements.isElementPresent(".//*[text()='" + nameOfSpare + "']");
     }
+
+
+
+
 }
