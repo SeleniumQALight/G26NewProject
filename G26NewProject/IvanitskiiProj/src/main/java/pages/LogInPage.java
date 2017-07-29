@@ -30,13 +30,13 @@ public class LogInPage extends ParentPage {
      * @param login
      */
     public void enterLoginToInput(String login) {
-//        try{
-//            loginInput.sendKeys(login);
-//            logger.info(login + " was inputed into Input Login");
-//        }catch (Exception e){
-//            logger.error("Can not work with input");
-//            Assert.fail("Can not work with input");
-//        }
+        try{
+            loginInput.sendKeys(login);
+            logger.info(login + " was inputed into Input Login");
+        }catch (Exception e){
+            logger.error("Can not work with input");
+            Assert.fail("Can not work with input");
+        }
         actionsWithOurElements.enterText(loginInput, login);
     }
     public void enterpassWordToInput(String passWord){
@@ -49,5 +49,13 @@ public class LogInPage extends ParentPage {
 
     public Boolean isElementWithTextPresent(String text) {
         return actionsWithOurElements.isElementPresent(".//*[contains(text(),'"+text+"')]");
+    }
+
+    public void loginUser(String login, String password) {
+        openLoginPage();
+        enterLoginToInput(login);
+        enterpassWordToInput(password);
+        clickOnSubmitButtton();
+        chckTitle("Учет запчастей");
     }
 }
