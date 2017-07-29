@@ -87,4 +87,15 @@ public class ActionsWithOurElements {
             Assert.fail("Cannot work with DropDown ");
         }
     }
+
+    public void selectOptionInDDByValue(WebElement dropDown, String value) {
+        try{
+            Select optionsFromDD = new Select(dropDown);
+            optionsFromDD.selectByValue(value);
+            logger.info("value " + value + " was selected in DD");
+        }catch (Exception e) {
+            logger.error("Cannot work with DropDown " );
+            Assert.fail("Cannot work with DropDown ");
+        }
+    }
 }
