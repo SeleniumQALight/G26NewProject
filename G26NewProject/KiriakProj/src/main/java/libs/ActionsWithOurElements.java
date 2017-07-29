@@ -113,5 +113,42 @@ public class ActionsWithOurElements {
             Assert.fail("Can not work with value in DropDown");
         }
     }
+
+    public boolean getCheckboxState (WebElement checkbox) {
+        if(checkbox.isSelected()){
+            logger.info("Element is selected");
+            return true;
+        }
+        else {
+            logger.info("Element isn't selected");
+            return false;
+        }
+
+    }
+
+    public void setCheckboxState(WebElement checkbox, String expectedState){
+        // чекнутый
+        boolean actualState = getCheckboxState(checkbox);
+
+        // чекнутый чекнуть
+        if (actualState == true && expectedState == "checked"){
+            logger.info("Checkbox is checked");
+        }
+        // нечекнутый чекнуть
+        else if (actualState == true && expectedState == "unchecked"){
+            checkbox.click();
+            logger.info("Checkbox is checked");
+        }
+        // нечекнутый
+        else if (actualState == false && expectedState == "checked"){
+            checkbox.click();
+            logger.info("Checkbox is checked");
+        }
+        else if (actualState == false && expectedState == "unchecked"){
+            logger.info("Checkbox is unchecked");
+        }
+    }
+
+
 }
 

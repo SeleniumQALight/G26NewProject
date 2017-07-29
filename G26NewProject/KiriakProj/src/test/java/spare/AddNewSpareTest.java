@@ -3,7 +3,7 @@ package spare;
 import org.junit.Test;
 import parrentTest.ParrentTest;
 
-public class AddNewSpare extends ParrentTest {
+public class AddNewSpareTest extends ParrentTest {
     @Test
     public void addNewSpare(){
         loginPage.loginUser("Student","909090");
