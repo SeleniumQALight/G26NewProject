@@ -98,4 +98,32 @@ public class ActionsWithOurElements {
             Assert.fail("Cannot work with DropDown ");
         }
     }
+
+    public void checkCheckbox(WebElement checkbox){
+        try {
+            if(checkbox.isSelected()){
+                logger.info("checkbox is already checked");
+            }
+            else{
+                checkbox.click();
+                logger.info("checkbox was checked");
+            }
+        } catch (Exception e) {
+            logger.error("Cannot work with element " + checkbox);
+            Assert.fail("Cannot work with element " + checkbox);
+        }
+    }
+    public boolean checkTextInElementBoolean(String xPath, String text) {
+        try{
+            webDriverWait15.until(ExpectedConditions.textToBePresentInElement(By.xpath(xPath),text));
+            String textFromElement = webDriver.findElement(By.xpath(xPath)).getText();
+            //Assert.assertThat("Text in element does not match", textFromElement, is(text));
+            return text.equals(textFromElement);
+        }
+        catch (Exception e) {
+            logger.error("Cannot work with element " );
+            //Assert.fail("Cannot work with element ");
+            return  false;
+        }
+    }
 }
