@@ -10,8 +10,10 @@ package parentTest;
         import org.junit.rules.TestName;
         import org.openqa.selenium.WebDriver;
         import org.openqa.selenium.chrome.ChromeDriver;
+        import pages.AddNewSparePage;
         import pages.HomePage;
         import pages.LogInPage;
+        import pages.SparePage;
 
         import java.io.File;
         import java.util.concurrent.TimeUnit;
@@ -22,9 +24,14 @@ public class ParentTest {
     public WebDriver webDriver;
     public LogInPage logInPage;
     public HomePage homePage;
+    public SparePage sparePage;
+    public AddNewSparePage addNewSparePage;
     private Logger logger = Logger.getLogger(getClass());
     private Utils utils = new Utils(); // Добавляем метод для скриншота
     private String pathToScreenShot; // создаем переменную для пути к скриншоту
+
+    private boolean isTestPass = false; // создаем переменную, что бы потом прописать если тест не прошол - делаем скриншот, если прошёл - тогда не делаем
+
 
     public ParentTest() {
 
@@ -47,11 +54,15 @@ public class ParentTest {
         webDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         logInPage = new LogInPage(webDriver);
         homePage = new HomePage(webDriver);
+        sparePage = new SparePage(webDriver);
+        addNewSparePage = new AddNewSparePage(webDriver);
     }
     @After
     public void tearDown() {
         if (! (webDriver == null)) {
-            utils.screenShot(pathToScreenShot, webDriver); // скриншот будет сниматься в любом случае, даже при "зелёных" тестах (иногда нужно на проекте
+            if (!isTestPass) { // этим условием задаем - сделать скриншот если тест не прошёл.
+                utils.screenShot(pathToScreenShot, webDriver); // если не писать if, скриншот будет сниматься в любом случае, даже при "зелёных" тестах (иногда нужно на проекте
+            }
             webDriver.quit();
         }
 
@@ -60,5 +71,10 @@ public class ParentTest {
     public void checkAC(String message, boolean actualResult
             , boolean expectedResult){
         Assert.assertThat(message,actualResult,is(expectedResult));
+        setTestPass();
+    }
+
+    private void setTestPass () {
+        isTestPass = true; // данным методом проверяем прошёл ли тест
     }
 }

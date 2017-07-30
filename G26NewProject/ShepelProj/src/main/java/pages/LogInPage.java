@@ -52,4 +52,12 @@ public class LogInPage extends ParentPage{
 
         return actionsWithOurElements.isElementPresent(".//*[contains(text(),'"+text+"')]");
     }
+
+    public void logInUser(String login, String password) {
+        openLoginPage();
+        enterLoginToInput(login);
+        enterPassWordToInput(password);
+        clickOnSubmitButton();
+        checkTitle("Учет запчастей");
+    }
 }
