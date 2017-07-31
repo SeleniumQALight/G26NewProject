@@ -17,7 +17,7 @@ public class HomePage extends ParentPage {
     @FindBy(xpath = ".//*[@id='dictionary']/a")
     WebElement menuDictionary;
 
-    @FindBy(id = "spares")
+    @FindBy(xpath = ".//li[@id='spares']")
     WebElement sparesSubMenu;
 
     public boolean isAvatarPresent() {
