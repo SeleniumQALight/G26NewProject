@@ -35,7 +35,7 @@ public class ParentPage {
         }
     }
 
-    public void ckeckTitle(String expectedTitle){
+    public void checkTitle(String expectedTitle){
         try {
             Assert.assertThat("Title not matched",
                     webDriver.getTitle(),

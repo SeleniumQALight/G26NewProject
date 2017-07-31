@@ -18,7 +18,7 @@ public class InvalidLogOnWithoutPageObject extends ParentTest {
         logInPage.openLoginPage();
         logInPage.enterLoginToInput( "student" );
         logInPage.enterPasswordToInput( "WrongPassword" );
-        logInPage.clickButton();
+        logInPage.clickOnSubmitButton();
         checkAcceptanceCriteria( "Text 'Учет запчастей' not found",
                 logInPage.isElementWithTextPresent("Учет запчастей"),  true );
 

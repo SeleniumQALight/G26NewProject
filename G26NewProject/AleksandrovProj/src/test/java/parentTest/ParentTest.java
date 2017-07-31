@@ -9,8 +9,11 @@ import org.junit.Rule;
 import org.junit.rules.TestName;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import pages.AddNewSparePage;
 import pages.HomePage;
 import pages.LoginPage;
+import pages.SparePage;
+import spare.AddNewSpare;
 
 import javax.rmi.CORBA.Util;
 import java.io.File;
@@ -28,6 +31,8 @@ public class ParentTest {
     public WebDriver webDriver;
     public LoginPage logInPage;
     public HomePage homePage;
+    public SparePage sparePage;
+    public AddNewSparePage addNewSparePage;
 
     public ParentTest() {
     }
@@ -49,6 +54,7 @@ public class ParentTest {
         webDriver.manage().timeouts().implicitlyWait( 10, TimeUnit.SECONDS );
         logInPage = new LoginPage( webDriver );
         homePage = new HomePage( webDriver );
+        addNewSparePage = new AddNewSparePage( webDriver );
     }
 
     @After

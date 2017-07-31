@@ -11,7 +11,7 @@ public class ValidLoginTest extends ParentTest {
         logInPage.openLoginPage();
         logInPage.enterLoginToInput( "student" );
         logInPage.enterPasswordToInput( "909090" );
-        logInPage.clickButton();
+        logInPage.clickOnSubmitButton();
 
         checkAcceptanceCriteria( "Avatar is not present on page.", homePage.isAvatarPresent(), true );
     }
