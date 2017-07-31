@@ -9,6 +9,7 @@ import org.junit.Rule;
 import org.junit.rules.TestName;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import pages.AddNewSpare;
 import pages.HomePage;
 import pages.LoginPage;
 import pages.SparePage;
@@ -30,6 +31,7 @@ public class ParentTest {
     public LoginPage loginPage;
     public HomePage homePage;
     public SparePage sparePage;
+    public AddNewSpare addNewSpare;
 
     public ParentTest() {
     }
@@ -53,6 +55,7 @@ public class ParentTest {
         loginPage = new LoginPage(webDriver);
         homePage = new HomePage(webDriver);
         sparePage = new SparePage(webDriver);
+        addNewSpare = new AddNewSpare(webDriver);
     }
 
     @After
