@@ -7,7 +7,7 @@ import org.openqa.selenium.support.FindBy;
 /**
  * Created by QA Teahcer on 27.07.2017.
  */
-public class AddNewSparePage extends  ParentPage {
+public class AddNewSparePage extends ParentPage {
     @FindBy(id = "spares_spareName")
     private WebElement spareNameInput;
 
@@ -21,21 +21,23 @@ public class AddNewSparePage extends  ParentPage {
     private WebElement buttonDelete;
 
     public AddNewSparePage(WebDriver webDriver) {
-        super(webDriver);
+        super( webDriver );
     }
 
-    public void enterSpareName(String spareName){
-        actionsWithOurElements.enterText(spareNameInput,spareName);
+    public void enterSpareName(String spareName) {
+        actionsWithOurElements.enterText( spareNameInput, spareName );
     }
 
-    public void clickButtonCreat(){
-        actionsWithOurElements.clickOnElement(buttonCreate);
+    public void clickButtonCreat() {
+        actionsWithOurElements.clickOnElement( buttonCreate );
     }
-    public void clickOnButtonDelete(){
-        actionsWithOurElements.clickOnElement(buttonDelete);
+
+    public void clickOnButtonDelete() {
+        actionsWithOurElements.clickOnElement( buttonDelete );
     }
-    public void selectElementFromDDSpareType(String nameOfType){
-        actionsWithOurElements.selectTextInDDByText(spareTypeDropDown,nameOfType);
+
+    public void selectElementFromDDSpareType(String nameOfType) {
+        actionsWithOurElements.selectTextInDDByText( spareTypeDropDown, nameOfType );
     }
 
 }
