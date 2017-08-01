@@ -53,7 +53,7 @@ public class LoginInPage extends ParenPage {
 
     public boolean isElementWithTextPresent(String text) {//нажать ентер на все слова в красной рамке
 
-        return actionsWithOurElements.isElementPresent(".//*[contains(text()," + text + ")]"); //
+        return actionsWithOurElements.isElementPresent(".//*[contains(text(),'" + text + "')]"); //
     }
 
     public void loginUser(String login, String password) {//2607 , создали метод loginUser

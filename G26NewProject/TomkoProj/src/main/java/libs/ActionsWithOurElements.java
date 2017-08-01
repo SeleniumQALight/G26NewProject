@@ -82,15 +82,38 @@ public class ActionsWithOurElements {
         }
     }
 
-    public void selectTextInDDByText(WebElement dropDown, String text) { //DD-DropDown
+    public void selectTextInDDByText(WebElement dropDown, String text) { //DD-DropDown, при созданиименяем предложенный nameOfType на text,т.к.
+                     // будем сами выбирать текст;передаем в параметры (в каком элементе, что выбрать)
         try {
-            Select optionsFromDD = new Select(dropDown);
-            optionsFromDD.selectByVisibleText(text);
-            logger.info(text + " was selected in DropDown");
+            Select optionsFromDD = new Select(dropDown); //Select (это dropDown)  - это библиотека селениум;
+                         // optionsFromDD -наш объект; этой строкой получили все что находится в дроп-дауне, все его опции.
+            optionsFromDD.selectByVisibleText(text); // тут работаем с созданным объектом optionsFromDD, можем сосзавать
+                        // команды или просить что-то выполнить, (text) тут передаем текст text
+                        // selectByVisibleText как работает метод: берет ожидаемый текст и сравнивает по-очередно с каждым тестом из дропдауна, сравнивает посимвольно
+                        // если нет привяки к тексту то лучше работать ч/з value(это м-д selectByValue), он сокращает время подборки нужного текста
+            logger.info(text + " was selected in DropDown"); // чтобы пониматьбыл ли выбран текст
         } catch (Exception e) {
             logger.error("Can not work with element ");
             Assert.fail("Can not work with element ");
         }
     }
 
+    public void selectTextInDDByValue(WebElement dropDown, String text) { // по Value
+        try {
+            Select optionsFromDD = new Select(dropDown);
+            optionsFromDD.deselectByValue(text);
+            logger.info(text + " was selected in DropDown"); // чтобы пониматьбыл ли выбран текст
+        } catch (Exception e) {
+            logger.error("Can not work with element ");
+            Assert.fail("Can not work with element ");
+        }
+    }
+
+
+    public void checkCheckBox() {
+
+
+    }
+
 }
+
