@@ -19,9 +19,7 @@ public class InvalidLogOnWithoutPageObject extends ParentTest {
         logInPage.enterPasswordToInput( "WrongPassword" );
         logInPage.clickOnSubmitButton();
         checkAC( "Text 'Учет запчастей' not found",
-                logInPage.isElementWithTextPresent("Учет запчастей"),  true );
-
+                logInPage.isElementWithTextPresent( "Учет запчастей" ), true );
     }
-
 }
 

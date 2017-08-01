@@ -23,5 +23,6 @@ public class InvalidLogOnWithExcel extends ParentTest {
         logInPage.enterLoginToInput( dataSet.get( "login" ) );
         logInPage.enterPasswordToInput( dataSet.get( "pass" ) );
         logInPage.clickOnSubmitButton();
+
     }
 }

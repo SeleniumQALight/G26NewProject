@@ -39,6 +39,4 @@ public class InvalidLogOnWithDataFromExcel extends ParentTest {
         checkAC( "Text 'Учет запчастей' not found",
                 logInPage.isElementWithTextPresent( "Учет запчастей" ), true );
     }
-
-
 }
