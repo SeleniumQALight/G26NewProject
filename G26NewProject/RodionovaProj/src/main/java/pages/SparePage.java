@@ -8,7 +8,7 @@ import org.openqa.selenium.support.FindBy;
  * Created by Yuliya_Rodionova on 7/27/2017.
  */
 public class SparePage extends ParentPage {
-    @FindBy(xpath = ".//*[@href='http://v3.test.itpmgroup.com/dictionary/spares/edit']")
+    @FindBy(xpath = ".//*[@href='http://v3.qalight.com.ua/dictionary/spares/edit']")
     private WebElement buttonPlus;
 
     public SparePage(WebDriver webDriver) {
@@ -19,7 +19,8 @@ public class SparePage extends ParentPage {
         actionsWithOurElements.clickOnElement(buttonPlus);
     }
 
-    public boolean IsSpareInList(String spare1) {
-        return true;
+    public boolean IsSpareInList(String nameOfSpare) {
+        return actionsWithOurElements
+                .isElementPresent(".//*[text()='" + nameOfSpare + "']");
     }
 }
