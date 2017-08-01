@@ -29,7 +29,6 @@ public class ConfigData {
         return(p.getProperty(key));
     }
 
-
     /*
      *  Return value from UI mapping file.
      *  Note, please, that returned value is String.

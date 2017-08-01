@@ -21,7 +21,6 @@ public class ActionsWithOurElements {
         logger = Logger.getLogger( getClass() );
         webDriverWait15 = new WebDriverWait( webDriver, 15 );
     }
-
     /**
      * Method clears and inputs text to webElement
      *
@@ -40,13 +39,13 @@ public class ActionsWithOurElements {
     }
 
     public void clickOnElement(WebElement element) {
-        try{
-            webDriverWait15.until(ExpectedConditions.elementToBeClickable(element));
+        try {
+            webDriverWait15.until( ExpectedConditions.elementToBeClickable( element ) );
             element.click();
-            logger.info(element + " element was clicked");
-        }catch (Exception e){
-            logger.error("Can not work with element " + element);
-            Assert.fail("Can not work with element " + element);
+            logger.info( element + " element was clicked" );
+        } catch (Exception e) {
+            logger.error( "Can not work with element " + element );
+            Assert.fail( "Can not work with element " + element );
         }
     }
 
