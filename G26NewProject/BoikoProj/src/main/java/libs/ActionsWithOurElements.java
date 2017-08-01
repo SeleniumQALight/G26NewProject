@@ -91,4 +91,44 @@ public class ActionsWithOurElements {
             Assert.fail("Can not work with Drop Down");
         }
     }
+
+    public void selectTextInDDByValue(WebElement dropDown, String value) {
+        try {
+            Select optionsFromDD = new Select(dropDown);
+            optionsFromDD.selectByValue(value);
+            logger.info(value + " was selected in Drop Down");
+        } catch (Exception e) {
+            logger.error("Can not work with Drop Down");
+            Assert.fail("Can not work with Drop Down");
+        }
+    }
+
+    public void clickCheckBox(WebElement checkBox) {
+        try {
+            Boolean statusCheckBox = checkBox.isSelected();
+            if (statusCheckBox) {
+                logger.info("check box is initially checked");
+            } else {
+                webDriverWait15.until(ExpectedConditions.elementToBeClickable(checkBox));
+                checkBox.click();
+                logger.info("check box was clicked");
+            }
+        } catch (Exception e) {
+            logger.error("Can not work with element " + checkBox);
+            Assert.fail("Can not work with element " + checkBox);
+        }
+    }
+
+    public boolean isFieldEmpty(WebElement element) {
+        try {
+             logger.info(element + " is empty");
+             return element.getAttribute("value").equals("");
+
+        } catch (Exception e) {
+            logger.error("Can not work with field");
+            Assert.fail("Can not work with field");
+            return false;
+        }
+
+    }
 }

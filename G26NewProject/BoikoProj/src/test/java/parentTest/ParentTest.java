@@ -9,10 +9,7 @@ import org.junit.Rule;
 import org.junit.rules.TestName;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import pages.AddNewSparePage;
-import pages.HomePage;
-import pages.LoginPage;
-import pages.SparePage;
+import pages.*;
 import spare.AddNewSpare;
 
 import java.io.File;
@@ -35,7 +32,9 @@ public class ParentTest {
     public HomePage homePage;
     public SparePage sparePage;
     public AddNewSparePage addNewSparePage;
-
+   // public ProvidersPage providersPage;
+    public EditProviderPage editProviderPage;
+    public ProfilePage profilePage;
 
     public ParentTest() {
 
@@ -60,6 +59,9 @@ public class ParentTest {
         homePage = new HomePage(webDriver);
         sparePage = new SparePage(webDriver);
         addNewSparePage = new AddNewSparePage(webDriver);
+        //providersPage = new ProvidersPage(webDriver);
+        editProviderPage = new EditProviderPage(webDriver);
+        profilePage = new ProfilePage(webDriver);
 
     }
 
