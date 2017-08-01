@@ -8,11 +8,8 @@ import org.junit.Before;
 import org.junit.Rule;
 import org.junit.rules.TestName;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import pages.HomePage;
-import pages.LoginPage;
-import pages.SparePage;
+import pages.*;
 
 import java.io.File;
 import java.util.concurrent.TimeUnit;
@@ -32,6 +29,13 @@ public class ParrentTest {
     public LoginPage loginPage;
     public HomePage homePage;
     public SparePage sparePage;
+    public AddNewSparePage addNewSparePage;
+    public AddNewDealPage addNewDealPage;
+    public DealPage dealPage;
+    public ApparatPage apparatPage;
+    public AddNewApparatPage addNewApparatPage;
+    public ProvidersPage providersPage;
+    public AddNewProviderPage addNewProviderPage;
 
     public ParrentTest() {
 
@@ -57,6 +61,13 @@ public class ParrentTest {
         loginPage = new LoginPage(webDriver);
         homePage = new HomePage(webDriver);
         sparePage = new SparePage(webDriver);
+        addNewSparePage = new AddNewSparePage(webDriver);
+        dealPage = new DealPage(webDriver);
+        addNewDealPage = new AddNewDealPage(webDriver);
+        apparatPage = new ApparatPage(webDriver);
+        addNewApparatPage = new AddNewApparatPage(webDriver);
+        providersPage = new ProvidersPage(webDriver);
+        addNewProviderPage = new AddNewProviderPage(webDriver);
     }
 
     @After

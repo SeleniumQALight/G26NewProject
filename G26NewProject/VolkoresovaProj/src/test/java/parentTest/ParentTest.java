@@ -9,8 +9,7 @@ import org.junit.Rule;
 import org.junit.rules.TestName;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import pages.HomePage;
-import pages.LogInPage;
+import pages.*;
 
 import java.io.File;
 import java.util.concurrent.TimeUnit;
@@ -26,11 +25,16 @@ public class ParentTest {
     private Utils utils = new Utils();
     private String pathToScreenShot;
 
+    private boolean isTestPass = false;
+
     public LogInPage logInPage;
     public HomePage homePage;
+    public SparePage sparePage;
+    public AddNewSparePage addNewSparePage;
+    public ProvidersPage providersPage;
+    public AddNewProvidersPage addNewProvidersPage;
 
     public ParentTest() {
-
     }
 
     @Rule
@@ -52,23 +56,36 @@ public class ParentTest {
         webDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         logInPage=new LogInPage(webDriver);
         homePage=new HomePage(webDriver);
+        sparePage=new SparePage(webDriver);
+        addNewSparePage=new AddNewSparePage(webDriver);
+        providersPage = new ProvidersPage(webDriver);
+        addNewProvidersPage = new AddNewProvidersPage(webDriver);
 
     }
 
     @After
     public void tearDown() {
         if (!(webDriver==null)){
-            utils.screenShot(pathToScreenShot, webDriver);
+            if (!isTestPass) {
+                utils.screenShot(pathToScreenShot, webDriver);
+            }
             webDriver.quit();
         }
     }
 
+
+
     public void checkAC(String message, boolean actualResult, boolean expectedResult){
         Assert.assertThat(message, actualResult, is (expectedResult));
-
-
-
+        setTestPass();
     }
+
+    private void setTestPass() {
+        isTestPass=true;
+    }
+
+
+
 
 
 }
