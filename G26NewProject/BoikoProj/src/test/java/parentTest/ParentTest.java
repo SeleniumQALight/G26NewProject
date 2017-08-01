@@ -9,8 +9,11 @@ import org.junit.Rule;
 import org.junit.rules.TestName;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import pages.AddNewSparePage;
 import pages.HomePage;
 import pages.LoginPage;
+import pages.SparePage;
+import spare.AddNewSpare;
 
 import java.io.File;
 import java.util.concurrent.TimeUnit;
@@ -25,10 +28,13 @@ public class ParentTest {
     private Logger logger = Logger.getLogger(getClass());
     private Utils utils = new Utils();
     private String pathToScreenshot;
+    private boolean isTestPass = false; // Results of the test is saved to this variable
 
     //initialize all pages
     public LoginPage loginPage;
     public HomePage homePage;
+    public SparePage sparePage;
+    public AddNewSparePage addNewSparePage;
 
 
     public ParentTest() {
@@ -48,14 +54,21 @@ public class ParentTest {
         webDriver = new ChromeDriver();
         webDriver.manage().window().maximize();
         webDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+
+        // create objects of the pages
         loginPage = new LoginPage(webDriver);
         homePage = new HomePage(webDriver);
+        sparePage = new SparePage(webDriver);
+        addNewSparePage = new AddNewSparePage(webDriver);
+
     }
 
     @After
     public void tearDown() {
         if (!(webDriver==null)) {  // Close web driver only if web driver exists
-            utils.screenShot(pathToScreenshot, webDriver); //Take screenshot in any case
+            if (!isTestPass) {
+                utils.screenShot(pathToScreenshot, webDriver); //Take screenshot if test is failed
+            }
             webDriver.quit();
         }
     }
@@ -63,6 +76,11 @@ public class ParentTest {
     public void checkAC(String message, boolean actualResult, boolean expectedResult){
 
         Assert.assertThat(message,actualResult, is(expectedResult));
+        setTestPass(); //Method which set test to pass
+    }
+
+    private void setTestPass() {
+        isTestPass = true;
     }
 
 }
