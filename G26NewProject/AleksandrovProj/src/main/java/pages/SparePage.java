@@ -4,19 +4,23 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class SparePage extends HomePage {
+/**
+ * Created by QA Teahcer on 26.07.2017.
+ */
+public class SparePage extends ParentPage{
     @FindBy(xpath = ".//*[@href='http://v3.qalight.com.ua/dictionary/spares/edit']")
-    WebElement buttonPlus;
+    private WebElement buttonPlus;
 
     public SparePage(WebDriver webDriver) {
-        super( webDriver );
+        super(webDriver);
     }
 
-    public void clickOnPlusButton(){
-        actionsWithOurElements.clickOnElement( buttonPlus );
+    public void clickOnButtonPlus(){
+        actionsWithOurElements.clickOnElement(buttonPlus);
     }
 
-    public boolean  isSpareInList(String nameOfSpare){
-        return actionsWithOurElements.isElementPresent( ".//*[text()='" + nameOfSpare + "']" );
+    public boolean isSpareInList(String nameOfSpare) {
+        return actionsWithOurElements
+                .isElementPresent(".//*[text()='" + nameOfSpare + "']");
     }
 }

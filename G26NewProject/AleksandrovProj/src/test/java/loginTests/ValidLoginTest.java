@@ -1,7 +1,6 @@
 package loginTests;
 
 import org.junit.Test;
-import pages.HomePage;
 import parentTest.ParentTest;
 
 public class ValidLoginTest extends ParentTest {
@@ -13,7 +12,7 @@ public class ValidLoginTest extends ParentTest {
         logInPage.enterPasswordToInput( "909090" );
         logInPage.clickOnSubmitButton();
 
-        checkAcceptanceCriteria( "Avatar is not present on page.", homePage.isAvatarPresent(), true );
+        checkAC( "Avatar is not present on page.", homePage.isAvatarPresent(), true );
     }
 
 }

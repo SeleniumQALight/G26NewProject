@@ -1,34 +1,35 @@
 package pages;
 
-import org.junit.Assert;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class HomePage extends ParentPage {
-
-    public HomePage(WebDriver webDriver) {
-        super( webDriver );
-    }
-
+public class HomePage extends ParentPage{
     @FindBy(xpath = ".//img[@class='user-image']")
-    WebElement rightAvatar;
+    private WebElement rightAvatar;
 
     @FindBy(xpath = ".//*[@id='dictionary']/a")
-    WebElement menuDictionary;
+    private WebElement menuDictionary;
 
-    @FindBy(xpath = ".//li[@id='spares']")
-    WebElement sparesSubMenu;
+    @FindBy(id = "spares")
+    private WebElement sparesSubMenu;
+
+    public HomePage(WebDriver webDriver) {
+        super(webDriver);
+    }
+
 
     public boolean isAvatarPresent() {
-        return actionsWithOurElements.isElementPresent( rightAvatar );
+
+        return actionsWithOurElements.isElementPresent(rightAvatar);
     }
 
-    public void clickOnMenuDictionary() {
-        actionsWithOurElements.clickOnElement( menuDictionary );
+    public void clickOnMenuDictionary(){
+        actionsWithOurElements.clickOnElement(menuDictionary);
     }
 
-    public void ClickOnSubMenuSpares() {
-        actionsWithOurElements.clickOnElement( sparesSubMenu );
+    public void clickOnSubMenuSpares(){
+        actionsWithOurElements.clickOnElement(sparesSubMenu);
     }
 }
