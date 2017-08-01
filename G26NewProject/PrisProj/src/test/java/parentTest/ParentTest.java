@@ -9,8 +9,11 @@ import org.junit.Rule;
 import org.junit.rules.TestName;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import pages.AddNewSparePage;
 import pages.HomePage;
 import pages.LoginPage;
+import pages.SparePage;
+import spare.AddNewSpare;
 
 import java.io.File;
 import java.util.concurrent.TimeUnit;
@@ -20,13 +23,20 @@ import static org.hamcrest.CoreMatchers.is;
 /**
  * Created by Dmitriy on 17.07.2017.
  */
+//Создаем обьекты страниц пейджей
 public class ParentTest {
 	public WebDriver webDriver; //Обьявили модификатором public чтобы был доступен в обоих package(инкапсуляция)
 	private Logger logger = Logger.getLogger(getClass());
 	private Utils utils = new Utils(); //Обьявили обьект для снятия скринов
 	private String pathToScreenShot; //Переменная для изменяемого пути к файлу
+
+	public boolean isTestPass = false; //обьявили меременную для скрина что тест не прошел
+
 	public LoginPage loginPage; //обьявили переменную loginPage
 	public HomePage homePage; //обьявили переменную homePage
+	public SparePage sparePage; //обьявили переменную sparePage
+
+	public AddNewSparePage addNewSparePage;
 	
 	//Конструктор передает во внутрь класса, настроить обьект. передаем обьект с одного класса в другом
 	//работай с обьектом этого класса
@@ -50,13 +60,18 @@ public class ParentTest {
 		webDriver.manage().window().maximize();
 		webDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		loginPage = new LoginPage(webDriver); //Передали в loginPage webDriver с которым мы будем пользоваться
-		homePage = new HomePage(webDriver); //
+		homePage = new HomePage(webDriver); //Передали в homePage webDriver с которым мы будем пользоваться
+		sparePage = new SparePage(webDriver);//Передали в sparePage webDriver с которым мы будем пользоваться
+		addNewSparePage = new AddNewSparePage(webDriver);
 	}
 	
 	@After
 	public void tearDown() {
 		if (!(webDriver == null)) { //Если дравера нету но ничего закрывать
-			utils.screenShot(pathToScreenShot, webDriver); //при каждом закрытии драйвера снимать скрин
+			if (!isTestPass) {
+				//Только в случаи false если тест упадет
+				utils.screenShot(pathToScreenShot, webDriver); //при каждом закрытии драйвера снимать скрин
+			}
 			webDriver.quit();
 		}
 	}
@@ -71,5 +86,10 @@ public class ParentTest {
 	public void checkAC(String messege, boolean actualResult, boolean expectedResult) {
 		//делает сравнение actualResult с expectedResult заимпортим is - ALT+ENTER выбираем CoreMatchers
 		Assert.assertThat(messege, actualResult, is(expectedResult));
+		setTestPass();
+	}
+
+	private void setTestPass() { //метод в эту переменную записует тру
+		isTestPass = true;
 	}
 }
