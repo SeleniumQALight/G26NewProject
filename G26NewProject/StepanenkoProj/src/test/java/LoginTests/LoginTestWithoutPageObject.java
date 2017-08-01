@@ -1,7 +1,5 @@
 package LoginTests;
 
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -10,24 +8,11 @@ import java.io.File;
 import java.util.concurrent.TimeUnit;
 
 public class LoginTestWithoutPageObject {
-    WebDriver webDriver;
+    private WebDriver webDriver;
 
-    //аннотация JUnit означает Preconditions. Написав это 1 раз вверху страницы теста, запускается перед каждым тестом
-    @Before
-    public void setUp() {
-    }
-
-    //аннотация junit, означает PostConditions. Написав это 1 раз вверху страницы теста, запускается после каждого теста
-    @After
-    public void tearDown() {
-    }
-
-    //аннотация JUnit
     @Test
     // метод валидный догин
     public void validLogIn() {
-        //объявлние переменной  webDriver
-        WebDriver webDriver;
         // путь к драйверу, где он находится
         File fileFF = new File(".././drivers/chromedriver.exe");
         System.setProperty("webdriver.chrome.driver", fileFF.getAbsolutePath());

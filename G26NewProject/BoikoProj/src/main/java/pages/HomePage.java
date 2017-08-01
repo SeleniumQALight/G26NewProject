@@ -11,7 +11,13 @@ import org.openqa.selenium.support.PageFactory;
 public class HomePage extends ParentPage{
 
     @FindBy (xpath = ".//img[@class='user-image']")
-    WebElement rightAvatar;
+    private WebElement rightAvatar;
+
+    @FindBy (xpath = ".//*[@id='dictionary']/a")   //click on link Dictionary
+    private WebElement menuDictionary;
+
+    @FindBy (id = "spares")
+    private WebElement sparesSubMenu;
 
     public HomePage(WebDriver webDriver) {
         super(webDriver);
@@ -20,5 +26,14 @@ public class HomePage extends ParentPage{
 
     public boolean isAvatarPresent() {
         return actionsWithOurElements.isElementPresent(rightAvatar);
+    }
+
+    public void clickOnMenuDictionary(){
+        actionsWithOurElements.clickOnElement(menuDictionary);
+
+    }
+
+    public void clickOnSubMenuSpares(){
+        actionsWithOurElements.clickOnElement(sparesSubMenu);
     }
 }

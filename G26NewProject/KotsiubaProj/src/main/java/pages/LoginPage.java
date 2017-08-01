@@ -78,4 +78,17 @@ public class LoginPage extends ParrentPage {
         // ".//*[contains(text(),'"+text+"')]" - поиск любого передаваемого текста на странице
         return actionsWithOurElements.isElementPresent(".//*[contains(text(),'"+text+"')]");
     }
+
+    // метод ЛОГИРОВАНИЯ НА САЙТЕ
+    // String login, String password
+    public void loginUser(String login, String password) {
+        // внутри метода будем давать мелкие команды
+        openLoginPage();
+        enterLoginToInput(login);
+        enterPassWordToInput(password);
+        clickOnSubmitButton();
+        checkTitle("Учет запчастей");
+
+
+    }
 }

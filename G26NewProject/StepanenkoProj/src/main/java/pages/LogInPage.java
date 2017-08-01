@@ -21,7 +21,7 @@ public class LogInPage extends ParentPage {
     //сначала он ищет элемент, потом создает объект!!!
     private WebElement inputPass;
 
-    @FindBy(xpath = ".//button[@type='submit']")
+    @FindBy(xpath = ".//button")
     private WebElement buttonSubmit;
 
     /**
@@ -50,12 +50,11 @@ public class LogInPage extends ParentPage {
     }
 
     /**
-     * method login into 'Login' prompt
-     *
+     * Method input login to input
      * @param login
      */
     public void enterLoginToInput(String login) {
-        actionsWithOurElements.enterText(loginInput, login);
+        actionsWithOurElements.enterText(loginInput,login);
 //        try {
 //            //webDriver.findElement(By.xpath(".//*[@name='_username']")).sendKeys(login);
 //            //вместо этого пишем
@@ -67,19 +66,47 @@ public class LogInPage extends ParentPage {
 
     }
 
-    public void enterPassWordToInput(String passWord) {
-        //в методах: название метода.что сделать (куда, что)
-        actionsWithOurElements.enterText(inputPass, passWord);
+    /**
+     * Method input password
+     *
+     * @param passWord
+     */
+    public void enterPassWordToInput(String passWord){
+        actionsWithOurElements.enterText(inputPass,passWord);
     }
 
+    /**
+     * Method click on button
+     */
     public void clickOnSubmitButton() {
-        //параметры для вывода методу не пишем потомучто он просто кликает
         actionsWithOurElements.clickOnElement(buttonSubmit);
     }
 
+    /**
+     * Method element with test present
+     *
+     * @param text
+     * @return
+     */
     public boolean isElementWithTextPresent(String text) {
 
-        return actionsWithOurElements.isElementPresent(".//*[contains (text (),'" + text + "')]");
+        return actionsWithOurElements.isElementPresent(".//*[contains(text(),'"+text+"')]");
     }
+
+    /**
+     * Method login user
+     *
+     * @param login
+     * @param password
+     */
+    public void loginUser(String login, String password) {
+        openLoginPage();
+        enterLoginToInput(login);
+        enterPassWordToInput(password);
+        clickOnSubmitButton();
+        checkTitle("Учет запчастей");
+    }
+
+
 }
 
