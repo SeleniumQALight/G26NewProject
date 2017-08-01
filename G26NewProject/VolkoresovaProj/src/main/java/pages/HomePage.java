@@ -19,6 +19,9 @@ public class HomePage extends ParentPage {
     @FindBy(id = "spares")
     private WebElement sparesSubMenu;
 
+    @FindBy(id = "prov_cus")
+    private WebElement providersSubMenu;
+
     public HomePage(WebDriver webDriver) {
         super(webDriver);
     }
@@ -36,4 +39,9 @@ public class HomePage extends ParentPage {
         actionsWithOurElements.clickOnElement(sparesSubMenu);
 
     }
+
+    public void clickOnSubMenuProviders() {
+        actionsWithOurElements.clickOnElement(providersSubMenu);
+    }
+
 }

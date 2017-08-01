@@ -101,4 +101,33 @@ public class ActionsWithOurElements {
         }
 
     }
+
+    public void selectTextInDDByValue(WebElement dropDown, String value){
+
+        try{
+            Select optionsFromDD = new Select(dropDown);
+            optionsFromDD.selectByValue(value);
+            logger.info(value + " was selected in dropdown");
+        }catch (Exception e){
+            logger.error("Can not work with element DropDown");
+            Assert.fail("Can not work with element DropDown");
+        }
+
+    }
+
+    public void checkCheckBox(WebElement checkbox) {
+        try{
+            if(!checkbox.isSelected()){
+                checkbox.click();
+            }
+            else{
+                logger.info("CheckBox has already selected");
+            }
+
+
+        }catch(Exception e){
+            logger.error("Cannot work with element " + checkbox);
+            Assert.fail("Cannot work with element " + checkbox);
+        }
+    }
 }

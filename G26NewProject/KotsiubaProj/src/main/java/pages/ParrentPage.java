@@ -7,6 +7,8 @@ import org.openqa.selenium.WebDriver;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.support.PageFactory;
 
+import static org.hamcrest.core.Is.is;
+
 public class ParrentPage {
     WebDriver webDriver;
     Logger logger;
@@ -44,6 +46,26 @@ public class ParrentPage {
             // Assert.fail - Это коллектор метрики и выводит сообщение
             Assert.fail("Page can't be open" + url);
         }
+
+    }
+    // метод который чекает ТАЙТЛ
+    public void checkTitle(String expectedTitle){
+        try {
+            // is(expectedTitle) - выбираем хомкрест ( это библиотека )
+            // is(expectedTitle) - это метод который проверят что актуальный результат равен ожидаемому результату
+            Assert.assertThat("Title no matched", webDriver.getTitle(),is(expectedTitle));
+        } catch (Exception e) {
+            // пишет сообшение в лог и консоль
+            logger.error("Cant work with Page");
+            // перкращает писать сообщение
+            Assert.fail("Cant work with Page");
+        }
+    }
+
+    // метод который чекает H1
+    public void checkTitleH1PresentOnPageWithText(String text) {
+        // в нем еще метод который выбирает текст и сравнивает
+        actionsWithOurElements.checkTextInElement(".//h1", text);
 
     }
 }
