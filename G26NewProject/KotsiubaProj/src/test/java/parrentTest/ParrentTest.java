@@ -9,8 +9,10 @@ import org.junit.Rule;
 import org.junit.rules.TestName;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import pages.AddNewSparePage;
 import pages.HomePage;
 import pages.LoginPage;
+import pages.SparePage;
 
 import java.io.File;
 import java.util.concurrent.TimeUnit;
@@ -27,8 +29,10 @@ public class ParrentTest {
     // Обьявляем HomePage
     public HomePage homePage;
 
+    // тут обьявляем переменную которую будем использовать
+public SparePage sparePage;
 
-
+    public AddNewSparePage addNewSparePage;
     // обьявляем дл СКРИНШОТОВ:
     // мы обьявили логгер чтто б снизу его использовать в скриншотах
     // getLogger - мы достаем с библиотеки ( это вместо System.out.println - мы используем)
@@ -39,6 +43,10 @@ public class ParrentTest {
 
     // просто обьявлем стринговую переменную, тут будет содержаться изменяемый путь к файлам
     private String pathToScreenShot;
+
+
+    // Если тест прошел - нам скриншот не нужен
+    private boolean isTestPass = false;
 
 
 
@@ -70,15 +78,25 @@ public TestName testName = new TestName();
         webDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         loginPage = new LoginPage(webDriver);
         homePage = new HomePage(webDriver);
+        // создаем обьект
+        sparePage = new SparePage(webDriver);
+
+        // Добавляем новую пейджу
+        addNewSparePage = new AddNewSparePage(webDriver);
     }
 
     @After
     public void tearDown() {
         //Дописуем. Если обьекта (драйвера нет) - то и нечего закрывать. Т.е. если он есть мы его закрываем
-        if (! (webDriver == null)) {
+        if (!(webDriver == null)) {
+            // дописуем только если скриншот завалился будет скриншот, без этой строки скриншот всегда
+        }
+            if (!isTestPass) {
             // дописуем скриншот!
-            utiles.screenShot(pathToScreenShot,webDriver);
-            webDriver.quit();
+            {
+                utiles.screenShot(pathToScreenShot, webDriver);
+                webDriver.quit();
+            }
         }
     }
 
@@ -92,5 +110,11 @@ public TestName testName = new TestName();
         // import static org.hamcrest.CoreMatchers.is;
         // ПРОВЕРКА АКТУАЛЬНОГО РЕЗУЛЬТАТА ПОЭТОМУ ОН В ParrentTest - проверка актуального и ожидаемого результата
         Assert.assertThat(message, actualResult, is(expectedResult));
+        // прописуем еще метод
+        setTestPass();
+    }
+// метод проверки прохождение теста
+    private void setTestPass() {
+        isTestPass = true;
     }
 }
