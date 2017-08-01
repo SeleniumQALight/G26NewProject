@@ -7,6 +7,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import java.util.concurrent.TimeUnit;
+
 public class LoginPage extends ParentPage{
     @FindBy(name = "_username")
     private WebElement loginInput;
@@ -58,6 +60,9 @@ public class LoginPage extends ParentPage{
             enterLoginToInput(login);
             enterPasswordToInput(password);
             clickOnSubmitButton();
+    }
+    public boolean checkTextInLoginForm(String text){
+       return actionsWithOurElements.checkTextInElementBoolean(".//*[@class='login-box-msg']", text);
     }
 }
 

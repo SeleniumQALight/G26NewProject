@@ -17,53 +17,58 @@ public class ParentPage {
     ActionsWithOurElements actionsWithOurElements;
 
 
-        public ParentPage(WebDriver webDriver) {
-            this.webDriver = webDriver;
-            logger = Logger.getLogger(getClass());
-            actionsWithOurElements = new ActionsWithOurElements(webDriver);
-            PageFactory.initElements(webDriver, this);
-        }
+    public ParentPage(WebDriver webDriver) {
+        this.webDriver = webDriver;
+        logger = Logger.getLogger(getClass());
+        actionsWithOurElements = new ActionsWithOurElements(webDriver);
+        PageFactory.initElements(webDriver, this);
+    }
 
     /**
      * Method opens url
+     *
      * @param url
      */
 
-    public void open(String url){
+    public void open(String url) {
 
-            try{
+        try {
 
-                webDriver.get(url);
-                logger.info("Page was opened " + url);
+            webDriver.get(url);
+            logger.info("Page was opened " + url);
 
-            }catch (Exception e){
-                logger.error("Page cannot opened "+url);
-                Assert.fail("Page cannot opened "+url);
+        } catch (Exception e) {
+            logger.error("Page cannot opened " + url);
+            Assert.fail("Page cannot opened " + url);
 
-            }
         }
+    }
 
 
-    public void checkTitle(String expectedTitle){
+    public void checkTitle(String expectedTitle) {
 
         try {
             Assert.assertThat("Title not matched", webDriver.getTitle(), is(expectedTitle));
 
-        }catch (Exception e){
+        } catch (Exception e) {
             logger.error("Cannot work with page");
             Assert.fail("Cannot work with page");
         }
 
     }
 
-    public void checkTitleH1PresentOnPageWithText(String text){
+    public void checkTitleH1PresentOnPageWithText(String text) {
+
+        actionsWithOurElements.checkTextInElement(".//H1", text);
+    }
+
+
+    public boolean checkTitleH1PresentOnPageWithTextBooleanRes(String text){
 
         actionsWithOurElements.checkTextInElement(".//H1",text);
-
-
-
-
+        return true;
     }
+
 
 }
 
