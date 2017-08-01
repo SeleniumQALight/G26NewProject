@@ -9,8 +9,10 @@ import org.junit.Rule;
 import org.junit.rules.TestName;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import pages.AddNewSparePage;
 import pages.HomePage;
 import pages.LogInPage;
+import pages.SparePage;
 
 import java.io.File;
 import java.util.concurrent.TimeUnit;
@@ -28,8 +30,12 @@ public class ParentTest { //надо создать конструктор. Вы
     private Utils utils = new Utils();
     private String pathToScreenShot; // создае переменную которая будет указывать изменяемый путь к файлу
 
+    private boolean isTestPass = false; //будем применять если тест прошел то нам скрин не нужен а если зафейлился то делаем
+
     public LogInPage logInPage;
     public HomePage homePage;
+    public SparePage sparePage; //объявляем переменную
+    public AddNewSparePage addNewSparePage; //объявляем переменную
 
     public ParentTest() {
 
@@ -59,21 +65,29 @@ public class ParentTest { //надо создать конструктор. Вы
         webDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         logInPage = new LogInPage(webDriver); // открой браузер и с ним работай.
         homePage = new HomePage(webDriver);
+        sparePage = new SparePage(webDriver); //создаем объект и передаем ему вебдрайвер
+        addNewSparePage = new AddNewSparePage(webDriver); //создаем объект и передаем ему вебдрайвер
+
     }
 
     @After //прописываем что делать после прогона тестов
     public void tearDown() {
         if (!(webDriver == null)) {  //закрываем драйвер если он не null - В том случае если мы просим закрыть то чего уже нет. Если вебдрайвер уже ранее был убит
-            utils.screenShot(pathToScreenShot,webDriver);//снимаем скрин если драйвер живой
-            webDriver.quit();
-
-
-        }
+            if (!isTestPass) { //если тест не пройден сделай скрин
+                utils.screenShot(pathToScreenShot, webDriver);//снимаем скрин если драйвер живой
+            }
+                webDriver.quit();
+            }
     }
 
     public void checkAC(String massage, boolean actualResult, boolean expectedResult) { //АС - аксептанс критерия
 
         Assert.assertThat(massage, actualResult, is(expectedResult)); //заимпортить alt+enter
+        setTestPass();//на асерте тест закроется. Нам тут надо проверит ьвсе ли ок. Если не - делаем скрин
+    }
+
+    private void setTestPass() {
+        isTestPass = true;
     }
 
 }

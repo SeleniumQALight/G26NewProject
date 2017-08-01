@@ -10,7 +10,17 @@ import org.openqa.selenium.support.FindBy;
 public class HomePage extends ParentPage {
 
     @FindBy(xpath=".//img[@class='user-image']")
-    WebElement rightAvatar;
+    private WebElement rightAvatar;
+
+    @FindBy(xpath=".//*[@id='dictionary']/a")
+    private WebElement menuDictionary;
+
+
+    @FindBy(id = "spares")
+    private WebElement sparesSubMenu;
+
+    @FindBy(id = "prov_cus")
+    private WebElement providersSubMenu;
 
     public HomePage(WebDriver webDriver) {
         super(webDriver);
@@ -18,6 +28,20 @@ public class HomePage extends ParentPage {
 
     public boolean isAvatarPresent() {
         return actionsWithOurElements.isElementPresent(rightAvatar);
+    }
+
+
+    public void clickOnMenuDictionary(){
+        actionsWithOurElements.clickOnElement(menuDictionary);
+    }
+
+    public void clickOnSubMenuSpares(){
+        actionsWithOurElements.clickOnElement(sparesSubMenu);
 
     }
+
+    public void clickOnSubMenuProviders() {
+        actionsWithOurElements.clickOnElement(providersSubMenu);
+    }
+
 }

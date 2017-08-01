@@ -49,4 +49,17 @@ public class LoginPage extends ParentPages {
     public boolean isElementWithTextPresent(String text) {
         return actionsWithOurElements.isElementPresent(".//*[contains(text(),'" + text + "')]");
     }
+
+    public void loginUser(String login, String password) {
+        openLoginPage();
+        enterLoginToInput(login);
+        enterPasswToInput(password);
+        clickOnSubmitButton();
+        checkTitle("Учет запчастей");
+
+        // ckeckTitle
+
+    }
+
+
 }
