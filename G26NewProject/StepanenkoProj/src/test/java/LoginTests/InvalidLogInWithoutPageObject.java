@@ -1,7 +1,6 @@
 package LoginTests;
 
 import org.junit.Test;
-import org.openqa.selenium.By;
 import parentTest.ParentTest;
 
 /**
@@ -16,10 +15,11 @@ public class InvalidLogInWithoutPageObject extends ParentTest {
 
     @Test
     public void invalidLogIn() {
-        logInPage.openLoginPage();
-
         //вместо:
         //webDriver.get("http://v3.qalight.com.ua/");
+        //используем
+        logInPage.openLoginPage();
+
         //webDriver.findElement(By.xpath(".//*[@name='_username']")).sendKeys("Student");
         //используем:
         logInPage.enterLoginToInput("Student");
@@ -42,13 +42,14 @@ public class InvalidLogInWithoutPageObject extends ParentTest {
         //Assert это acceptance criteria
         //Assert.assertTrue(webDriver.findElement(By.xpath(".//*[text()='Учет запчастей']")).isDisplayed());
 
-        checkAcceptanceCriteria("Text 'Учет запчастей' not found",
+        checkAC("Text 'Учет запчастей' not found",
                 logInPage.isElementWithTextPresent("Учет запчастей")
-                //webDriver.findElement(By.xpath(".//*[text()='Учет запчастей']"))
-                // .isDisplayed()
+//                webDriver.findElement(By.xpath(".//*[text()='Учет запчастей']"))
+//                        .isDisplayed()
                 , true
         );
+//        Assert.assertTrue("Assert work",webDriver.findElement(
+//                By.xpath(".//*[text()='Учет запчастей']")).isDisplayed());
     }
-
 
 }
