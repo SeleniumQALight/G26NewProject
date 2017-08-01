@@ -15,7 +15,7 @@ public class SpreadsheetData {
     private transient Collection<Object[]> data = null;
 
     public SpreadsheetData(final InputStream excelInputStream, final String sheetName) throws IOException {
-        this.data = loadFromSpreadsheet(excelInputStream, sheetName);
+        this.data = loadFromSpreadsheet( excelInputStream, sheetName );
     }
 
     public Collection<Object[]> getData() {
@@ -24,33 +24,33 @@ public class SpreadsheetData {
 
     private Collection<Object[]> loadFromSpreadsheet(final InputStream excelFile, final String sheetName)
             throws IOException {
-        HSSFWorkbook workbook = new HSSFWorkbook(excelFile);
+        HSSFWorkbook workbook = new HSSFWorkbook( excelFile );
 
         data = new ArrayList<Object[]>();
 
-        Sheet sheet = workbook.getSheet(sheetName);
+        Sheet sheet = workbook.getSheet( sheetName );
 
-        int numberOfColumns = countNonEmptyColumns(sheet);
+        int numberOfColumns = countNonEmptyColumns( sheet );
         List<Object[]> rows = new ArrayList<Object[]>();
         List<Object> rowData = new ArrayList<Object>();
 
         for (Row row : sheet) {
-            if (isEmpty(row)) {
+            if (isEmpty( row )) {
                 break;
             } else {
                 rowData.clear();
                 for (int column = 0; column < numberOfColumns; column++) {
-                    Cell cell = row.getCell(column);
-                    rowData.add(objectFrom(workbook, cell));
+                    Cell cell = row.getCell( column );
+                    rowData.add( objectFrom( workbook, cell ) );
                 }
-                rows.add(rowData.toArray());
+                rows.add( rowData.toArray() );
             }
         }
         return rows;
     }
 
     private boolean isEmpty(final Row row) {
-        Cell firstCell = row.getCell(0);
+        Cell firstCell = row.getCell( 0 );
         boolean rowIsEmpty = (firstCell == null)
                 || (firstCell.getCellType() == Cell.CELL_TYPE_BLANK);
         return rowIsEmpty;
@@ -61,8 +61,8 @@ public class SpreadsheetData {
      * first row.
      */
     private int countNonEmptyColumns(final Sheet sheet) {
-        Row firstRow = sheet.getRow(0);
-        return firstEmptyCellPosition(firstRow);
+        Row firstRow = sheet.getRow( 0 );
+        return firstEmptyCellPosition( firstRow );
     }
 
     private int firstEmptyCellPosition(final Row cells) {
@@ -82,11 +82,11 @@ public class SpreadsheetData {
         if (cell.getCellType() == Cell.CELL_TYPE_STRING) {
             cellValue = cell.getRichStringCellValue().getString();
         } else if (cell.getCellType() == Cell.CELL_TYPE_NUMERIC) {
-            cellValue = getNumericCellValue(cell);
+            cellValue = getNumericCellValue( cell );
         } else if (cell.getCellType() == Cell.CELL_TYPE_BOOLEAN) {
             cellValue = cell.getBooleanCellValue();
-        } else if (cell.getCellType()  ==Cell.CELL_TYPE_FORMULA) {
-            cellValue = evaluateCellFormula(workbook, cell);
+        } else if (cell.getCellType() == Cell.CELL_TYPE_FORMULA) {
+            cellValue = evaluateCellFormula( workbook, cell );
         }
 
         return cellValue;
@@ -95,8 +95,8 @@ public class SpreadsheetData {
 
     private Object getNumericCellValue(final Cell cell) {
         Object cellValue;
-        if (DateUtil.isCellDateFormatted(cell)) {
-            cellValue = new Date(cell.getDateCellValue().getTime());
+        if (DateUtil.isCellDateFormatted( cell )) {
+            cellValue = new Date( cell.getDateCellValue().getTime() );
         } else {
             cellValue = cell.getNumericCellValue();
         }
@@ -106,7 +106,7 @@ public class SpreadsheetData {
     private Object evaluateCellFormula(final HSSFWorkbook workbook, final Cell cell) {
         FormulaEvaluator evaluator = workbook.getCreationHelper()
                 .createFormulaEvaluator();
-        CellValue cellValue = evaluator.evaluate(cell);
+        CellValue cellValue = evaluator.evaluate( cell );
         Object result = null;
 
         if (cellValue.getCellType() == Cell.CELL_TYPE_BOOLEAN) {

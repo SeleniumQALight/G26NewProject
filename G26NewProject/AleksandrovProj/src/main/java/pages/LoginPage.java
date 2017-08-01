@@ -47,6 +47,7 @@ public class LoginPage extends ParentPage {
     /**
      * Method makes mouse click on submit button
      */
+
     public void clickOnSubmitButton() {
         actionsWithOurElements.clickOnElement( buttonSubmit );
     }

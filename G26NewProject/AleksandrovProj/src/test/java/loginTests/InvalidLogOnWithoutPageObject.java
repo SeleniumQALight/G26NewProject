@@ -1,5 +1,6 @@
 package loginTests;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import parentTest.ParentTest;
 
@@ -13,13 +14,14 @@ public class InvalidLogOnWithoutPageObject extends ParentTest {
     }
 
     @Test
+    @Ignore
     public void invalidLogOn() {
         logInPage.openLoginPage();
         logInPage.enterLoginToInput( "student" );
         logInPage.enterPasswordToInput( "WrongPassword" );
         logInPage.clickOnSubmitButton();
         checkAC( "Text 'Учет запчастей' not found",
-                logInPage.isElementWithTextPresent("Учет запчастей"),  true );
+                logInPage.isElementWithTextPresent( "Учет запчастей" ), true );
 
     }
 

@@ -11,8 +11,8 @@ import java.util.Properties;
  *  That class provides static methods for getting values from Config and UI mapping files
  */
 public class ConfigData {
-    public static String cfgFile="src/config.properties";
-    public static String uiMappingFile="src/UIMapping.properties";
+    public static String cfgFile = "src/config.properties";
+    public static String uiMappingFile = "src/UIMapping.properties";
 
     /*
      *  Return value from .properties file
@@ -20,13 +20,13 @@ public class ConfigData {
     public static String getValueFromFile(String key, String fileName) throws IOException {
         Properties p = new Properties();
         // Create stream for reading from file
-        FileInputStream cfg = new FileInputStream(fileName);
+        FileInputStream cfg = new FileInputStream( fileName );
         // Load Properties from input stream
-        p.load(cfg);
+        p.load( cfg );
         cfg.close();
 
         // Return value for the property
-        return(p.getProperty(key));
+        return (p.getProperty( key ));
     }
 
 
@@ -36,8 +36,8 @@ public class ConfigData {
      *  We should take care of value's type by himself when will use config data value in the test.
      */
     public static String getUiMappingValue(String key) throws IOException {
-    	
-        return(getValueFromFile(key, uiMappingFile));
+
+        return (getValueFromFile( key, uiMappingFile ));
     }
 
 
@@ -48,7 +48,7 @@ public class ConfigData {
     */
     public static String getCfgValue(String key) throws IOException {
 
-        return(getValueFromFile(key, cfgFile));
+        return (getValueFromFile( key, cfgFile ));
     }
 
 
@@ -57,33 +57,33 @@ public class ConfigData {
      */
     public static By ui(String key) throws IOException, ClassNotFoundException, IllegalAccessException, InstantiationException {
         // Get WebElement's locator from UI mapping file and divide it to finding method and target
-        String[] partsOfLocator=getValueFromFile(key, uiMappingFile).split("\"");
-        String findMethod=partsOfLocator[0].substring(0,partsOfLocator[0].length()-1);
-        String target=partsOfLocator[1];
+        String[] partsOfLocator = getValueFromFile( key, uiMappingFile ).split( "\"" );
+        String findMethod = partsOfLocator[0].substring( 0, partsOfLocator[0].length() - 1 );
+        String target = partsOfLocator[1];
 
         // Return By class with appropriate method and target
-        if (findMethod.equals("id")){
-            return By.id(target);
+        if (findMethod.equals( "id" )) {
+            return By.id( target );
         } else {
-            if (findMethod.equals("xpath")){
-                return By.xpath(target);
+            if (findMethod.equals( "xpath" )) {
+                return By.xpath( target );
             } else {
-                if (findMethod.equals("name")){
-                    return By.name(target);
+                if (findMethod.equals( "name" )) {
+                    return By.name( target );
                 } else {
-                    if (findMethod.equals("linkText")){
-                        return By.linkText(target);
+                    if (findMethod.equals( "linkText" )) {
+                        return By.linkText( target );
                     } else {
-                        if (findMethod.equals("tagName")){
-                            return By.tagName(target);
+                        if (findMethod.equals( "tagName" )) {
+                            return By.tagName( target );
                         } else {
-                            if (findMethod.equals("className")){
-                                return By.className(target);
+                            if (findMethod.equals( "className" )) {
+                                return By.className( target );
                             } else {
-                                if (findMethod.equals("cssSelector")){
-                                    return By.cssSelector(target);
+                                if (findMethod.equals( "cssSelector" )) {
+                                    return By.cssSelector( target );
                                 } else {
-                                    return By.partialLinkText(target);
+                                    return By.partialLinkText( target );
                                 }
                             }
                         }
