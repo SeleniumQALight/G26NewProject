@@ -34,13 +34,12 @@ public class InvalidLogOnWithoutPageobject extends ParentTest {
        // webDriver.findElement(By.xpath(".//button")).click();
         checkAC("Text 'Учет запчастей' not found",
                 loginPage.isElementWithTextPresent("Учет запчастей")
-                //webDriver.findElement(
-               // By.xpath(".//*[text()='Учет запчастей']")).isDisplayed()
+//                webDriver.findElement(By.xpath(".//*[text()='Учет запчастей']"))
+//                        .isDisplayed()
                 ,true
         );
-      //  Assert.assertTrue(webDriver.findElement(
-          //      By.xpath(".//*[text()='Учет запчастей']")).isDisplayed());
-
+//        Assert.assertTrue("Assert work",webDriver.findElement(
+//                By.xpath(".//*[text()='Учет запчастей']")).isDisplayed());
 
 
     }

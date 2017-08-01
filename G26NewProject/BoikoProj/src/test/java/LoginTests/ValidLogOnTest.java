@@ -14,6 +14,7 @@ public class ValidLogOnTest extends ParentTest {
         loginPage.enterLoginToInput("Student");
         loginPage.enterPasswordToInput("909090");
         loginPage.pressButtonSubmit();
+        loginPage.checkTitle("Account of spare:Авторизация");
         checkAC("Avatar is not present on Page",homePage.isAvatarPresent(), true);
     }
 }

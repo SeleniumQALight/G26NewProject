@@ -17,6 +17,15 @@ public class HomePage extends ParentPage {
     @FindBy(id = "spares")
     private WebElement sparesSubMenu;
 
+    @FindBy(xpath=".//*[@id='deal']/a")
+    private WebElement menuDeal;
+
+    @FindBy(xpath=".//*[@id='apparat']/a")
+    private WebElement apparatSubMenu;
+
+    @FindBy(xpath = ".//*[@id='prov_cus']/a")
+    private WebElement providersSubMenu;
+
     public HomePage(WebDriver webDriver){
         super(webDriver);
     }
@@ -34,5 +43,16 @@ public class HomePage extends ParentPage {
         actionsWithOurElements.clickOnElement(sparesSubMenu);
     }
 
+    public void clickOnMenuDeal(){
+        actionsWithOurElements.clickOnElement(menuDeal);
+    }
+
+    public void clickOnSubMenuApparat(){
+        actionsWithOurElements.clickOnElement(apparatSubMenu);
+    }
+
+    public void clickOnSubMenuProviders(){
+        actionsWithOurElements.clickOnElement(providersSubMenu);
+    }
 }
 

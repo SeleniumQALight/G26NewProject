@@ -46,7 +46,7 @@ public class ParentTest {
     @Before
     public void setUp() {
         File file = new File("");
-        pathToScreenShot = file.getAbsolutePath() + "\\taget\\screenshots"
+        pathToScreenShot = file.getAbsolutePath() + "\\target\\screenshots"
                 + this.getClass().getPackage().getName() + "\\"
                 + this.getClass().getSimpleName() + "\\"
                 + this.testName.getMethodName() + ".jpg";

@@ -1,14 +1,10 @@
 package pages;
 
-import org.junit.Assert;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-/**
- * Created by Asus on 19.07.2017.
- */
+
 public class LoginPage extends ParentPages{
 
     @FindBy(name = "_username")
@@ -73,6 +69,13 @@ public class LoginPage extends ParentPages{
 
     public boolean isElementWithTextPresent(String text) {
 
-        return actionsWithOurElements.isElementPresent(".//*[contains](text(),'"+text+"')");
+        return actionsWithOurElements.isElementPresent(".//*[contains(text(),'"+text+"')]");
+    }
+    public void loginUser(String login, String password){
+        openLoginPage();
+        enterLoginToInput(login);
+        enterPasswordToInput(password);
+        clickOnSubmitButton();
+        checkTitle("Учет запчастей");
     }
 }
