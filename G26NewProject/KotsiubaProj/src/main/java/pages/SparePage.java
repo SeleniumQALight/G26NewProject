@@ -22,6 +22,6 @@ public class SparePage extends ParrentPage {
 
     public boolean isSpareInList(String nameOfSpare) {
         // ".//*[@text='" + spare1 + " ' ")  - локатора в тело которого вставиться наш текст
-              return actionsWithOurElements.isElementPresent(".//*[@text='" + nameOfSpare + " ' ");
+              return actionsWithOurElements.isElementPresent(".//*[text()='" + nameOfSpare + "']");
     }
 }
