@@ -3,6 +3,7 @@ package spare;
 
 import LoginTests.ValidLogInTest;
 import libs.Utils;
+import org.junit.Ignore;
 import org.junit.Test;
 import parentTest.ParentTest;
 
@@ -11,6 +12,7 @@ public class AddNewSpare extends ParentTest{
     Utils u = new Utils();
     ValidLogInTest valid = new ValidLogInTest();
     @Test
+    //@Ignore if we want skip one test - not realised functional or this functional under maintance(regresion testing)
     public void addNewSpare (){
         loginPage.loginUser("Student","909090"); //логинимся и переходим на майн пейдж
 
