@@ -24,26 +24,32 @@ public class Database {
      *  Constructor opens connection to database using connection string from config.properties file.
      *  Note in config.properties, please, that username and password for access to the database should be named as
      *  relevant connection string including "_USER"  and "_PASSWORD"
+     *
+     *  Конструктор открывает соединение с базой данных с помощью строки подключения из файла config.properties.
+      * Обратите внимание, что в config.properties, что имя пользователя и пароль для доступа к базе данных должны быть названы как
+      * Соответствующая строка подключения, включая «_USER» и «_PASSWORD»
      */
     public Database(String db, String driver) throws IOException, ClassNotFoundException, SQLException {
-        url=getCfgValue(db);
+        url=getCfgValue(db); //getCfgValue пойдет в пропертя берет ключ базы данных и возвращает его db
         log.info("Данные считаны url database: " + url);
 
-        // Load driver for JDBC class
-        Class.forName(getCfgValue(driver));
+        // Load driver for JDBC class  Загрузить драйвер для класса JDBC
+        Class.forName(getCfgValue(driver)); //Class - Возьми и подключи тот драйвер с которым мы будем работать getCfgValue получает пропертя любого ключика по значению
         log.info("Считали SQL драйвер ");
         
         // Create a connection to the database
         String user_name=getCfgValue((db + "_USER"));
         String user_pass=getCfgValue((db + "_PASSWORD"));
         log.info(" user - " + user_name + " pass " + user_pass);
+        //Происходит коннект к базе данных
         connection= DriverManager.getConnection(url,getCfgValue((db + "_USER")),getCfgValue((db + "_PASSWORD")));
-        log.info("дальше опять" + connection);
+        log.info("дальше опять " + connection);
     }
 
 
     /*
      *  That method verifies if the row in the query exists in the database
+     *  Этот метод проверяет, существует ли строка в запросе в базе данных
      */
     public boolean isRowPresent(String query) throws SQLException {
         //System.out.println(query);
@@ -68,12 +74,22 @@ public class Database {
         }
 
     }
+    //Этот метод может изменять баззу данных, он ексекютит апдейт query executeUpdate
+    public int changeDB(String query) throws SQLException {
+        Statement stm = connection.createStatement(); //установили каратковременную сессию
+       int affectedRows = stm.executeUpdate(query); //В которую мы записываем результат количество строк которые изменились
+        stm.close();
+        return affectedRows;
+    }
 
     /*
      *  That method gets SQL [Select COLUMN_NAME from TABLE_NAME where ...] query as parameter and returns result as String
+     *  Этот метод получает SQL [Select COLUMN_NAME from TABLE_NAME, где ...] запрос как параметр и возвращает результат как String
+     *  Этот метод ожидает только одно значение на выходе
      */
     public String selectValue(String query) throws SQLException {
         // Create statement for connection, execute query and save outcome in ResultSet
+        //Создать оператор для подключения, выполнить запрос и сохранить результат в ResultSet
         Statement stm=connection.createStatement();
         ResultSet rSet = stm.executeQuery(query);
         ResultSetMetaData meta=rSet.getMetaData();
@@ -100,6 +116,8 @@ public class Database {
 
     /*
      *  That method gets SQL [Select COLUMN_NAME from TABLE_NAME where ...] query as parameter and returns result set as List of Strings
+     *  Этот метод получает SQL [Select COLUMN_NAME from TABLE_NAME, где ...] запрос как параметр и возвращает результат, заданный как List of Strings
+     *  Єтот метод возращает одну строку или одно значения(бесконечно)
      */
     public List selectResultSet(String query) throws SQLException {
         // Create statement for connection, execute query and save outcome in ResultSet
@@ -135,6 +153,8 @@ public class Database {
 
     /*
      *  That method gets SQL [Select COLUMN_NAME_1,COLUMN_NAME_2 from TABLE_NAME where ...] query as parameter and returns result set as List of Strings
+     *  Этот метод получает SQL [Select COLUMN_NAME_1, COLUMN_NAME_2 от TABLE_NAME, где ...] запрос как параметр и возвращает результат, заданный как List of Strings
+     *  Єтот метод возращает все
      */
     public List selectTable(String query) throws SQLException {
         // Create statement for connection, execute query and save outcome in ResultSet
