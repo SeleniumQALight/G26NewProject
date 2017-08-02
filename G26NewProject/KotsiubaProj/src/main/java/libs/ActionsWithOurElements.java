@@ -112,7 +112,7 @@ public class ActionsWithOurElements {
             // мы получаем все что находиться внутри дропдауна
                       Select optionsFromDropDown = new Select(dropDown);
             // select by value - работает быстрей в разы!!
-                        optionsFromDropDown.deselectByVisibleText(text);
+                        optionsFromDropDown.selectByVisibleText(text);
             logger.info(text + " was selected in dropDown");
         } catch (Exception e) {
             logger.error("Cannot work with DropDown" );
