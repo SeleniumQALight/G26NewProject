@@ -1,7 +1,6 @@
 package loginTests;
 
 import org.junit.Test;
-import org.openqa.selenium.By;
 import parentTest.ParentTest;
 
 /**
@@ -18,11 +17,9 @@ public class InvalidLogOnWithoutPageObject extends ParentTest {
         logInPage.openLoginPage();
         logInPage.enterLoginToInput( "student" );
         logInPage.enterPasswordToInput( "WrongPassword" );
-        logInPage.clickButton();
-        checkAcceptanceCriteria( "Text 'Учет запчастей' not found",
-                logInPage.isElementWithTextPresent("Учет запчастей"),  true );
-
+        logInPage.clickOnSubmitButton();
+        checkAC( "Text 'Учет запчастей' not found",
+                logInPage.isElementWithTextPresent( "Учет запчастей" ), true );
     }
-
 }
 

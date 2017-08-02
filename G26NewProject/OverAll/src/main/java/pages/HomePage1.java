@@ -9,7 +9,7 @@ public class HomePage1 extends ParentPage{
     @FindBy(xpath = ".//img[@class='user-image']")
     private WebElement rightAvatar;
 
-    @FindBy(xpath = ".//*[@id='dictionary']/a")
+        @FindBy(xpath = ".//*[@id='dictionary']/a")
     private WebElement menuDictionary;
 
     @FindBy(id = "spares")

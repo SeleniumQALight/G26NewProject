@@ -32,7 +32,6 @@ public class Utils {
             e.printStackTrace();
         }
     }
-
     /**
      * Hard wait
      * * @param second
