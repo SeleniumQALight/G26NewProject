@@ -9,9 +9,6 @@ import org.junit.Test;
 import java.io.IOException;
 import java.sql.SQLException;
 
-/**
- * Created by admin on 02.08.2017.
- */
 public class TestDataBase {
     static Logger logger = Logger.getLogger(TestDataBase.class);
     static Database dbMySQL;

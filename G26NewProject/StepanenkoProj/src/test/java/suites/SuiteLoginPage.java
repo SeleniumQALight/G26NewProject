@@ -15,7 +15,6 @@ import org.junit.runners.Suite;
  * @Suite.SuiteClasses аннотация перечисляет все тесты в сьюите
  */
 @Suite.SuiteClasses({
-
         ValidLogInTest.class,
         InvalidLogInWithoutPageObject.class,
         LoginTestWithoutPageObject.class

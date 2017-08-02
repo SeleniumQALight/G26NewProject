@@ -1,6 +1,5 @@
 package excelTests;
 
-
 import libs.ConfigData;
 import libs.SpreadsheetData;
 
