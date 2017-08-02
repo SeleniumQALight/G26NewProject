@@ -5,14 +5,21 @@ import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import static org.hamcrest.CoreMatchers.is;
 
 public class ActionsWithOurElements {
     WebDriver webDriver;
     Logger logger;
+    WebDriverWait webDriverWait15;
 
     public ActionsWithOurElements(WebDriver webDriver) {
         this.webDriver = webDriver;
         logger = Logger.getLogger( getClass() );
+        webDriverWait15 = new WebDriverWait( webDriver, 15 );
     }
 
     /**
@@ -32,13 +39,14 @@ public class ActionsWithOurElements {
         }
     }
 
-    public void mouseClickElement(WebElement element) {
+    public void clickOnElement(WebElement element) {
         try {
+            webDriverWait15.until( ExpectedConditions.elementToBeClickable( element ) );
             element.click();
-            logger.info( "Element " + element + " was clicked" );
+            logger.info( element + " element was clicked" );
         } catch (Exception e) {
-            logger.error( "Can't work with element" + element );
-            Assert.fail( "Can't work with element" + element );
+            logger.error( "Can not work with element " + element );
+            Assert.fail( "Can not work with element " + element );
         }
     }
 
@@ -54,8 +62,35 @@ public class ActionsWithOurElements {
     public boolean isElementPresent(WebElement element) {
         try {
             return element.isDisplayed();
-        }catch (Exception e){
+        } catch (Exception e) {
             return false;
+        }
+    }
+
+    public void checkTextInElement(String xPath, String text) {
+        try {
+            webDriverWait15.until(
+                    ExpectedConditions
+                            .textToBePresentInElement( By.xpath( xPath ), text ) );
+            String textFromElement = webDriver.findElement( By.xpath( xPath ) )
+                    .getText();
+            Assert.assertThat( "Text in element not matched",
+                    textFromElement,
+                    is( text ) );
+        } catch (Exception e) {
+            logger.error( "Can not work with element " );
+            Assert.fail( "Can not work with element " );
+        }
+    }
+
+    public void selectTextInDDByText(WebElement dropDown, String text) {
+        try {
+            Select optionsFromDD = new Select( dropDown );
+            optionsFromDD.selectByVisibleText( text );
+            logger.info( text + " was selected in DropDown" );
+        } catch (Exception e) {
+            logger.error( "Can not work with DropDown " );
+            Assert.fail( "Can not work with DropDown " );
         }
     }
 }
