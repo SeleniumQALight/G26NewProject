@@ -24,7 +24,7 @@ public class AddNewSparePage extends ParentPage {
     public void enterSpareName(String spareName){
 actionsWithOurElements.enterText(spareNameInput,spareName);
     }
-public void clickButtonCreate(){
+    public void clickButtonCreate(){
 actionsWithOurElements.clickOnElement(buttonCreate);
 }
     public void clickButtonDelete(){

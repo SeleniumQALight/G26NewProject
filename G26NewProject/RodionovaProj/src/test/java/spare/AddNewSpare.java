@@ -13,6 +13,13 @@ public class AddNewSpare extends ParentTest {
         homePage.clickOnMenuDictionary();
         homePage.clickOnSparesSubMenu();
         sparePage.checkTitle("Учет запчастей");
-        sparePage.chackTitleh1PresentOnPageWithText("Запчасти Список");
+        sparePage.checkTitleh1PresentOnPageWithText("Запчасти Список");
+        sparePage.clickOnButtonPlus();
+        addNewSpare.checkTitleh1PresentOnPageWithText("Словарь");
+        addNewSpare.enterSpareName("Spare1");
+        addNewSpare.selectElementFromDDSpareType("Датчики івіфв");
+        addNewSpare.clickOnButtonCreate();
+        sparePage.checkTitleh1PresentOnPageWithText("Запчасти Список");
+        checkAC("Can not find spare in list",sparePage.IsSpareInList("Spare1"), true);
     }
 }
