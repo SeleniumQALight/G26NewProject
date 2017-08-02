@@ -93,12 +93,12 @@ public TestName testName = new TestName();
         }
             if (!isTestPass) {
             // дописуем скриншот!
-            {
-                utiles.screenShot(pathToScreenShot, webDriver);
+                {
+                    utiles.screenShot(pathToScreenShot, webDriver);
+                }
                 webDriver.quit();
             }
         }
-    }
 
 
     // проверяем залоигинились или нет. Даем ему месседж который будет выведен и А.Р. и Е.Р.
