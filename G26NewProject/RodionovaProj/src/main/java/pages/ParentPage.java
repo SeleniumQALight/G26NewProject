@@ -40,7 +40,7 @@ public class ParentPage {
         }
     }
 
-    public void chackTitleh1PresentOnPageWithText(String text){
+    public void checkTitleh1PresentOnPageWithText(String text){
         actionsWithOurElements.checkTextInElement(".//h1", text);
     }
 
