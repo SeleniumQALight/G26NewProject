@@ -1,6 +1,5 @@
 package suites;
 
-
 import LoginTests.InvalidLogInWithoutPageObject;
 import LoginTests.LoginTestWithoutPageObject;
 import LoginTests.ValidLogInTest;
