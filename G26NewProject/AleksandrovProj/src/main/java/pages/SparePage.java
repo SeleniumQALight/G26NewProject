@@ -5,22 +5,22 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 /**
- * Created by Yuliya_Rodionova on 7/27/2017.
+ * Created by QA Teahcer on 26.07.2017.
  */
 public class SparePage extends ParentPage {
     @FindBy(xpath = ".//*[@href='http://v3.qalight.com.ua/dictionary/spares/edit']")
     private WebElement buttonPlus;
 
     public SparePage(WebDriver webDriver) {
-        super(webDriver);
+        super( webDriver );
     }
 
-    public void clickOnButtonPlus(){
-        actionsWithOurElements.clickOnElement(buttonPlus);
+    public void clickOnButtonPlus() {
+        actionsWithOurElements.clickOnElement( buttonPlus );
     }
 
-    public boolean IsSpareInList(String nameOfSpare) {
+    public boolean isSpareInList(String nameOfSpare) {
         return actionsWithOurElements
-                .isElementPresent(".//*[text()='" + nameOfSpare + "']");
+                .isElementPresent( ".//*[text()='" + nameOfSpare + "']" );
     }
 }

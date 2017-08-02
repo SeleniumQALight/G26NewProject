@@ -4,17 +4,13 @@ import org.junit.Ignore;
 import org.junit.Test;
 import parentTest.ParentTest;
 
-/**
- * Created by QA Teahcer on 26.07.2017.
- */
 public class AddNewSpare extends ParentTest{
     @Test
-    @Ignore
     public void addNewSpare(){
         logInPage.loginUser("Student","909090");
         homePage.clickOnMenuDictionary();
         homePage.clickOnSubMenuSpares();
-        sparePage.ckeckTitle("Учет запчастей");
+        sparePage.checkTitle( "Учет запчастей" );
         sparePage.checkTitleH1PresentOnPageWithText("Запчасти Список");
         sparePage.clickOnButtonPlus();
         addNewSparePage.checkTitleH1PresentOnPageWithText("Словарь");

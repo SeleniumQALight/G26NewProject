@@ -1,14 +1,14 @@
 package pages;
 
+
 import libs.ActionsWithOurElements;
 import org.apache.log4j.Logger;
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
-/**
- * Created by andrey.aleksandrov on 19.07.2017.
- */
+import static org.hamcrest.CoreMatchers.is;
+
 public class ParentPage {
     WebDriver webDriver;
     Logger logger;
@@ -17,21 +17,37 @@ public class ParentPage {
     public ParentPage(WebDriver webDriver) {
         this.webDriver = webDriver;
         logger = Logger.getLogger( getClass() );
-        PageFactory.initElements( webDriver, this );
         actionsWithOurElements = new ActionsWithOurElements( webDriver );
+        PageFactory.initElements( webDriver, this );
     }
 
     /**
-     * Method opens url with webDriver
+     * Method opens url
      *
      * @param url
      */
     public void open(String url) {
         try {
             webDriver.get( url );
+            logger.info( "Page was opened " + url );
         } catch (Exception e) {
-            logger.error( "Page not opened " + url );
-            Assert.fail( "Page not opened " + url );
+            logger.error( "Page can not opened " + url );
+            Assert.fail( "Page can not opened " + url );
         }
+    }
+
+    public void checkTitle(String expectedTitle) {
+        try {
+            Assert.assertThat( "Title not matched",
+                    webDriver.getTitle(),
+                    is( expectedTitle ) );
+        } catch (Exception e) {
+            logger.error( "Can not work with page" );
+            Assert.fail( "Can not work with page" );
+        }
+    }
+
+    public void checkTitleH1PresentOnPageWithText(String text) {
+        actionsWithOurElements.checkTextInElement( ".//H1", text );
     }
 }
