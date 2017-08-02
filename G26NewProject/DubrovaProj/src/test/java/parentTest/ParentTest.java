@@ -10,10 +10,7 @@ import org.junit.Rule;
 import org.junit.rules.TestName;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import pages.AddNewSparePage;
-import pages.HomePage;
-import pages.LoginPage;
-import pages.SparePage;
+import pages.*;
 import spare.AddNewSpare;
 
 import java.io.File;
@@ -33,7 +30,10 @@ public class ParentTest {
     public LoginPage loginPage;
     public HomePage homePage;
     public SparePage sparePage;
+    public ProvidersPage providersPage;
     public AddNewSparePage addNewSparePage;
+    public AddNewProviderPage addNewProviderPage;
+
 
     public ParentTest() {
     }
@@ -55,11 +55,13 @@ public class ParentTest {
         loginPage = new LoginPage(webDriver);
         homePage = new HomePage(webDriver);
         sparePage = new SparePage(webDriver);
+        providersPage = new ProvidersPage(webDriver);
+        addNewProviderPage = new AddNewProviderPage(webDriver);
         addNewSparePage = new AddNewSparePage(webDriver);
     }
 
     @After
-    public void tearDown(){
+   public void tearDown(){
         if (!(webDriver==null)) {
             if (!isTestPass) {
                 utils.screenShot(pathToScreenShot, webDriver);
