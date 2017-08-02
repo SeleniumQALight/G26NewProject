@@ -53,6 +53,17 @@ public class ActionsWithOurElements {
         }
     }
 
+    public void clickOnElement(String lokator ) {
+        try {
+            WebElement element = webDriver.findElement(By.xpath(lokator));
+            webDriverWait15.until(ExpectedConditions.elementToBeClickable(element));
+            element.click();
+            logger.info("element was clicked");
+        } catch (Exception e) {
+            logger.error("Can not work with element ");
+            Assert.fail("Can not work with element ");
+        }
+    }
     public boolean isElementPresent(String locatorWithText) {
         try{
             return webDriver.findElement(By.xpath(locatorWithText)).isDisplayed();

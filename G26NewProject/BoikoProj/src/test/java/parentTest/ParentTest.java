@@ -32,7 +32,7 @@ public class ParentTest {
     public HomePage homePage;
     public SparePage sparePage;
     public AddNewSparePage addNewSparePage;
-   // public ProvidersPage providersPage;
+    public ProvidersPage providersPage;
     public EditProviderPage editProviderPage;
     public ProfilePage profilePage;
 
@@ -59,7 +59,7 @@ public class ParentTest {
         homePage = new HomePage(webDriver);
         sparePage = new SparePage(webDriver);
         addNewSparePage = new AddNewSparePage(webDriver);
-        //providersPage = new ProvidersPage(webDriver);
+        providersPage = new ProvidersPage(webDriver);
         editProviderPage = new EditProviderPage(webDriver);
         profilePage = new ProfilePage(webDriver);
 
