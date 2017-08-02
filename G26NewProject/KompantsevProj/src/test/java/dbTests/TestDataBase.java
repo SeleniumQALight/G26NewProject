@@ -27,7 +27,7 @@ public class TestDataBase {
     public void testWithDB() throws SQLException {
 //        logger.info(dbMySQL.selectTable("Select * From seleniumTable"));
 //        logger.info(dbMySQL.selectTable("Select * From seleniumTable").get(1));
-//        logger.info(dbMySQL.changeDB("Insert into seleniumTable " + "values (80, 'kompantsev', 'qqq111')"));
+//        logger.info(dbMySQL.changeDB("Insert into seleniumTable values (80, 'kompantsev', 'qqq111')"));
 //        logger.info(dbMySQL.selectTable("Select * From seleniumTable"));
         logger.info(dbMySQL.changeDB("Delete From seleniumTable where passWord='qqq111'"));
         logger.info(dbMySQL.selectTable("Select * From seleniumTable"));
