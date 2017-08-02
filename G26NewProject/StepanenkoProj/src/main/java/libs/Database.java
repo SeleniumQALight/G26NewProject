@@ -94,7 +94,6 @@ public class Database {
         stm.close();
         return  effectedRows;
     }
-
     /*
      *  That method gets SQL [Select COLUMN_NAME from TABLE_NAME where ...] query as parameter and returns result as String
      */

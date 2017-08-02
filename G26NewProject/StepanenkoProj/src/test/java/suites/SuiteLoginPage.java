@@ -10,7 +10,6 @@ import org.junit.runners.Suite;
  * @RunWith(Suite.class) аннотация показывает начало работы со сьютом
  */
 @RunWith(Suite.class)
-
 /**
  * @Suite.SuiteClasses аннотация перечисляет все тесты в сьюите
  */

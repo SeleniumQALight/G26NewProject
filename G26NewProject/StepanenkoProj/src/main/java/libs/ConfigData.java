@@ -14,6 +14,7 @@ public class ConfigData {
     public static String cfgFile="src/config.properties";
     public static String uiMappingFile="src/UIMapping.properties";
 
+
     /*
      *  Return value from .properties file
      */

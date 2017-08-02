@@ -18,6 +18,7 @@ public class SpreadsheetData {
         this.data = loadFromSpreadsheet(excelInputStream, sheetName);
     }
 
+
     public Collection<Object[]> getData() {
         return data;
     }
