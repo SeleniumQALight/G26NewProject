@@ -6,9 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static libs.ConfigData.getCfgValue;
-//import static lib.TimeDate.getCurrentTimeDB;
-//import static lib.TimeDate.getCurrentTimeUI;
-//import static lib.TimeDate.printCalendarDB;
+
 import org.apache.log4j.Logger;
 
 
@@ -27,25 +25,20 @@ public class Database {
      */
     public Database(String db, String driver) throws IOException, ClassNotFoundException, SQLException {
         url = getCfgValue(db);
-        log.info("Данные считаны url database: " + url);
 
         // Load driver for JDBC class
         Class.forName(getCfgValue(driver));
-        log.info("Считали SQL драйвер ");
 
         // Create a connection to the database
         String user_name = getCfgValue((db + "_USER"));
         String user_pass = getCfgValue((db + "_PASSWORD"));
-        log.info(" user - " + user_name + " pass " + user_pass);
         connection = DriverManager.getConnection(url, getCfgValue((db + "_USER")), getCfgValue((db + "_PASSWORD")));
-        log.info("дальше опять" + connection);
     }
 
     /*
      *  That method verifies if the row in the query exists in the database
      */
     public boolean isRowPresent(String query) throws SQLException {
-        //System.out.println(query);
 
         // Create statement for connection, execute query and save outcome in ResultSet
         Statement stm = connection.createStatement();
@@ -66,6 +59,13 @@ public class Database {
             return true;
         }
 
+    }
+
+    public int changeDB(String query) throws SQLException {
+        Statement stm = connection.createStatement();
+        int affectedRows = stm.executeUpdate(query);
+        stm.close();
+        return affectedRows;
     }
 
     /*
@@ -91,7 +91,6 @@ public class Database {
         }
 
         stm.close();
-        //System.out.println(query);
         value = value.trim();
         return value;
     }
@@ -126,7 +125,6 @@ public class Database {
 
         // Close the statement
         stm.close();
-        //System.out.println(query);
         return resultSet;
     }
 
@@ -203,7 +201,6 @@ public class Database {
         }
 
         stm.close();
-        //System.out.println(query);
         return rowCount;
     }
 
@@ -234,75 +231,7 @@ public class Database {
         return value;
     }
 
-    /*
-     *  Return random Material for placing on the queue
-     */
-   /* public String randMaterialForQueue(String queueName, String endTime) throws SQLException {
-        String material="";
-
-        String assetType=selectValue("select ASSET_TYPE from QM_Q_ASSET_TYPE where QUEUE_NAME='" + queueName + "'");
-        String is_hd=selectValue("select IS_HD from QM_QUEUE where QUEUE_NAME='" + queueName + "'");
-        String is_3d=selectValue("select IS_3D from QM_QUEUE where QUEUE_NAME='" + queueName + "'");
-        String is_mp4=selectValue("select IS_MP4 from QM_QUEUE where QUEUE_NAME='" + queueName + "'");
-        String blockType=selectValue("select CHAN_BLOCK_TYPE from QM_QUEUE where QUEUE_NAME='"+queueName+"'");
-        String pushType=selectValue("select PUSH_TYPE from CM_BLOCK_TYPES where CHAN_BLOCK_TYPE='" + blockType + "'");
-
-        int seed=getCurrentTimeUI().get(Calendar.MILLISECOND);
-
-        if(pushType.equals("CAROUSEL")){
-            material=randDbValue("select MATERIAL_ID, RAND("+seed+") as IDX from MM_MATERIAL where (IS_DELETED='N' and ASSET_TYPE='"+assetType+"' and HD='"+is_hd+"' and IS_3D='"+is_3d+"' and MP4='"+is_mp4+"' and RIGHTS_END>='"+endTime+"' and IS_CAROUSEL_OK='Y' and MATERIAL_ID like 'B%M3') ORDER BY IDX FETCH FIRST 1 ROWS ONLY");
-        } else{
-            if(pushType.equals("PUSH")){
-                material=randDbValue("select MATERIAL_ID, RAND("+seed+") as IDX from MM_MATERIAL where (IS_DELETED='N' and ASSET_TYPE='"+assetType+"' and HD='"+is_hd+"' and IS_3D='"+is_3d+"' and MP4='"+is_mp4+"' and PUSH_GROUP_ID is not null and RIGHTS_END>='"+endTime+"' and MATERIAL_ID like 'B%M3') ORDER BY IDX FETCH FIRST 1 ROWS ONLY");
-            }
-        }
-
-        return material;
-    }
-*/
-
-    /*
-     *  Return random Material for placing on channel block
-     */
-   /* public String randMaterialForChanBlock(String chanBlock, String endTime) throws SQLException {
-        String material="";
-
-        String is_hd=selectValue("select IS_HD from CM_CHAN_BLOCKS where CHAN_BLOCK_ID="+chanBlock);
-        String is_3d=selectValue("select IS_3D from CM_CHAN_BLOCKS where CHAN_BLOCK_ID="+chanBlock);
-        String is_mp4=selectValue("select IS_MP4 from CM_CHAN_BLOCKS where CHAN_BLOCK_ID="+chanBlock);
-        String blockType=selectValue("select CHAN_BLOCK_TYPE from CM_CHAN_BLOCKS where CHAN_BLOCK_ID="+chanBlock);
-        String pushType=selectValue("select PUSH_TYPE from CM_BLOCK_TYPES where CHAN_BLOCK_TYPE='" + blockType + "'");
-
-        int seed=getCurrentTimeUI().get(Calendar.MILLISECOND);
-
-        if(pushType.equals("CAROUSEL")){
-            material=randDbValue("select MATERIAL_ID, RAND("+seed+") as IDX from MM_MATERIAL where (IS_DELETED='N' and HD='"+is_hd+"' and IS_3D='"+is_3d+"' and MP4='"+is_mp4+"' and RIGHTS_END>='"+endTime+"' and IS_CAROUSEL_OK='Y' and MATERIAL_ID like 'B%M3') ORDER BY IDX FETCH FIRST 1 ROWS ONLY");
-        } else{
-            if(pushType.equals("PUSH")){
-                material=randDbValue("select MATERIAL_ID, RAND("+seed+") as IDX from MM_MATERIAL where (IS_DELETED='N' and HD='"+is_hd+"' and IS_3D='"+is_3d+"' and MP4='"+is_mp4+"' and PUSH_GROUP_ID is not null and RIGHTS_END>='"+endTime+"' and MATERIAL_ID like 'B%M3') ORDER BY IDX FETCH FIRST 1 ROWS ONLY");
-            }
-        }
-
-        return material;
-    }
-*/
-
-    /*
-     *  Return random Material
-     */
-   /* public String randMaterial() throws SQLException {
-        int seed=getCurrentTimeUI().get(Calendar.MILLISECOND);
-        String material=randDbValue("select MATERIAL_ID, RAND("+seed+") as IDX from MM_MATERIAL where (IS_DELETED='N' and RIGHTS_END>='"+printCalendarDB(getCurrentTimeDB())+"' and MATERIAL_ID like 'B%M3') ORDER BY IDX FETCH FIRST 1 ROWS ONLY");
-
-        return material;
-    }
-*/
-
-    /*
-     *  Close connection to the database
-     */
     public void quit() throws SQLException {
         connection.close();
     }
-
 }
