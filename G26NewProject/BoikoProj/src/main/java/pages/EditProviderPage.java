@@ -24,7 +24,7 @@ public class EditProviderPage extends ParentPage{
     }
 
     public void makeProviderAsPrivatePerson() {
-        actionsWithOurElements.clickCheckBox(checkBoxPrivatePerson);
+        actionsWithOurElements.setCheckBoxToSelected(checkBoxPrivatePerson);
     }
 
     public void clickOnButtonSave() {

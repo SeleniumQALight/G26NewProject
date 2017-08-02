@@ -19,9 +19,7 @@ public class ChangeUserName extends ParentTest{
         profilePage.enterUserName("Студент новый");
         profilePage.clickOnSaveButton();
         profilePage.checkTitleH3WithUserName("Студент новый");
-        homePage.isRightUserNameTextCorrect("Студент новый");
-        homePage.isLeftUserNameTextCorrect("Студент новый");
-        //checkAC("Right user name is not correct", homePage.isRightUserNameTextCorrect("Студент новый"), true);
-        //checkAC("Left user name is not correct", homePage.isLeftUserNameTextCorrect("Студент новый"), true);
+        checkAC("Right user name is not correct", homePage.isRightUserNameTextCorrect("Студент новый"), true);
+        checkAC("Left user name is not correct", homePage.isLeftUserNameTextCorrect("Студент новый"), true);
     }
 }

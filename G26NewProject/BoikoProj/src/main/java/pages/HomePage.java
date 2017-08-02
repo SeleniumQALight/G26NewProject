@@ -43,12 +43,12 @@ public class HomePage extends ParentPage{
         return actionsWithOurElements.isElementPresent(rightAvatar);
     }
 
-    public void isRightUserNameTextCorrect(String text) {
-        actionsWithOurElements.checkTextInElement(".//span[@class='hidden-xs']", text);
+    public boolean isRightUserNameTextCorrect(String text) {
+        return actionsWithOurElements.getTextFromElement(".//span[@class='hidden-xs']").equalsIgnoreCase(text);
     }
 
-    public void isLeftUserNameTextCorrect(String text) {
-        actionsWithOurElements.checkTextInElement(".//div[@class='pull-left info']//p", text);
+    public boolean isLeftUserNameTextCorrect(String text) {
+        return actionsWithOurElements.getTextFromElement(".//div[@class='pull-left info']//p").equalsIgnoreCase(text);
     }
 
     public void clickOnMenuDictionary(){
