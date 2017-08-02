@@ -27,6 +27,7 @@ public class Database {
      */
     public Database(String db, String driver) throws IOException, ClassNotFoundException, SQLException {
         url=getCfgValue(db);
+        // не обязательная строка
         log.info("Данные считаны url database: " + url);
 
         // Load driver for JDBC class
@@ -69,9 +70,20 @@ public class Database {
 
     }
 
+
+
+    // метод который будет изменять(апдейтить, инсертить и тд) базу данный
+    public int changeDB (String query) throws SQLException {
+        Statement stm = connection.createStatement();
+        int affectedRows = stm.executeUpdate(query);
+        // очень важно её закрыть
+        stm.close();
+        return affectedRows;
+    }
     /*
      *  That method gets SQL [Select COLUMN_NAME from TABLE_NAME where ...] query as parameter and returns result as String
      */
+    // это метод который мы ожидаем одно значение
     public String selectValue(String query) throws SQLException {
         // Create statement for connection, execute query and save outcome in ResultSet
         Statement stm=connection.createStatement();
@@ -101,6 +113,8 @@ public class Database {
     /*
      *  That method gets SQL [Select COLUMN_NAME from TABLE_NAME where ...] query as parameter and returns result set as List of Strings
      */
+    // query - запрос, List - возвращает лист
+    // упадет если больше две строки то упадет. значений сколько угодно так как лист
     public List selectResultSet(String query) throws SQLException {
         // Create statement for connection, execute query and save outcome in ResultSet
         Statement stm=connection.createStatement();
@@ -136,6 +150,7 @@ public class Database {
     /*
      *  That method gets SQL [Select COLUMN_NAME_1,COLUMN_NAME_2 from TABLE_NAME where ...] query as parameter and returns result set as List of Strings
      */
+    //
     public List selectTable(String query) throws SQLException {
         // Create statement for connection, execute query and save outcome in ResultSet
         Statement stm=connection.createStatement();
