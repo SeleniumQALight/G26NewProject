@@ -15,6 +15,7 @@ public class InvalidLogOnWithExcel extends ParentTest {
     private ExcelDriver excelDriver;
     Logger logger = Logger.getLogger(getClass());
     @Test
+
     public void invalidLogOnWithExcel ()throws IOException{
     excelDriver = new ExcelDriver();
         Map<String, String> dataSet = excelDriver.getData(".//src//main//java//data//testData.xls", "validLogOn");
