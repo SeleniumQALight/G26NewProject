@@ -1,5 +1,6 @@
 package LoginTests;
 
+import org.junit.Ignore;
 import parentTest.ParentTest;
 import org.junit.Test;
 import parentTest.ParentTest;
@@ -9,6 +10,7 @@ import parentTest.ParentTest;
 
 public class ValigLogOnTest extends ParentTest {
 	@Test
+	//@Ignore //аннотация которая игнорит 1 тест кейс
 	public void validLogOn(){
 		loginPage.openLoginPage(); //сюда ничего передавать не нужно
 		loginPage.enterLoginToInput("Student"); //Логины могут быть разные
