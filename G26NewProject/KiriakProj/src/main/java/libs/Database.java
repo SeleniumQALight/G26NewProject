@@ -27,7 +27,6 @@ public class Database {
      */
     public Database(String db, String driver) throws IOException, ClassNotFoundException, SQLException {
         url=getCfgValue(db);
-        log.info("Данные считаны url database: " + url);
 
         // Load driver for JDBC class
         Class.forName(getCfgValue(driver));
@@ -67,6 +66,13 @@ public class Database {
             return true;
         }
 
+    }
+
+    public int changeDB(String query) throws SQLException {
+        Statement stm = connection.createStatement();
+        int affectedRows = stm.executeUpdate(query);
+        stm.close();
+        return affectedRows;
     }
 
     /*
