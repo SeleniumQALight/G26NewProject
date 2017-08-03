@@ -25,9 +25,8 @@ public class Database {
      *  Note in config.properties, please, that username and password for access to the database should be named as
      *  relevant connection string including "_USER"  and "_PASSWORD"
      */
-    public Database(String db, String driver) throws IOException, ClassNotFoundException, SQLException {
+    public Database(String db, String driver) throws IOException, ClassNotFoundException, SQLException {// даем
         url=getCfgValue(db);
-        log.info("Данные считаны url database: " + url);
 
         // Load driver for JDBC class
         Class.forName(getCfgValue(driver));
@@ -68,6 +67,12 @@ public class Database {
         }
 
     }
+        public int changeDB(String query) throws SQLException {
+        Statement stm = connection.createStatement();
+        int affectedRows = stm.executeUpdate(query);
+        stm.close();
+        return affectedRows;
+        }
 
     /*
      *  That method gets SQL [Select COLUMN_NAME from TABLE_NAME where ...] query as parameter and returns result as String
@@ -101,7 +106,7 @@ public class Database {
     /*
      *  That method gets SQL [Select COLUMN_NAME from TABLE_NAME where ...] query as parameter and returns result set as List of Strings
      */
-    public List selectResultSet(String query) throws SQLException {
+    public List selectResultSet(String query) throws SQLException {//
         // Create statement for connection, execute query and save outcome in ResultSet
         Statement stm=connection.createStatement();
         ResultSet rSet = stm.executeQuery(query);
@@ -136,7 +141,7 @@ public class Database {
     /*
      *  That method gets SQL [Select COLUMN_NAME_1,COLUMN_NAME_2 from TABLE_NAME where ...] query as parameter and returns result set as List of Strings
      */
-    public List selectTable(String query) throws SQLException {
+    public List selectTable(String query) throws SQLException { //используем єтот
         // Create statement for connection, execute query and save outcome in ResultSet
         Statement stm=connection.createStatement();
         //System.out.println(query);
