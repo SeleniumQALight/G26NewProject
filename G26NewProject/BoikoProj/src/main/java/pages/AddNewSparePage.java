@@ -36,7 +36,11 @@ public class AddNewSparePage extends ParentPage{
         actionsWithOurElements.clickOnElement(buttonDelete);
     }
 
-    public void selectElementFromDDSpareType(String nameOfType){
+    public void selectElementFromDDSpareTypeByText(String nameOfType){
             actionsWithOurElements.selectTextInDDByText(spareTypeDropDown, nameOfType);
+    }
+
+    public void selectElementFromDDSpareTypeByValue(String valueOfType){
+        actionsWithOurElements.selectTextInDDByValue(spareTypeDropDown, valueOfType);
     }
 }

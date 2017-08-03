@@ -18,7 +18,8 @@ public class AddNewSpare extends ParentTest{
         sparePage.clickOnButtonPlus();
         addNewSparePage.checkTitleH1PresentOnPageWithText("Словарь");
         addNewSparePage.enterSpareName("Spare1");
-        addNewSparePage.selectElementFromDDSpareType("Датчики івіфв");
+        //addNewSparePage.selectElementFromDDSpareTypeByText("Датчики івіфв");
+        addNewSparePage.selectElementFromDDSpareTypeByValue("4");
         addNewSparePage.clickButtonCreate();
         sparePage.checkTitleH1PresentOnPageWithText("Запчасти Список");
         checkAC("Can not find spare in list", sparePage.isSpareInList("Spare1"),true);
