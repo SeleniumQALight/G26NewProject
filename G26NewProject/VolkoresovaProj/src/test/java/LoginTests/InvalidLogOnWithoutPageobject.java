@@ -1,7 +1,6 @@
 package LoginTests;
 
 import org.junit.Test;
-import org.openqa.selenium.By;
 import parentTest.ParentTest;
 
 /**
@@ -14,6 +13,7 @@ public class InvalidLogOnWithoutPageobject extends ParentTest{
     }
 
     @Test
+    //@Ignore
     public void invalidLogOn(){
 
         logInPage.openLogInPage();
