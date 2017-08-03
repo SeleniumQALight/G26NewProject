@@ -90,13 +90,15 @@ public TestName testName = new TestName();
         //Дописуем. Если обьекта (драйвера нет) - то и нечего закрывать. Т.е. если он есть мы его закрываем
         if (!(webDriver == null)) {
             // дописуем только если скриншот завалился будет скриншот, без этой строки скриншот всегда
-        }
+
             if (!isTestPass) {
-            // дописуем скриншот!
-            {
+                // дописуем скриншот!
+
                 utiles.screenShot(pathToScreenShot, webDriver);
-                webDriver.quit();
             }
+                    webDriver.quit();
+
+
         }
     }
 
