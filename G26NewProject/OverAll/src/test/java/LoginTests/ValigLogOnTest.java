@@ -5,6 +5,10 @@ import parentTest.ParentTest;
 
 
 public class ValigLogOnTest extends ParentTest {
+    public ValigLogOnTest(String browser) {
+        super(browser);
+    }
+    
     @Test
     public void validLogOn(){
         logInPage.openLoginPage();
