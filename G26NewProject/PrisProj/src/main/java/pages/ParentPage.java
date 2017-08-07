@@ -26,7 +26,6 @@ public class ParentPage {
 		//инициализировать елементы(@FindBy) того класса который к ней обращается через оператор this
 		PageFactory.initElements(webDriver, this);
 	}
-	
 	/**
 	 * Method opens url
 	 * @param url
