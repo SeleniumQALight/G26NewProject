@@ -1,6 +1,6 @@
 package libs;
 
-import com.sun.xml.internal.bind.v2.TODO;
+
 import org.apache.log4j.Logger;
 import org.junit.Assert;
 import org.openqa.selenium.By;
@@ -9,8 +9,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.io.IOException;
 
 import static org.hamcrest.CoreMatchers.is;
 
@@ -22,12 +20,6 @@ public class ActionsWithOurElements {
     public ActionsWithOurElements(WebDriver webDriver) {
         this.webDriver = webDriver;
         logger = Logger.getLogger( getClass() );
-//TODO change time to value from config.properties with ConfigData.getCfgMValue method
-//        try {
-//            webDriverWait15 = new WebDriverWait( webDriver, ConfigData.getCfgValue( "ImplicitlyWait" ) );
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
         webDriverWait15 = new WebDriverWait( webDriver, 15 );
     }
 
