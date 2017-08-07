@@ -13,13 +13,13 @@ import java.io.IOException;
  * Created by Dmitriy on 24.07.2017.
  */
 public class Utils {
-	
+
 	private Logger log;
-	
+
 	public Utils(){ //Создали конструктор для работы с логом
 		log = Logger.getLogger(getClass());
 	}
-	
+
 	/**
 	 * Taking screenshot into .//target// + pathToScreenShot
 	 * @param pathToScreenShot
@@ -34,7 +34,7 @@ public class Utils {
 			e.printStackTrace();
 		}
 	}
-	
+
 	/**
 	 * Hard wait
 	 * @param second

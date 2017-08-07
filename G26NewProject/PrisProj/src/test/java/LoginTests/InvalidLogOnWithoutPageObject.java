@@ -1,4 +1,4 @@
-package LoginTests;
+package loginTests;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -11,11 +11,11 @@ import parentTest.ParentTest;
  * Created by Dmitriy on 17.07.2017.
  */
 public class InvalidLogOnWithoutPageObject extends ParentTest {
-	
+
 	//Конструктор - используй вебдрайвер обьект который обьявлен в родителе.
 	public InvalidLogOnWithoutPageObject() {
 	}
-	
+
 	@Test
 	public void invalidLogOn() {
 		loginPage.openLoginPage();

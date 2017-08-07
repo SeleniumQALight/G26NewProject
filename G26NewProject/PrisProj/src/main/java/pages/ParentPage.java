@@ -6,8 +6,6 @@ import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
-import static org.hamcrest.CoreMatchers.is;
-
 
 /**
  * Created by Dmitriy on 19.07.2017.
@@ -17,7 +15,7 @@ public class ParentPage {
 	WebDriver webDriver;
 	Logger logger;
 	ActionWithOurElements actionWithOurElements;
-	
+
 	public ParentPage(WebDriver webDriver) { //Создали конструктор для того чтобы передать webDriver
 		this.webDriver = webDriver; //webDriver перетащит webDriver который перейдет из вне
 		logger = Logger.getLogger(getClass());
@@ -26,7 +24,7 @@ public class ParentPage {
 		//инициализировать елементы(@FindBy) того класса который к ней обращается через оператор this
 		PageFactory.initElements(webDriver, this);
 	}
-	
+
 	/**
 	 * Method opens url
 	 * @param url
@@ -41,20 +39,5 @@ public class ParentPage {
 			//Assert любой из них при негативном тесте завершает работы теста и пишет красным
 			Assert.fail("Page can not opened" + url);
 		}
-	}
-
-
-	public void ckeckTitle(String expectedTitle) { //Метод ищет title
-		try{
-			Assert.assertThat("Title not matched", webDriver.getTitle(), is (expectedTitle));
-		} catch (Exception e) {
-			logger.error("Can not work with page");
-			Assert.fail("Can not work with page");
-		}
-	}
-
-	public void checkTitleH1PresentOnPagewithText (String text){
-		actionWithOurElements.checkTextInElement(".//h1", text);
-
 	}
 }
