@@ -67,7 +67,7 @@ public class ParentTest {
         addNewSparePage = new AddNewSparePage(webDriver);
     }
 
-    //after выполняется ТОЛЬКО 1 раз после тестом
+    //after выполняется ТОЛЬКО 1 раз после тестa
     @After
     public void tearDown() {
         if (!(webDriver==null)) {

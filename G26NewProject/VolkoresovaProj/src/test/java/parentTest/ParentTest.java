@@ -12,6 +12,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import pages.*;
 
 import java.io.File;
+import java.io.IOException;
+import java.sql.SQLException;
 import java.util.concurrent.TimeUnit;
 
 import static org.hamcrest.CoreMatchers.is;
@@ -41,7 +43,7 @@ public class ParentTest {
     public TestName testName = new TestName();
 
     @Before
-    public void setUp(){
+    public void setUp() throws SQLException, IOException, ClassNotFoundException {
         File file = new File("");
         pathToScreenShot = file.getAbsolutePath() + "/target/screenshots/"
                 + this.getClass().getPackage().getName()+"/"
@@ -64,7 +66,7 @@ public class ParentTest {
     }
 
     @After
-    public void tearDown() {
+    public void tearDown() throws SQLException {
         if (!(webDriver==null)){
             if (!isTestPass) {
                 utils.screenShot(pathToScreenShot, webDriver);
