@@ -9,7 +9,9 @@ import parentTest.ParentTest;
 
 public class InvalidLogOnWithoutPageobject extends ParentTest{
 
-    public InvalidLogOnWithoutPageobject()  {   }
+    public InvalidLogOnWithoutPageobject(String browser) {
+        super(browser);
+    }
 
     @Test
     public void invalidLogOn(){
