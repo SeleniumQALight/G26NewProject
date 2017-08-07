@@ -9,7 +9,6 @@ import java.util.List;
 
 import static libs.ConfigData.getCfgValue;
 
-
 /*
  *  Database class provides methods for working with database.
  */
@@ -33,10 +32,7 @@ public class Database {
         String user_pass=getCfgValue((db + "_PASSWORD"));
         log.info(" user - " + user_name + " pass " + user_pass);
         connection= DriverManager.getConnection(url,user_name,user_pass);
-        
     }
-
-
     /*
      *  That method verifies if the row in the query exists in the database
      */
@@ -80,6 +76,16 @@ public class Database {
     /*
      *  That method gets SQL [Select COLUMN_NAME from TABLE_NAME where ...] query as parameter and returns result as String
      */
+public int changeDB (String query) throws SQLException {
+    Statement stm = connection.createStatement();
+    int affectedRows = stm.executeUpdate(query);
+    stm.close();
+return affectedRows;
+
+}
+
+
+
     public String selectValue(String query) throws SQLException {
         // Create statement for connection, execute query and save outcome in ResultSet
         Statement stm=connection.createStatement();
