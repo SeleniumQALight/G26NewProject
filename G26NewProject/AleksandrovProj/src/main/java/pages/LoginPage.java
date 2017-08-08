@@ -1,7 +1,5 @@
 package pages;
 
-import org.junit.Assert;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -17,7 +15,7 @@ public class LoginPage extends ParentPage {
     private WebElement passwordInput;
 
     @FindBy(xpath = "//button")
-    private WebElement submitButton;
+    private WebElement buttonSubmit;
 
     public LoginPage(WebDriver webDriver) {
         super( webDriver );
@@ -49,11 +47,20 @@ public class LoginPage extends ParentPage {
     /**
      * Method makes mouse click on submit button
      */
-    public void clickButton() {
-        actionsWithOurElements.mouseClickElement( submitButton );
+
+    public void clickOnSubmitButton() {
+        actionsWithOurElements.clickOnElement( buttonSubmit );
     }
 
     public boolean isElementWithTextPresent(String text) {
         return actionsWithOurElements.isElementPresent( ".//*[contains(text(),'" + text + "')]" );
+    }
+
+    public void loginUser(String login, String password) {
+        openLoginPage();
+        enterLoginToInput( login );
+        enterPasswordToInput( password );
+        clickOnSubmitButton();
+        checkTitle( "Учет запчастей" );
     }
 }

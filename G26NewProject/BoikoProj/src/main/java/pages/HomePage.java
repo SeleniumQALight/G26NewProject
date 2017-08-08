@@ -19,6 +19,21 @@ public class HomePage extends ParentPage{
     @FindBy (id = "spares")
     private WebElement sparesSubMenu;
 
+    @FindBy (id = "prov_cus")
+    private WebElement providersSubMenu;
+
+    @FindBy (xpath = ".//span[@class='hidden-xs']")
+    private WebElement rightLoginName;
+
+    @FindBy (xpath = ".//div[@class='pull-left info']//p")
+    private WebElement leftLoginName;
+
+    @FindBy (xpath = ".//a[@href='/logout']")
+    private WebElement buttonLogout;
+
+    @FindBy (xpath = ".//a[@href='/users/profile/16']")
+    private WebElement buttonProfile;
+
     public HomePage(WebDriver webDriver) {
         super(webDriver);
     }
@@ -28,6 +43,14 @@ public class HomePage extends ParentPage{
         return actionsWithOurElements.isElementPresent(rightAvatar);
     }
 
+    public void isRightUserNameTextCorrect(String text) {
+        actionsWithOurElements.checkTextInElement(".//span[@class='hidden-xs']", text);
+    }
+
+    public void isLeftUserNameTextCorrect(String text) {
+        actionsWithOurElements.checkTextInElement(".//div[@class='pull-left info']//p", text);
+    }
+
     public void clickOnMenuDictionary(){
         actionsWithOurElements.clickOnElement(menuDictionary);
 
@@ -35,5 +58,21 @@ public class HomePage extends ParentPage{
 
     public void clickOnSubMenuSpares(){
         actionsWithOurElements.clickOnElement(sparesSubMenu);
+    }
+
+    public void clickOnSubMenuProviders() {
+        actionsWithOurElements.clickOnElement(providersSubMenu);
+    }
+
+    public void clickOnRightLoginName(){
+        actionsWithOurElements.clickOnElement(rightLoginName);
+    }
+
+    public void clickOnLogoutButton(){
+        actionsWithOurElements.clickOnElement(buttonLogout);
+    }
+
+    public void clickOnProfileButton(){
+        actionsWithOurElements.clickOnElement(buttonProfile);
     }
 }

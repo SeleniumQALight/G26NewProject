@@ -1,5 +1,6 @@
 package spare;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import parentTest.ParentTest;
 
@@ -7,7 +8,12 @@ import parentTest.ParentTest;
  * Created by QA Teahcer on 26.07.2017.
  */
 public class AddNewSpare extends ParentTest{
+    public AddNewSpare(String browser) {
+        super(browser);
+    }
+    
     @Test
+    @Ignore
     public void addNewSpare(){
         logInPage.loginUser("Student","909090");
         homePage.clickOnMenuDictionary();

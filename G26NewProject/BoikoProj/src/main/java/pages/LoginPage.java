@@ -71,6 +71,14 @@ public class LoginPage extends ParentPage{
         return actionsWithOurElements.isElementPresent(".//*[contains(text(),'"+text+"')]");
     }
 
+    public boolean isFieldLoginInitiallyEmpty() {
+        return actionsWithOurElements.isFieldEmpty(loginInput);
+    }
+
+    public boolean isFieldPasswordInitiallyEmpty() {
+        return actionsWithOurElements.isFieldEmpty(inputPass);
+    }
+
     public void loginUser(String login, String password) {
         openLoginPage();
         enterLoginToInput(login);
@@ -78,5 +86,7 @@ public class LoginPage extends ParentPage{
         pressButtonSubmit();
         checkTitle("Учет запчастей");
     }
+
+
 }
 
