@@ -9,7 +9,7 @@ import org.junit.runners.Suite;
 @Suite.SuiteClasses(
         {
                 ValidLogOnTest.class,
-                InvalidLogOnWithoutPageObject.class,
+                //InvalidLogOnWithoutPageObject.class,
 
         }
 )
