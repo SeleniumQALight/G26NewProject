@@ -27,4 +27,19 @@ public class DefinitionSteps {
         endUser.should_see_definition(definition);
     }
 
+    @Given("the user is on the login page")
+    public void givenTheUserIsOnTheLoginPage() {
+        endUser.openLoginPage();
+    }
+
+    @When("i use login '$login' and password '$password'")
+    public void whenTheUserWantsToSignUp(String login, String password) {
+        endUser.authentication(login, password);
+    }
+
+    @Then("authentication is successful and i see Avatar on Home Page")
+    public void thenHeShouldSeeAnAvatarOnHomePage() {
+        endUser.shouldSeeAvatar();
+    }
+
 }
