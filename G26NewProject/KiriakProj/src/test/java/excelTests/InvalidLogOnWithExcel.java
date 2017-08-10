@@ -12,6 +12,11 @@ import java.util.Map;
 public class InvalidLogOnWithExcel extends ParrentTest{
     private ExcelDriver excelDriver;
     Logger logger = Logger.getLogger(getClass());
+    
+    public InvalidLogOnWithExcel(String browser) {
+        super(browser);
+    }
+    
     @Test
     public void invalidLogOnWithExcel() throws IOException {
         excelDriver = new ExcelDriver();
