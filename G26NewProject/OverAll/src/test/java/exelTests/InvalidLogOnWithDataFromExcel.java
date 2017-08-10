@@ -21,7 +21,7 @@ public class InvalidLogOnWithDataFromExcel extends ParentTest {
     String login, pass;
 
     public InvalidLogOnWithDataFromExcel(String browser, String login, String pass) {
-
+        super(browser);
         this.login = login;
         this.pass = pass;
     }
