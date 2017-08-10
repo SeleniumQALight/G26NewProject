@@ -4,6 +4,10 @@ import org.junit.Test;
 import parrentTest.ParrentTest;
 
 public class AddNewSpareTest extends ParrentTest {
+    public AddNewSpareTest(String browser) {
+        super(browser);
+    }
+
     @Test
     public void addNewSpare(){
         loginPage.loginUser("Student","909090");

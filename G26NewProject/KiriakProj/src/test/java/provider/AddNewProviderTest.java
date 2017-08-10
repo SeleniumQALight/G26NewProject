@@ -5,6 +5,9 @@ import parrentTest.ParrentTest;
 
 
 public class AddNewProviderTest extends ParrentTest{
+    public AddNewProviderTest(String browser) {
+        super(browser);
+    }
     @Test
     public void addNewProvider(){
         loginPage.loginUser("Student","909090");
