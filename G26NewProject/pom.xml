@@ -15,6 +15,7 @@
     </dependency>
   </dependencies>
   <modules>
+    <module>jBehaveProject</module>
     <module>BeresukProj</module>
     <module>BoikoProj</module>
     <module>VolkoresovaProj</module>
