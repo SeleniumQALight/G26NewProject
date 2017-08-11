@@ -1,20 +1,20 @@
 package mainPack.pages;
 
-import net.thucydides.core.pages.PageObject;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
+import net.thucydides.core.annotations.DefaultUrl;
+import net.thucydides.core.annotations.findby.FindBy;
+import net.thucydides.core.pages.WebElementFacade;
 
-public class HomePage extends PageObject{
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.is;
 
-    @FindBy(xpath = ".//img[@class='user-image']")
-    private WebElement rightAvatar;
+@DefaultUrl("http://v3.test.itpmgroup.com/")
+public class HomePage extends PageForV3 {
 
-    public boolean isAvatarPresent(){
-        try {
-            return rightAvatar.isDisplayed();
-        }catch (Exception e){
-            System.out.println("isAvatarPresent");
-            return false;
-        }
+    @FindBy(xpath = ".//a//img[@src='/bundles/ap/adminlte/dist/img/avatar.png']")
+    private WebElementFacade avatar;
+
+    public void isAvatarPresent() {
+        assertThat(iselementPresent(avatar), is(true));
     }
+
 }

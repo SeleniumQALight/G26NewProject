@@ -2,11 +2,13 @@ package mainPack.pages;
 
 import net.thucydides.core.annotations.DefaultUrl;
 import net.thucydides.core.annotations.findby.FindBy;
-import net.thucydides.core.pages.PageObject;
 import net.thucydides.core.pages.WebElementFacade;
+import static org.hamcrest.MatcherAssert.assertThat;
 
-@DefaultUrl("http://en.wiktionary.org/wiki/Wiktionary")
-public class LoginPage extends PageObject {
+import static org.hamcrest.Matchers.is;
+
+@DefaultUrl("http://v3.qalight.com.ua/login")
+public class LoginPage extends PageForV3 {
 
     @FindBy(name = "_username")
     private WebElementFacade loginInput;
@@ -17,27 +19,23 @@ public class LoginPage extends PageObject {
     @FindBy(xpath = ".//button[@type='submit']")
     private WebElementFacade submitButton;
 
-    public void enterLogin(String login) {
-        try {
-            loginInput.type(login);
-        } catch (Exception e) {
-            System.out.println("enterLogin");
-        }
+    @FindBy(xpath = ".//*[@class='login-box-body']")
+    private WebElementFacade loginForm;
+
+    public void enter_login(String login) {
+        loginInput.type(login);
     }
 
-    public void enterPassword(String password) {
-        try {
-            passwordInput.type(password);
-        } catch (Exception e) {
-            System.out.println("enterPassword");
-        }
+    public void enter_pasword(String passWord) {
+        passwordInput.type(passWord);
     }
 
-    public void clickOnSubmit() {
-        try {
-            submitButton.click();
-        } catch (Exception e) {
-            System.out.println("clickOnSubmit");
-        }
+    public void clickOnButtonEnter() {
+        submitButton.click();
     }
+
+    public void loginFormPresent() {
+        assertThat(iselementPresent(loginForm), is(true));
+    }
+
 }
