@@ -29,7 +29,7 @@ public class Database {
         url=getCfgValue(db);
         log.info("Данные считаны url database: " + url);
 
-        // Load driver for JDBC class
+        // Load driver for JDBC class from config.properties
         Class.forName(getCfgValue(driver));
         log.info("Считали SQL драйвер ");
         
@@ -306,7 +306,15 @@ public class Database {
 
     /*
      *  Close connection to the database
+     *
      */
+    public int changeDb (String query) throws SQLException {
+        Statement stm = connection.createStatement();
+        int affectedRows =stm.executeUpdate(query);
+        stm.close();
+        return affectedRows;
+    }
+
     public void quit() throws SQLException {
         connection.close();
     }
