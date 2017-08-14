@@ -1,6 +1,4 @@
-package exelTests;
-
-
+package excelTests;
 
 import libs.ConfigData;
 import libs.SpreadsheetData;
@@ -8,7 +6,7 @@ import libs.SpreadsheetData;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-import parentTest.ParentTest;
+import parrentTest.ParrentTest;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -17,7 +15,7 @@ import java.util.Collection;
 
 //this test will run with parameters
 @RunWith(value = Parameterized.class)
-public class InvalidLogOnWithDataFromExcel extends ParentTest {
+public class InvalidLogOnWithDataFromExcel extends ParrentTest {
     String login, pass;
 
     public InvalidLogOnWithDataFromExcel(String browser, String login, String pass) {
@@ -35,16 +33,11 @@ public class InvalidLogOnWithDataFromExcel extends ParentTest {
 
     @Test
     public void invalidLogOnWithDataFromExcel() {
-        logInPage.openLoginPage();
-        logInPage.enterLoginToInput(login);
-        logInPage.enterPassWordToInput(pass);
-        logInPage.clickOnSubmitButton();
-        checkAC("Text 'Учет запчастей' not found",
-                logInPage.isElementWithTextPresent("Учет запчастей")
-                ,true
-        );
+        loginPage.openLoginPage();
+        loginPage.enterLoginToInput(login);
+        loginPage.enterPasswordToInput(pass);
+        loginPage.clickOnSubmitButton();
+        checkAC("Text 'Учет запчастей' not found", loginPage.isElementWithTestPresent("Учет запчастей"),true);
+
     }
-
-
-
 }
