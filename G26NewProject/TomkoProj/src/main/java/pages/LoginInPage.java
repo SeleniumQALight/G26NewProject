@@ -8,7 +8,8 @@ import org.openqa.selenium.support.FindBy; // FindBy имопорт
 
 public class LoginInPage extends ParenPage {
     @FindBy(name = "_username")
-    // в () указываем по какому признакам будем искать (name, xpath, id и т.д); после того как найдет его надо куда-то записать, это будет WebDriver loginInput; при импорте выбрать библиотеку (org.openqa.selenium.support)
+    // в () указываем по какому признакам будем искать (name, xpath, id и т.д); после того как найдет его надо куда-то записать,
+    // это будет WebDriver loginInput; при импорте выбрать библиотеку (org.openqa.selenium.support)
     private WebElement loginInput; //эти две строки (WebElement+@FindBy) всегда создаються парой, все что @FindBy найдет loginInput записывает в эту переменную loginInput как объкты;
 
     @FindBy(id = "password")
@@ -21,7 +22,8 @@ public class LoginInPage extends ParenPage {
         super(webDriver); //  а эта строка передаст этот же вебдрайвер в ParenTest
     }                      //т.е через все классы должен пройти один и тот же webDriver
 
-    public void openLoginPage() {// в парамитрe ничего не должно быть ,он будет открывать свой url
+    public void openLoginPage() {// в парамeтрe ничего не должно быть ,он будет открывать свой url
+
         open("http://v3.qalight.com.ua/");// это метод которым создан в ParentPage
     }
 
