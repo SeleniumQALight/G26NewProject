@@ -1,5 +1,6 @@
 package loginTests;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import parentTest.ParentTest;
@@ -12,6 +13,7 @@ public class InvalidLogOnWithoutPageObject extends ParentTest {
     }
 
     @Test
+ //   @Ignore
     public void invalidLogOn() {
         logInPage.openLoginPage();
         logInPage.enterLoginToInput("student");
@@ -19,10 +21,8 @@ public class InvalidLogOnWithoutPageObject extends ParentTest {
         logInPage.clickOnSubmitButton();
         //alt+enter- sozdat metod v
 //        Assert.assertTrue( webDriver.findElement( By.xpath( "//*[contains(text(),'Учет запчастей')]" ) ).isDisplayed() );
-        checkAcceptanceCriteria( "Text 'Учет запчастей' not found",
-              logInPage.isElementWithTextPresent("Учет запчастей")
-              //  webDriver.findElement( By.xpath( "//*[contains(text(),'Учет запчастей')]" ) ).isDisplayed()
-                , true);
+        checkAcceptanceCriteria( "Page 'Учет запчастей' not found",
+              logInPage.isElementWithTextPresent("Учет запчастей"), true);
 
     }
 
