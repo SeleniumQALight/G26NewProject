@@ -69,6 +69,15 @@ public class Database {
 
     }
 
+    public int chengeDB (String query)
+            throws SQLException
+    {
+        Statement stm = connection.createStatement();
+        int affectedRows = stm.executeUpdate(query);
+        stm.close();
+        return affectedRows;
+    }
+
     /*
      *  That method gets SQL [Select COLUMN_NAME from TABLE_NAME where ...] query as parameter and returns result as String
      */
