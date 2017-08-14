@@ -1,5 +1,6 @@
 package spare;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import parentTest.ParentTest;
 
@@ -20,7 +21,7 @@ public class AddNewSpare extends ParentTest{
         addNewSparePage.enterSpareName("Spare1");
         addNewSparePage.selectElementDropDownSpareType("Датчики івіфв");
         addNewSparePage.clickButtonCreate();
-        sparePage.checkTitleH1PresentOnPagewithText("Зачасти Список");
+        sparePage.checkTitleH1PresentOnPagewithText("Запчасти Список");
         checkAC("Can not find spare in list", sparePage.isSpareInList("Spare1"),
                 true);
     }

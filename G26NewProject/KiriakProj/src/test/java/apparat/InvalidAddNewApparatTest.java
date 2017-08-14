@@ -5,6 +5,9 @@ import parrentTest.ParrentTest;
 
 
 public class InvalidAddNewApparatTest extends ParrentTest{
+    public InvalidAddNewApparatTest(String browser) {
+        super(browser);
+    }
     @Test
     public void invalidAddNewApparat(){
         loginPage.loginUser("Student","909090");
