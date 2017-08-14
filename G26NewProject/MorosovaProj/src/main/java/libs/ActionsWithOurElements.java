@@ -103,7 +103,7 @@ public class ActionsWithOurElements
     {
         try
         {
-            Select optionsFromDD = new Select(dropDown);
+            Select optionsFromDD = new Select(dropDown); //библиотека умеет работать с дроп дауном
             optionsFromDD.selectByVisibleText(text);
             logger.info(text + "was selected by DropDown");
         }
@@ -111,6 +111,21 @@ public class ActionsWithOurElements
         {
             logger.error("Can not work with DropDown " );
             Assert.fail("Can not work with Dropdown " );
+        }
+    }
+
+    public void selectValueinDDByValue (WebElement dropDown, String value)
+    {
+        try
+        {
+            Select optionsFromDD = new Select (dropDown);
+            optionsFromDD.selectByValue(value);
+            logger.info(value + "was selected by DropDown");
+        }
+        catch (Exception e)
+        {
+            logger.error("Can not work with DropDown");
+            Assert.fail("Can not work with Dropdown");
         }
     }
 }
