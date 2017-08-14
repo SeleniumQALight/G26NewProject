@@ -15,6 +15,8 @@ public class HomePage extends ParenPage {
     @FindBy(id = "spares")
     private WebElement sparesSubMenu; // запчасть, 2607
 
+    //@FindBy(id= "workers")
+
     public HomePage(WebDriver webDriver) {
 
         super(webDriver);
@@ -30,6 +32,7 @@ public class HomePage extends ParenPage {
     }
 
     public void clickOnSubMenu() { //метод открывающий сабменю Запчасть 2607
+
         actionsWithOurElements.clickOnElement(sparesSubMenu);
     }
 }
