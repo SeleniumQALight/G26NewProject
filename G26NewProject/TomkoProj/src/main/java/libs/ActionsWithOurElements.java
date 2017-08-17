@@ -82,15 +82,44 @@ public class ActionsWithOurElements {
         }
     }
 
-    public void selectTextInDDByText(WebElement dropDown, String text) { //DD-DropDown
+    public void selectTextInDDByText(WebElement dropDown, String text) { //DD-DropDown, при создании меняем предложенный nameOfType на text,т.к.
+        // будем сами выбирать текст v DD; передаем в параметры (в каком элементе, что выбрать);
         try {
-            Select optionsFromDD = new Select(dropDown);
-            optionsFromDD.selectByVisibleText(text);
-            logger.info(text + " was selected in DropDown");
+            Select optionsFromDD = new Select(dropDown); //Select (это dropDown)  - это библиотека селениум;
+            // optionsFromDD -наш объект; этой строкой получили все что находится в дроп-дауне, все его опции.
+            optionsFromDD.selectByVisibleText(text); // тут работаем с созданным объектом optionsFromDD, можем содавать
+            // команды или просить что-то выполнить, (text) тут передаем текст text
+            // selectByVisibleText как работает метод: берет ожидаемый текст и сравнивает по-очередно с каждым тестом из дропдауна, сравнивает посимвольно
+            // если нет привязки к тексту то лучше работать ч/з value(это м-д selectByValue), он сокращает время подборки нужного текста
+            logger.info(text + " was selected in DropDown"); // чтобы понимать был ли выбран текст
         } catch (Exception e) {
             logger.error("Can not work with element ");
             Assert.fail("Can not work with element ");
         }
     }
 
+    public void selectValueInDDByValue(WebElement dropDown, String value) {
+        try{
+            Select optionsFromDD = new Select(dropDown);
+            optionsFromDD.selectByValue(value);
+            logger.info(value + " was selected in DropDown");
+        } catch (Exception e){
+            logger.error("Can not work with value in DropDown");
+            Assert.fail("Can not work with value in DropDown");
+        }
+    }
+
+    public boolean getCheckBoxState (WebElement checkBox) {
+        if(checkBox.isSelected()){
+            logger.info("Element is selected");
+            return true;
+        }
+        else {
+            logger.info("Element isn't selected");
+            return false;
+        }
+
+    }
+
 }
+

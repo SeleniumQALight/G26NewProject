@@ -15,6 +15,15 @@ public class HomePage extends ParenPage {
     @FindBy(id = "spares")
     private WebElement sparesSubMenu; // запчасть, 2607
 
+    @FindBy(id= "workers")
+    private WebElement workersSubMenu; // 15.08
+
+    @FindBy(xpath = ".//a[@href='/deal']")
+    private WebElement menuDeal;
+
+    @FindBy(xpath = ".//a[@href='/statistic']")
+    private  WebElement menuStatistic;
+
     public HomePage(WebDriver webDriver) {
 
         super(webDriver);
@@ -29,7 +38,17 @@ public class HomePage extends ParenPage {
         actionsWithOurElements.clickOnElement(menuDictionary);
     }
 
-    public void clickOnSubMenu() { //метод открывающий сабменю Запчасть 2607
+    public void clickOnSubMenu(){   // запчасть, 2607, метод открывающий сабменю Запчасть 2607
+
         actionsWithOurElements.clickOnElement(sparesSubMenu);
+    }
+    public void clickOnSubMenuWorkers(){
+        actionsWithOurElements.clickOnElement(workersSubMenu);
+    }
+    public void clickOnMenuDeal(){
+        actionsWithOurElements.clickOnElement(menuDeal);
+    }
+    public void clickOnMenuStatistic(){
+        actionsWithOurElements.clickOnElement(menuStatistic);
     }
 }
