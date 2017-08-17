@@ -19,6 +19,7 @@ import org.openqa.selenium.phantomjs.PhantomJSDriver;
 import org.openqa.selenium.phantomjs.PhantomJSDriverService;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import pages.AddNewSparePage;
 import pages.HomePage1;
 import pages.LogInPage;
@@ -27,6 +28,8 @@ import spare.AddNewSpare;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.concurrent.TimeUnit;
@@ -56,15 +59,17 @@ public class ParentTest {
     @Parameterized.Parameters
     public static Collection testData() throws IOException {
         return Arrays.asList(new Object[][]{
-//                              {"fireFox"}
+                //              {"fireFox"}
+////                ,
+//                {"chrome"}
 //                ,
-                {"chrome"}
-                ,
-                { "iedriver" }
+//                { "iedriver" }
 //                ,
 //                    { "opera" }
 //                ,
 //                {"phantomJs"}
+//                ,
+                {"remote"}
         });
     }
     
@@ -117,6 +122,15 @@ public class ParentTest {
             );
             webDriver = new PhantomJSDriver(caps);
             logger.info(" PHANTOMJS is started");
+        } else if ("remote".equals(browser)){
+            logger.info("Remote Driver will be started");
+            try {
+                webDriver = new RemoteWebDriver(
+                        new URL("http://localhost:4444/wd/hub"),
+                        DesiredCapabilities.chrome());
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            }
         }
         
         pathToScreenShot = file.getAbsolutePath() + "\\target\\screenshots\\"
