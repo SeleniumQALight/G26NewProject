@@ -12,7 +12,7 @@ public class WorkersPage extends ParenPage {
     public WorkersPage(WebDriver webDriver) {
         super(webDriver);
     }
-    public void clickOnFirstCell(){
+    public void clickOnFirstCell() {
         actionsWithOurElements.clickOnElement(firstCell);
     }
 
