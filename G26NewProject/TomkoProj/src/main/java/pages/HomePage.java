@@ -18,6 +18,12 @@ public class HomePage extends ParenPage {
     @FindBy(id= "workers")
     private WebElement workersSubMenu; // 15.08
 
+    @FindBy(xpath = ".//a[@href='/deal']")
+    private WebElement menuDeal;
+
+    @FindBy(xpath = ".//a[@href='/statistic']")
+    private  WebElement menuStatistic;
+
     public HomePage(WebDriver webDriver) {
 
         super(webDriver);
@@ -38,5 +44,11 @@ public class HomePage extends ParenPage {
     }
     public void clickOnSubMenuWorkers(){
         actionsWithOurElements.clickOnElement(workersSubMenu);
+    }
+    public void clickOnMenuDeal(){
+        actionsWithOurElements.clickOnElement(menuDeal);
+    }
+    public void clickOnMenuStatistic(){
+        actionsWithOurElements.clickOnElement(menuStatistic);
     }
 }
