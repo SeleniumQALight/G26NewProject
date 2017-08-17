@@ -34,7 +34,7 @@ public class AddNewSparePage extends ParenPage { //2707
         actionsWithOurElements.clickOnElement(buttonDelete);
     }
 
-    public void selectElementFromDDSpareeType(String nameOfType){ //drop-down (DD), в скобках,то что нам надо выбрать
+    public void selectElementFromDDSpareType(String nameOfType){ //drop-down (DD), в скобках,то что нам надо выбрать
     actionsWithOurElements.selectTextInDDByText(spareTypeDropDown,nameOfType); // тут впервые создали метод selectTextInDDByText, передаем в метод nameOfType, который прийдет в тесте
                                                             // Alt+enter создаем метод selectTextInDDByText, буден создан вклассе АctionsWithOurElements
     }
