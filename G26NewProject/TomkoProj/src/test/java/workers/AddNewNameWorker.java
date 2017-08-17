@@ -14,10 +14,12 @@ public class AddNewNameWorker extends ParentTest {
         workersPage.checkTitleH1PresentOnPage("Сотрудники Список");
         workersPage.clickOnFirstCell();
         addNewWorkersPage.checkTitleH1PresentOnPage("Словарь");
+        addNewWorkersPage.enterWorkerSurname("Petrushenko");
         addNewWorkersPage.enterWorkerName("Ivan");
+        addNewWorkersPage.enterWorkerMiddleName("Olegovich");
         addNewWorkersPage.clickOnButtonSave();
 
-        checkAC("Can not edit workerName",workersPage.isNewWorkerNameEdited("Вася Ivan Петрович"),true);
+        checkAC("Can not edit workerName",workersPage.isNewWorkerNameEdited("Petrushenko Ivan Olegovich"),true);
     }
 
 }
