@@ -29,6 +29,9 @@ public class ParentTest {
     public AddNewSparePage addNewSparePage; //2707 добавили новую page AddNewSparePage
     public WorkersPage workersPage;// 15.08
     public AddNewWorkerPage addNewWorkersPage; //15.08
+    public DealPage dealPage;
+    public AddNewDealPage addNewDealPage;
+    public StatisticPage statisticPage;
 
 
     public ParentTest() {
@@ -55,7 +58,9 @@ public class ParentTest {
         addNewSparePage = new AddNewSparePage(webDriver);
         workersPage = new WorkersPage(webDriver);
         addNewWorkersPage = new AddNewWorkerPage(webDriver);
-
+        dealPage = new DealPage(webDriver);
+        addNewDealPage = new AddNewDealPage(webDriver);
+        statisticPage = new StatisticPage(webDriver);
 
 
 
