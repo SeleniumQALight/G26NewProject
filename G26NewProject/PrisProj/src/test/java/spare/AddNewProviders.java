@@ -30,8 +30,9 @@ public class AddNewProviders extends ParentTest {
         addNewProvidersPage.clickProvidersButtonSave();
         providersPage.checkTitleH1PresentOnPagewithText("Стороны сделок Список");
         checkAC("Provider is not Private Person", providersPage.isProviderPrivatePerson("Spare1"), true);
-
-        addNewProvidersPage.clickButtonDelete();
+        //Обращаемся к методу который будет кликать на елемент по указанному имени
+        providersPage.clickOnProvider("Spare1");
+        providersPage.clickButtonDelete();
 
     }
 }
