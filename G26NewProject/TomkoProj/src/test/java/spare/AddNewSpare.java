@@ -15,7 +15,7 @@ public class AddNewSpare extends ParentTest {
      sparePage.clickOnButtonPlus();
      addNewSparePage.checkTitleH1PresentOnPage("Словарь");
      addNewSparePage.enterSpareName("Spare1");
-     addNewSparePage.selectElementFromDDSpareeType("Датчики івіфв");
+     addNewSparePage.selectElementFromDDSpareType("Датчики івіфв");
      addNewSparePage.clickButtonCreate();
 
 
