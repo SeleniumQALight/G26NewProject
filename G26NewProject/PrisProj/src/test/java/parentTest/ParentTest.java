@@ -77,14 +77,14 @@ public class ParentTest {
 	
 	/**
 	 *
-	 * @param messege
+	 * @param message
 	 * @param actualResult
 	 * @param expectedResult
 	 */
 	//Создаем метод Аксептес кретерии с типами и переменными для сравнение Фактического и Ожидаемого результата
-	public void checkAC(String messege, boolean actualResult, boolean expectedResult) {
+	public void checkAC(String message, boolean actualResult, boolean expectedResult) {
 		//делает сравнение actualResult с expectedResult заимпортим is - ALT+ENTER выбираем CoreMatchers
-		Assert.assertThat(messege, actualResult, is(expectedResult));
+		Assert.assertThat(message, actualResult, is(expectedResult));
 		setTestPass();
 	}
 
