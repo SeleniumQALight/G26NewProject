@@ -1,6 +1,5 @@
 package spare;
 
-import org.junit.Ignore;
 import org.junit.Test;
 import parentTest.ParentTest;
 
@@ -14,12 +13,13 @@ public class AddNewSpare extends ParentTest{
         loginPage.loginUser("Student", "909090");
         homePage.clickOnMenuDictionary();
         homePage.clickOnSubMenuSpares();
-        sparePage.ckeckTitle("Учет запчастей");
+        sparePage.checkTitle("Учет запчастей");
         sparePage.checkTitleH1PresentOnPagewithText("Запчасти Список");
         sparePage.clickOnButtonPlus();
         addNewSparePage.checkTitleH1PresentOnPagewithText("Словарь");
         addNewSparePage.enterSpareName("Spare1");
-        addNewSparePage.selectElementDropDownSpareType("Датчики івіфв");
+        //addNewSparePage.selectElementDropDownSpareType("Датчики івіфв");
+        addNewSparePage.select1ElementDropDownSpareType("4");
         addNewSparePage.clickButtonCreate();
         sparePage.checkTitleH1PresentOnPagewithText("Запчасти Список");
         checkAC("Can not find spare in list", sparePage.isSpareInList("Spare1"),

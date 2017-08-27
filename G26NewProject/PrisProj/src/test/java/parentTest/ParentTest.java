@@ -9,11 +9,7 @@ import org.junit.Rule;
 import org.junit.rules.TestName;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import pages.AddNewSparePage;
-import pages.HomePage;
-import pages.LoginPage;
-import pages.SparePage;
-import spare.AddNewSpare;
+import pages.*;
 
 import java.io.File;
 import java.util.concurrent.TimeUnit;
@@ -35,9 +31,9 @@ public class ParentTest {
 	public LoginPage loginPage; //обьявили переменную loginPage
 	public HomePage homePage; //обьявили переменную homePage
 	public SparePage sparePage; //обьявили переменную sparePage
-
 	public AddNewSparePage addNewSparePage;
-	
+	public ProvidersPage providersPage; //обьявили переменную providersPage
+	public AddNewProvidersPage addNewProvidersPage;
 	//Конструктор передает во внутрь класса, настроить обьект. передаем обьект с одного класса в другом
 	//работай с обьектом этого класса
 	public ParentTest() {
@@ -48,8 +44,9 @@ public class ParentTest {
 	
 	@Before
 	public void setUp() {
-		File file = new File(""); //Мы создали обьект файлы без пути для того чтобы потом спросить нас о пути
-		//Этот метод создает путь к папкам которые мы создали папку с именем , пекедж с именем, имя файла и его разширение
+		//Мы создали обьект файлы без пути для того чтобы потом спросить нас о пути
+		File file = new File("");
+//Этот метод создает путь к папкам которые мы создали папку с именем , пекедж с именем, имя файла и его разширение
 		pathToScreenShot = file.getAbsolutePath() + "\\target\\screenshot\\"
 				+ this.getClass().getPackage().getName() + "\\"
 				+ this.getClass().getSimpleName() + "\\" + this.testName.getMethodName() + ".jpg";
@@ -63,6 +60,8 @@ public class ParentTest {
 		homePage = new HomePage(webDriver); //Передали в homePage webDriver с которым мы будем пользоваться
 		sparePage = new SparePage(webDriver);//Передали в sparePage webDriver с которым мы будем пользоваться
 		addNewSparePage = new AddNewSparePage(webDriver);
+		providersPage = new ProvidersPage(webDriver); //Передали в providersPage webDriver с которым мы будем пользоваться
+		addNewProvidersPage = new AddNewProvidersPage(webDriver);
 	}
 	
 	@After
@@ -72,7 +71,7 @@ public class ParentTest {
 				//Только в случаи false если тест упадет
 				utils.screenShot(pathToScreenShot, webDriver); //при каждом закрытии драйвера снимать скрин
 			}
-			webDriver.quit();
+			//webDriver.quit();
 		}
 	}
 	
