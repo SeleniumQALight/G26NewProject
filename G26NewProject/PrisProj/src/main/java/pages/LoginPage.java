@@ -1,7 +1,5 @@
 package pages;
 
-import org.junit.Assert;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -27,7 +25,7 @@ public class LoginPage extends ParentPage {
 	
 	public void openLoginPage() {
 		//Вызов метода open который открывает url
-		open("http://v3.qalight.com.ua/");
+		open(" http://v3.qalight.com.ua/");
 	}
 	
 	/**
@@ -72,6 +70,6 @@ public class LoginPage extends ParentPage {
 		enterLoginToInput(login);
 		enterPasswordToInput(password);
 		clickOnSubmitButton();
-		ckeckTitle("Учет запчастей");
+		checkTitle("Учет запчастей");
 	}
 }
