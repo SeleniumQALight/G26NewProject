@@ -65,9 +65,9 @@ public class ParentTest {
     public static Collection testData() throws IOException {
         return Arrays.asList(new Object[][]{
                 //{"fireFox"},
-                {"chrome"},
-                {"iedriver"},
-                //{"opera"},
+                //{"chrome"},
+                { "iedriver" },
+                //{ "opera" },
                 //{"phantomJs"}
         });
     }
@@ -86,10 +86,10 @@ public class ParentTest {
             logger.info("FireFox will be started ");
             File fileFF = new File(".././drivers/geckodriver.exe");
             System.setProperty("webdriver.gecko.driver", fileFF.getAbsolutePath());
-            FirefoxProfile profile = new FirefoxProfile();
-            profile.setPreference("browser.startup.page", 0); // Empty start page
-            profile.setPreference("browser.startup.homepage_override.mstone", "ignore"); // Suppress the "What's new" page
-            webDriver = new FirefoxDriver(profile);
+            DesiredCapabilities capabilities = new DesiredCapabilities();
+            capabilities.setCapability("marionette", true);
+            webDriver = new FirefoxDriver(capabilities);
+            webDriver.manage().window().maximize();
             logger.info(" FireFox is started");
         } else if ("chrome".equals(browser)) {
             logger.info("Chrome will be started ");
@@ -102,9 +102,9 @@ public class ParentTest {
             File file1 = new File(".././drivers/IEDriverServer.exe");
             System.setProperty("webdriver.ie.driver", file1.getAbsolutePath());
             DesiredCapabilities capabilities = DesiredCapabilities.internetExplorer();
-            capabilities.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS, true);
-            capabilities.setCapability("ignoreZoomSetting", true);
-            capabilities.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
+            capabilities.setCapability(CapabilityType.BROWSER_NAME, "IE");
+            capabilities.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS,true);
+            capabilities.setCapability(InternetExplorerDriver.IE_ENSURE_CLEAN_SESSION, true);
             webDriver = new InternetExplorerDriver();
             logger.info(" IE is started");
         } else if ("opera".equals(browser)) {
@@ -134,12 +134,12 @@ public class ParentTest {
         //+ this.testName.getMethodName() + ".jpg";
 
         //Эти строки работают для одного браузера chrome если не использовать переметризированный запуск
-        //File fileFF = new File(".././drivers/chromedriver.exe");
-        //System.setProperty("webdriver.chrome.driver", fileFF.getAbsolutePath());
+        //File fileGC = new File(".././drivers/chromedriver.exe");
+        //System.setProperty("webdriver.chrome.driver", fileGC.getAbsolutePath());
         //webDriver = new ChromeDriver();
 
         webDriver.manage().window().maximize();
-        webDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        webDriver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 
         loginPage = new LoginPage(webDriver); //Передали в loginPage webDriver с которым мы будем пользоваться
         homePage = new HomePage(webDriver); //Передали в homePage webDriver с которым мы будем пользоваться
