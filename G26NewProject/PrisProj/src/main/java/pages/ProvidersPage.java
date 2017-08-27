@@ -14,6 +14,9 @@ public class ProvidersPage extends ParentPage { //Создали страниц�
     @FindBy(xpath = ".//*[@href='http://v3.qalight.com.ua/dictionary/providers/edit']")
     private WebElement buttonPlus;
 
+    @FindBy(name = "delete")
+    private WebElement buttonDelete;
+
     public ProvidersPage(WebDriver webDriver) {//Пробрасываем webDriver
         super(webDriver);
     }
@@ -24,6 +27,10 @@ public class ProvidersPage extends ParentPage { //Создали страниц�
 
     public void clickOnProvider(String nameOfProvider) {
         actionWithOurElements.clickOnElement(".//*[text() = '" + nameOfProvider + "']");
+    }
+
+    public void clickButtonDelete() {
+        actionWithOurElements.clickOnElement(buttonDelete);
     }
 
     public boolean isProviderPrivatePerson(String nameOfProvider) {

@@ -24,6 +24,7 @@ public class InvalidLogOnWithDataFromExcel extends ParentTest {
 
     //конструктор с параметрами, сколько параметров в тесте столько будете использовать
     public InvalidLogOnWithDataFromExcel(String browser, String login, String pass) {
+        super(browser);
         this.login = login; // Логин String login будет равен тому что прийдет с этих параметров
         this.pass = pass;
     }
