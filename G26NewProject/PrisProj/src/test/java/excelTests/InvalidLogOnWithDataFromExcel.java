@@ -15,8 +15,7 @@ import java.io.InputStream;
 import java.util.Collection;
 
 //this test will run with parameters
-//Тот вариант который нужнозапустить с несколькими наборами данных
-
+//Тот вариант который нужн озапустить с несколькими наборами данных
 @RunWith(value = Parameterized.class)
 //Аннотация этот класс будет запущен с какими то параметрами будет запущен несколько раз
 
@@ -25,6 +24,7 @@ public class InvalidLogOnWithDataFromExcel extends ParentTest {
 
     //конструктор с параметрами, сколько параметров в тесте столько будете использовать
     public InvalidLogOnWithDataFromExcel(String browser, String login, String pass) {
+        super(browser);
         this.login = login; // Логин String login будет равен тому что прийдет с этих параметров
         this.pass = pass;
     }
@@ -35,7 +35,7 @@ public class InvalidLogOnWithDataFromExcel extends ParentTest {
     @Parameterized.Parameters
     public static Collection testData() throws IOException {
         InputStream spreadsheet = new FileInputStream(ConfigData.getCfgValue("DATA_FILE_PATH") + "testDataSuit.xls");
-        return new SpreadsheetData(spreadsheet, "InvalidLogOn").getData();      //2й параметр - указываем название листа в екселе
+        return new SpreadsheetData(spreadsheet, "InvalidLogOn").getData();//2й параметр - указываем название листа в екселе
     }
 
     //

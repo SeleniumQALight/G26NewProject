@@ -41,4 +41,8 @@ public class AddNewSparePage extends ParentPage { //Создали страни�
     public void selectElementDropDownSpareType(String nameOfType) {
         actionWithOurElements.selectTextInDropDownByText(spareTypeDropDown, nameOfType);
     }
+
+    public void select1ElementDropDownSpareType(String valueOfType) {
+        actionWithOurElements.selectValueInDropDownByValue(spareTypeDropDown, valueOfType);
+    }
 }
