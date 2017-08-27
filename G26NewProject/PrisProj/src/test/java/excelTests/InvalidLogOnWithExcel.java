@@ -32,8 +32,8 @@ public class InvalidLogOnWithExcel extends ParentTest {
         logger.info(dataSet);
 
         loginPage.openLoginPage();
-        loginPage.enterLoginToInput(dataSet.get("login"));
-        loginPage.enterPasswordToInput(dataSet.get("pass"));
+        loginPage.enterLoginToInput(dataSet.get("login"));//Найти логин в файле Excel и принять значение
+        loginPage.enterPasswordToInput(dataSet.get("pass"));//Найти пасс в файле Excel и принять значение
         loginPage.clickOnSubmitButton();
     }
 
