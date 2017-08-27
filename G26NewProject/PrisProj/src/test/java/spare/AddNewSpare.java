@@ -8,7 +8,16 @@ import parentTest.ParentTest;
  */
 public class AddNewSpare extends ParentTest{
 
+    //Конструктор - используй вебдрайвер обьект который обьявлен в родителе.
+    //public AddNewSpare() {}
+
+    //Создаем новый конструктор для параметризированного теста разных браузеров
+    public AddNewSpare(String browser) {
+        super(browser);
+    }
+
     @Test
+    //@Ignore
     public void addNewSpare () { //Метод работает с страницой Словари Запчасти
         loginPage.loginUser("Student", "909090");
         homePage.clickOnMenuDictionary();
