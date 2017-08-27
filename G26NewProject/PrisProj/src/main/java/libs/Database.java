@@ -74,7 +74,7 @@ public class Database {
         }
 
     }
-    //Этот метод может изменять баззу данных, он ексекютит апдейт query executeUpdate
+    //Этот метод может изменять базу данных, он ексекютит апдейт query executeUpdate
     public int changeDB(String query) throws SQLException {
         Statement stm = connection.createStatement(); //установили каратковременную сессию
        int affectedRows = stm.executeUpdate(query); //В которую мы записываем результат количество строк которые изменились

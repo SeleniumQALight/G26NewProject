@@ -68,8 +68,4 @@ public class AddNewProvidersPage extends ParentPage {
     public void clickProvidersButtonSave() {
         actionWithOurElements.clickOnElement(buttonSave);
     }
-
-    public void clickButtonDelete() {
-        actionWithOurElements.clickOnElement(buttonDelete);
-    }
 }
