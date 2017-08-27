@@ -139,7 +139,7 @@ public class ParentTest {
         //webDriver = new ChromeDriver();
 
         webDriver.manage().window().maximize();
-        webDriver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+        webDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
         loginPage = new LoginPage(webDriver); //Передали в loginPage webDriver с которым мы будем пользоваться
         homePage = new HomePage(webDriver); //Передали в homePage webDriver с которым мы будем пользоваться
