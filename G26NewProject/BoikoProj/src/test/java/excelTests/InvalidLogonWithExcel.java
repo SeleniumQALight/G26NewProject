@@ -15,6 +15,10 @@ public class InvalidLogonWithExcel extends ParentTest {
     private ExcelDriver excelDriver;
     Logger logger = Logger.getLogger(getClass());
 
+    public InvalidLogonWithExcel(String browser) {
+        super(browser);
+    }
+
     @Test
     public void invalidLogonWithExcel() throws IOException { //Method can work with exception
         excelDriver = new ExcelDriver();  //We can do it in ParentPage if we use it in all tests

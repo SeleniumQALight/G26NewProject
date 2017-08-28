@@ -14,7 +14,8 @@ import java.util.concurrent.TimeUnit;
 public class InvalidLogOnWithoutPageobject extends ParentTest {
 
 
-    public InvalidLogOnWithoutPageobject() {
+    public InvalidLogOnWithoutPageobject(String browser) {
+        super(browser);
 
     }
 

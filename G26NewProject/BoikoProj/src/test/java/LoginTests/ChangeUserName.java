@@ -9,6 +9,10 @@ import parentTest.ParentTest;
  */
 public class ChangeUserName extends ParentTest{
 
+    public ChangeUserName(String browser) {
+        super(browser);
+    }
+
     @Test
     public void changeUserName() {
         loginPage.loginUser("Student", "909090");
