@@ -1,17 +1,13 @@
 package libs;
 
+import org.apache.log4j.Logger;
+
 import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 
 import static libs.ConfigData.getCfgValue;
-//import static libs.ConfigData.getCfgValue;
-//import static lib.TimeDate.getCurrentTimeDB;
-//import static lib.TimeDate.getCurrentTimeUI;
-//import static lib.TimeDate.printCalendarDB;
-import org.apache.log4j.Logger;
 
 
 /*
@@ -29,18 +25,17 @@ public class Database {
      */
     public Database(String db, String driver) throws IOException, ClassNotFoundException, SQLException {
         url = getCfgValue( db );
-        log.info( "Данные считаны url database: " + url );
 
         // Load driver for JDBC class
         Class.forName( getCfgValue( driver ) );
-        log.info( "Считали SQL драйвер " );
 
         // Create a connection to the database
         String user_name = getCfgValue( (db + "_USER") );
         String user_pass = getCfgValue( (db + "_PASSWORD") );
         log.info( " user - " + user_name + " pass " + user_pass );
-        connection = DriverManager.getConnection( url, getCfgValue( (db + "_USER") ), getCfgValue( (db + "_PASSWORD") ) );
-        log.info( "дальше опять" + connection );
+        connection = DriverManager.getConnection( url, user_name, user_pass );
+        log.info( "connection requested" );
+
     }
 
 
@@ -70,6 +65,23 @@ public class Database {
         }
 
     }
+
+    /**
+     * Method for Update, Insert and Delete
+     *
+     * @param query
+     * @return
+     * @throws SQLException
+     */
+    public int changeTable(String query) throws SQLException {
+        Statement stm = connection.createStatement();
+        int effectedRows = stm.executeUpdate( query );
+        stm.close();
+        return effectedRows;
+    }
+
+    //TODO create changeDB method
+
 
     /*
      *  That method gets SQL [Select COLUMN_NAME from TABLE_NAME where ...] query as parameter and returns result as String

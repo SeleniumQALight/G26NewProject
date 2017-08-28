@@ -7,6 +7,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.rules.TestName;
+import org.junit.runners.Parameterized;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import pages.AddNewSparePage;
@@ -15,6 +16,9 @@ import pages.LoginPage;
 import pages.SparePage;
 
 import java.io.File;
+import java.io.IOException;
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.concurrent.TimeUnit;
 
 import static org.hamcrest.CoreMatchers.is;
@@ -57,7 +61,21 @@ public SparePage sparePage;
 
     // с помощью Junit
     // благодаря @Rule Junit знает что это нужно выполнить
-@Rule
+    @Parameterized.Parameters
+    public static Collection testData() throws IOException {
+        return Arrays.asList(new Object[][]{
+//                              {"fireFox"}
+//                ,
+                {"chrome"}
+                ,
+                { "iedriver" }
+//                ,
+//                    { "opera" }
+//                ,
+//                {"phantomJs"}
+        });
+    }
+    @Rule
 public TestName testName = new TestName();
 
 

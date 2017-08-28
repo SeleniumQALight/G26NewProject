@@ -4,8 +4,12 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 
 import java.io.File;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -17,14 +21,15 @@ public class LoginTestWithOutPageObject {
     WebDriver webDriver;
 
     @Test //аннотацию junit
-    public void validLogOn() {
+    public void validLogOn() throws MalformedURLException {
         //эта надпись нужно для того чтобы указать путь к файлу chromedriver для работы с ним
         File fileFF = new File(".././drivers/chromedriver.exe");
         System.setProperty("webdriver.chrome.driver", fileFF.getAbsolutePath());
 
         //создали обьект ChromeDriver для работы с ним //ChromeDriver - это реализация webDriver
         //открыли браузер в маленьком размере
-        webDriver = new ChromeDriver();
+        //webDriver = new ChromeDriver();
+        webDriver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), DesiredCapabilities.chrome());
         // Менеджеру webDriver дали команды открыть браузер в макс размере
         webDriver.manage().window().maximize();
 
@@ -33,7 +38,7 @@ public class LoginTestWithOutPageObject {
         webDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
         //Вствляет URL в адресную строку браузера
-        webDriver.get("http://v3.qalight.com.ua/");
+        webDriver.get("http://v3.qalight.com.ua");
 
         //Найди мне елемент по xpath -> указать локатор и всттавь мне данные(sendKeys) в поле
         webDriver.findElement(By.xpath(".//input[@class='form-control' and @placeholder='Email']")).sendKeys("Student");
