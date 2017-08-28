@@ -69,6 +69,13 @@ public class Database {
 
     }
 
+    public int changeDB(String query) throws SQLException {
+        Statement stm = connection.createStatement(); //Set up connection session
+        int affectedRows = stm.executeUpdate(query); //Method which do update, insert, delete DB - execute query update DB. If we put select query will be exception
+        stm.close();
+        return affectedRows; //Number of updated rows
+    }
+
     /*
      *  That method gets SQL [Select COLUMN_NAME from TABLE_NAME where ...] query as parameter and returns result as String
      */
@@ -91,9 +98,9 @@ public class Database {
             }
         }
 
-        stm.close();
+        stm.close(); //Close session
         //System.out.println(query);
-        value=value.trim();
+        value=value.trim(); //Delete spaces from string
         return value;
     }
 

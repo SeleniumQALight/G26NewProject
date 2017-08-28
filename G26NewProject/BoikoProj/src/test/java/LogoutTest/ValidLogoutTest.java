@@ -8,6 +8,10 @@ import parentTest.ParentTest;
  */
 public class ValidLogoutTest extends ParentTest{
 
+    public ValidLogoutTest(String browser) {
+        super(browser);
+    }
+
     @Test
     public void validLogoutTest() {
         loginPage.loginUser("Student", "909090");
