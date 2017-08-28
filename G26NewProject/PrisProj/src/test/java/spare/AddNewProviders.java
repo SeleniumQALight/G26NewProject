@@ -8,6 +8,14 @@ import parentTest.ParentTest;
  */
 public class AddNewProviders extends ParentTest {
 
+    //Конструктор - используй вебдрайвер обьект который обьявлен в родителе.
+    //public AddNewProviders() {}
+
+    //Создаем новый конструктор для параметризированного теста разных браузеров
+    public AddNewProviders(String browser) {
+        super(browser);
+    }
+
     @Test
     public void addNewProviders() { //Метод работает с страницой Стороны сделок Словарь
         loginPage.loginUser("Student", "909090");
@@ -30,8 +38,9 @@ public class AddNewProviders extends ParentTest {
         addNewProvidersPage.clickProvidersButtonSave();
         providersPage.checkTitleH1PresentOnPagewithText("Стороны сделок Список");
         checkAC("Provider is not Private Person", providersPage.isProviderPrivatePerson("Spare1"), true);
-
-        addNewProvidersPage.clickButtonDelete();
+        //Обращаемся к методу который будет кликать на елемент по указанному имени
+        providersPage.clickOnProvider("Spare1");
+        providersPage.clickButtonDelete();
 
     }
 }

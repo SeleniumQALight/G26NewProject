@@ -152,7 +152,7 @@ public class ActionWithOurElements { //В этот класс мы будем в
             // Выбери нам из value
             // select by value - работает быстрей в разы!!
             optionsFromDropDown.selectByValue(text);
-            logger.info(text + "was selected si DropDown by value");
+            logger.info(text + " was selected si DropDown by value");
         } catch (Exception e) {
             logger.error("Can not work with DropDown");
             Assert.fail("Can not work with DropDown");

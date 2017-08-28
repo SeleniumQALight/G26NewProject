@@ -25,7 +25,7 @@ public class LoginPage extends ParentPage {
 	
 	public void openLoginPage() {
 		//Вызов метода open который открывает url
-		open("http://v3.qalight.com.ua/");
+		open(" http://v3.qalight.com.ua/");
 	}
 	
 	/**
