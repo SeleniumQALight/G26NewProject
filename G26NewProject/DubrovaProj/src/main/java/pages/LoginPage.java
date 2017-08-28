@@ -21,7 +21,7 @@ public class LoginPage extends ParentPage{
 
     public LoginPage(WebDriver webDriver) {
         super(webDriver);
-    }
+          }
 
     public void openLoginPage(){
         open("http://v3.qalight.com.ua/");
