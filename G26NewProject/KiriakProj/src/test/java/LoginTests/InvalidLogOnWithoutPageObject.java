@@ -8,7 +8,8 @@ import parrentTest.ParrentTest;
 
 public class InvalidLogOnWithoutPageObject extends ParrentTest{
 
-    public InvalidLogOnWithoutPageObject() {
+    public InvalidLogOnWithoutPageObject(String browser) {
+        super(browser);
     }
 
     @Test

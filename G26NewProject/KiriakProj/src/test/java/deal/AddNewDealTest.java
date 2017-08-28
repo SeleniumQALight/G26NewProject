@@ -4,6 +4,10 @@ import org.junit.Test;
 import parrentTest.ParrentTest;
 
 public class AddNewDealTest extends ParrentTest {
+    public AddNewDealTest(String browser) {
+        super(browser);
+    }
+    
     @Test
     public void addNewDeal(){
         loginPage.loginUser("Student","909090");

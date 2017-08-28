@@ -8,6 +8,10 @@ import parentTest.ParentTest;
  */
 public class AddNewSpare extends ParentTest{
 
+    public AddNewSpare(String browser) {
+        super(browser);
+        }
+
     @Test
     public void addNewSpare(){
         loginPage.loginUser("Student","909090");

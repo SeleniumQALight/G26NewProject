@@ -18,9 +18,10 @@ import java.util.Collection;
 //this test will run with parameters
 @RunWith(value = Parameterized.class) //jUnit annotation - this class will be run with parameters. Before such class we use RunWith
 public class InvalidLogOnWithDataFromExcel extends ParentTest {
-    String login, pass;
+    String login, pass, browser;
 
     public InvalidLogOnWithDataFromExcel(String browser, String login, String pass) { //Browser is not used now
+        super(browser);
         this.login = login;
         this.pass = pass;
     }

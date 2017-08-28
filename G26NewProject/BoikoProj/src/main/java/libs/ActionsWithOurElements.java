@@ -22,12 +22,13 @@ public class ActionsWithOurElements {
 
     public ActionsWithOurElements(WebDriver webDriver) {
         this.webDriver = webDriver;
-        logger = Logger.getLogger (getClass());
+        logger = Logger.getLogger(getClass());
         webDriverWait15 = new WebDriverWait(webDriver, 15);
     }
 
     /**
      * Method clears and inputs text to webElement
+     *
      * @param element
      * @param text
      */
@@ -37,8 +38,8 @@ public class ActionsWithOurElements {
             element.sendKeys(text);
             logger.info(text + " was entered");
         } catch (Exception e) {
-            logger.error("Can not work with element "+ element);
-            Assert.fail("Can not work with element "+ element);
+            logger.error("Can not work with element " + element);
+            Assert.fail("Can not work with element " + element);
         }
     }
 
@@ -46,14 +47,14 @@ public class ActionsWithOurElements {
         try {
             webDriverWait15.until(ExpectedConditions.elementToBeClickable(element));
             element.click();
-            logger.info("element was clicked");
+            logger.info(element + " element was clicked");
         } catch (Exception e) {
-            logger.error("Can not work with element "+ element);
-            Assert.fail("Can not work with element "+ element);
+            logger.error("Can not work with element " + element);
+            Assert.fail("Can not work with element " + element);
         }
     }
 
-    public void clickOnElement(String lokator ) {
+    public void clickOnElement(String lokator) {
         try {
             WebElement element = webDriver.findElement(By.xpath(lokator));
             webDriverWait15.until(ExpectedConditions.elementToBeClickable(element));
@@ -64,29 +65,29 @@ public class ActionsWithOurElements {
             Assert.fail("Can not work with element ");
         }
     }
+
     public boolean isElementPresent(String locatorWithText) {
-        try{
+        try {
             return webDriver.findElement(By.xpath(locatorWithText)).isDisplayed();
-        }catch (Exception e) {
+        } catch (Exception e) {
             return false;
         }
     }
 
     public boolean isElementPresent(WebElement element) {
-        try{
+        try {
             return element.isDisplayed();
-        }catch (Exception e){
+        } catch (Exception e) {
             return false;
         }
     }
 
     public void checkTextInElement(String xPath, String text) {
-        try{
-            webDriverWait15.until(ExpectedConditions.textToBePresentInElement(By.xpath(xPath),text));
+        try {
+            webDriverWait15.until(ExpectedConditions.textToBePresentInElementLocated(By.xpath(xPath), text));
             String textFromElement = webDriver.findElement(By.xpath(xPath)).getText();
             Assert.assertThat("Text in element not matched", textFromElement, is(text));
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             logger.error("Can not work with element");
             Assert.fail("Can not work with element");
         }
@@ -114,7 +115,7 @@ public class ActionsWithOurElements {
         }
     }
 
-    public void clickCheckBox(WebElement checkBox) {
+    public void setCheckBoxToSelected(WebElement checkBox) {
         try {
             Boolean statusCheckBox = checkBox.isSelected();
             if (statusCheckBox) {
@@ -132,8 +133,8 @@ public class ActionsWithOurElements {
 
     public boolean isFieldEmpty(WebElement element) {
         try {
-             logger.info(element + " is empty");
-             return element.getAttribute("value").equals("");
+            logger.info(element + " is empty");
+            return element.getAttribute("value").equals("");
 
         } catch (Exception e) {
             logger.error("Can not work with field");
@@ -142,4 +143,16 @@ public class ActionsWithOurElements {
         }
 
     }
+
+    public String getTextFromElement(String xPath) {
+        try {
+            String textFromElement = webDriver.findElement(By.xpath(xPath)).getText();
+            return textFromElement;
+        } catch (Exception e) {
+            logger.error("Can not work with element");
+            Assert.fail("Can not work with element");
+            return "";
+        }
+    }
 }
+

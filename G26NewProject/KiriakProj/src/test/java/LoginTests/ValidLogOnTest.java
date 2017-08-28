@@ -4,7 +4,11 @@ import org.junit.Test;
 import parrentTest.ParrentTest;
 
 public class ValidLogOnTest extends ParrentTest {
-    @Test
+    public ValidLogOnTest(String browser) {
+        super(browser);
+    }
+
+        @Test
     public void validLogOn(){
         loginPage.openLoginPage();
         loginPage.enterLoginToInput("Student");

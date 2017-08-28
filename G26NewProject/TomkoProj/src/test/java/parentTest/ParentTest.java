@@ -9,10 +9,7 @@ import org.junit.Rule;
 import org.junit.rules.TestName;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import pages.AddNewSparePage;
-import pages.HomePage;
-import pages.LoginInPage;
-import pages.SparePage;
+import pages.*;
 
 import java.io.File;
 import java.util.concurrent.TimeUnit;
@@ -30,6 +27,12 @@ public class ParentTest {
     public HomePage homePage;
     public SparePage sparePage; //2607
     public AddNewSparePage addNewSparePage; //2707 добавили новую page AddNewSparePage
+    public WorkersPage workersPage;// 15.08
+    public AddNewWorkerPage addNewWorkersPage; //15.08
+    public DealPage dealPage;
+    public AddNewDealPage addNewDealPage;
+    public StatisticPage statisticPage;
+
 
     public ParentTest() {
     }
@@ -53,6 +56,13 @@ public class ParentTest {
         homePage = new HomePage(webDriver);
         sparePage = new SparePage(webDriver);// передаем вебдравер в класс SparePage (pageObject)
         addNewSparePage = new AddNewSparePage(webDriver);
+        workersPage = new WorkersPage(webDriver);
+        addNewWorkersPage = new AddNewWorkerPage(webDriver);
+        dealPage = new DealPage(webDriver);
+        addNewDealPage = new AddNewDealPage(webDriver);
+        statisticPage = new StatisticPage(webDriver);
+
+
 
     }
 

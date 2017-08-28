@@ -8,6 +8,10 @@ import parentTest.ParentTest;
  */
 public class EditProvider extends ParentTest {
 
+    public EditProvider(String browser) {
+        super(browser);
+    }
+
     @Test
     public void editProvider(){
         loginPage.loginUser("Student","909090");

@@ -11,7 +11,7 @@ import org.openqa.selenium.support.FindBy;
  */
 public class LoginPage extends ParentPage{
 
-    @FindBy(name = "_username")
+    @FindBy(xpath = ".//input[@name='_username']")
     private WebElement loginInput; //создает объект
 
     @FindBy(name = "_password")
