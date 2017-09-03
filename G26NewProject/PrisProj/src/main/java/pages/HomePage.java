@@ -21,6 +21,9 @@ public class HomePage extends ParentPage {
     @FindBy(id = "prov_cus")
     private WebElement providersSubMenu;
 
+    @FindBy(xpath = ".//*[@href='/logout']")
+    private WebElement exitButton;
+
     public HomePage(WebDriver webDriver) {
         super(webDriver);
     }
@@ -43,5 +46,13 @@ public class HomePage extends ParentPage {
     public void clickOnSubMenuProviders() {
 
         actionWithOurElements.clickOnElement(providersSubMenu);
+    }
+
+    public void clickOnRightAvatar() {
+        actionWithOurElements.clickOnElement(rightAvatar);
+    }
+
+    public void clickOnExitButton() {
+        actionWithOurElements.clickOnElement(exitButton);
     }
 }

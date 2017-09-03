@@ -85,8 +85,12 @@ public class ActionWithOurElements { //В этот класс мы будем в
     //два return потому что мы либо возвращаем тру либо фолс
     public boolean isElementPresent(String locatorWithText) {
         try {
+            logger.error("Element is displayed");
+            Assert.fail("Element is displayed");
             return webDriver.findElement(By.xpath(locatorWithText)).isDisplayed();
         } catch (Exception e) {
+            logger.error("Can not work with element ");
+            Assert.fail("Can not work with element ");
             return false;
         }
     }
@@ -100,8 +104,12 @@ public class ActionWithOurElements { //В этот класс мы будем в
     // мы спрашиваем может ли найти на странице аватарку, если да то возвращает, если нет - то фолс
     public boolean isElementPresent(WebElement element) {
         try {
+            logger.error("Element is displayed");
+            Assert.fail("Element is displayed");
             return element.isDisplayed();
         } catch (Exception e) {
+            logger.error("Can not work with element ");
+            Assert.fail("Can not work with element ");
             return false;
         }
     }
@@ -123,6 +131,30 @@ public class ActionWithOurElements { //В этот класс мы будем в
         } catch (Exception e) {
             logger.error("Can not work with element");
             Assert.fail("Can not work with element");
+        }
+    }
+    //Метод который проверяет по Елементу(локатору) и Тексту
+    public boolean checkTextInElementBoolean(String xPath, String text) {
+        try {
+            webDriverWait15.until(ExpectedConditions.textToBePresentInElement(By.xpath(xPath), text));
+            String textFromElement = webDriver.findElement(By.xpath(xPath)).getText();
+            Assert.assertThat("Text in element does not match", textFromElement, is(text));
+            return text.equals(textFromElement);
+        } catch (Exception e) {
+            logger.error("Can not work with element ");
+            Assert.fail("Can not work with element ");
+            return false;
+        }
+    }
+    //Метод который проверяет по Елементу(локатору) и Тексту с использованием @FindBy
+    public boolean checkByWebElementAndTextInName(WebElement element, String text) {
+        try {
+            webDriverWait15.until(ExpectedConditions.textToBePresentInElement(element, text));
+            return element.isDisplayed();
+        } catch (Exception e) {
+            logger.error("Can not work with element ");
+            Assert.fail("Can not work with element ");
+            return false;
         }
     }
 

@@ -17,6 +17,9 @@ public class LoginPage extends ParentPage {
 	
 	@FindBy(xpath = ".//button")
 	private WebElement buttonSubmit;
+
+	@FindBy(xpath = ".//*[@class='login-box-msg']")
+	private  WebElement nameAuthorization;
 	
 	public LoginPage(WebDriver webDriver) { //Мы передадим webDriver там где мы создаем/тестов
 		super(webDriver); //его мы передадим в родительский класс ParentPage
@@ -71,5 +74,16 @@ public class LoginPage extends ParentPage {
 		enterPasswordToInput(password);
 		clickOnSubmitButton();
 		checkTitle("Учет запчастей");
+	}
+
+	//метод для примера проверки имени Авторизация при выходе из аккаунта
+	//Ищет по xPath и Имени
+	public boolean checkTextInLoginForm(String text) {
+		return actionWithOurElements.checkTextInElementBoolean(".//*[@class='login-box-msg']", text);
+	}
+	//метод для примера проверки имени Авторизация при выходе из аккаунта
+	//Ищет по xPath и Имен
+	public boolean checkTextInLoginForm1(String text) {
+		return actionWithOurElements.checkByWebElementAndTextInName(nameAuthorization, text);
 	}
 }

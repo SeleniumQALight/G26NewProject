@@ -22,6 +22,7 @@ import pages.*;
 
 import java.io.File;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.concurrent.TimeUnit;
@@ -77,7 +78,7 @@ public class ParentTest {
     public TestName testName = new TestName();
 
     @Before
-    public void setUp() {
+    public void setUp() throws SQLException, IOException, ClassNotFoundException {
         //Мы создали обьект файлы без пути для того чтобы потом спросить нас о пути
         File file = new File("");
 
@@ -150,7 +151,7 @@ public class ParentTest {
     }
 
     @After
-    public void tearDown() {
+    public void tearDown() throws SQLException {
         if (!(webDriver == null)) { //Если дравера нету но ничего закрывать
             if (!isTestPass) {
                 //Только в случаи false если тест упадет
