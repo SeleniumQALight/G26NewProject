@@ -1,5 +1,6 @@
 package parentTest;
 
+import libs.Database;
 import libs.Utils;
 import org.apache.log4j.Logger;
 import org.junit.After;
@@ -52,6 +53,7 @@ public class ParentTest {
     public ProvidersPage providersPage; //обьявили переменную providersPage
     public AddNewProvidersPage addNewProvidersPage;
 
+
     //Конструктор передает во внутрь класса, настроить обьект. передаем обьект с одного класса в другой
     //работай с обьектом этого класса
     //public ParentTest() {}
@@ -73,7 +75,6 @@ public class ParentTest {
         });
     }
 
-
     @Rule //аннотация  которая позволяет получить информацию о тесте который сейчас запущен и получить его имя
     public TestName testName = new TestName();
 
@@ -81,6 +82,7 @@ public class ParentTest {
     public void setUp() throws SQLException, IOException, ClassNotFoundException {
         //Мы создали обьект файлы без пути для того чтобы потом спросить нас о пути
         File file = new File("");
+        //Создали обьект с переменной и он будет подключен к базе данных по таких параметрах URl и Драйвер
 
         //Для запуска разных браузерах/Логирование/Обращения к дравйверу
         if ("fireFox".equals(browser)) {

@@ -15,7 +15,7 @@ import java.io.InputStream;
 import java.util.Collection;
 
 //this test will run with parameters
-//Тот вариант который нужн озапустить с несколькими наборами данных
+//Тот вариант который нужно запустить с несколькими наборами данных
 @RunWith(value = Parameterized.class)
 //Аннотация этот класс будет запущен с какими то параметрами будет запущен несколько раз
 

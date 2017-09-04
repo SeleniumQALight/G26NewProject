@@ -85,12 +85,8 @@ public class ActionWithOurElements { //В этот класс мы будем в
     //два return потому что мы либо возвращаем тру либо фолс
     public boolean isElementPresent(String locatorWithText) {
         try {
-            logger.error("Element is displayed");
-            Assert.fail("Element is displayed");
             return webDriver.findElement(By.xpath(locatorWithText)).isDisplayed();
         } catch (Exception e) {
-            logger.error("Can not work with element ");
-            Assert.fail("Can not work with element ");
             return false;
         }
     }
@@ -104,12 +100,8 @@ public class ActionWithOurElements { //В этот класс мы будем в
     // мы спрашиваем может ли найти на странице аватарку, если да то возвращает, если нет - то фолс
     public boolean isElementPresent(WebElement element) {
         try {
-            logger.error("Element is displayed");
-            Assert.fail("Element is displayed");
             return element.isDisplayed();
         } catch (Exception e) {
-            logger.error("Can not work with element ");
-            Assert.fail("Can not work with element ");
             return false;
         }
     }

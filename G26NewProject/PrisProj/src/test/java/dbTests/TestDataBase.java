@@ -54,7 +54,7 @@ public class TestDataBase extends ParentTest {
         logger.info(dbMySQL.selectTable("select * from seleniumTable"));
     }
 
-    //    @Test
+//        @Test
 //    public void CheckingDataInTheTable() throws SQLException {
 //        ArrayList dbtable = (ArrayList) dbMySQL.selectTable("select * from seleniumTable where login='Student'");
 //        if (dbtable.size() == 1) {

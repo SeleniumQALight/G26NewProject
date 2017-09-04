@@ -29,7 +29,7 @@ public class LoginTestWithOutPageObject {
         //создали обьект ChromeDriver для работы с ним //ChromeDriver - это реализация webDriver
         //открыли браузер в маленьком размере
         //webDriver = new ChromeDriver();
-        webDriver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), DesiredCapabilities.chrome());
+        //webDriver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), DesiredCapabilities.chrome());
         // Менеджеру webDriver дали команды открыть браузер в макс размере
         webDriver.manage().window().maximize();
 
