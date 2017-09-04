@@ -35,7 +35,7 @@ public class LoginTestWithOutPageObject {
         //Вствляет URL в адресную строку браузера
         webDriver.get("http://v3.qalight.com.ua/");
 
-        //Найди мне елемент по xpath -> указать локатор и всттавь мне данные(sendKeys) в поле
+        //Найди мне елемент по xpath -> указать локатор и вставь мне данные(sendKeys) в поле
         webDriver.findElement(By.xpath(".//input[@class='form-control' and @placeholder='Email']")).sendKeys("Student");
         webDriver.findElement(By.xpath(".//input[@class='form-control' and @placeholder='Password']")).sendKeys("909090");
         webDriver.findElement(By.xpath(".//button[text()='Вход']")).click();
