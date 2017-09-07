@@ -53,6 +53,10 @@ public class AddNewProvidersPage extends ParentPage {
         actionWithOurElements.clickCheckBox(checkboxNamePrivatePerson);
     }
 
+    public void clickSetCheckboxState(String SetCheckboxStat){
+        actionWithOurElements.setCheckboxState(checkboxNamePrivatePerson,SetCheckboxStat);
+    }
+
     public void clickCheckboxIsOurFirm() {
         actionWithOurElements.clickCheckBox(checkboxNameIsOurFirm);
     }

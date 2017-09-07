@@ -125,6 +125,7 @@ public class ActionWithOurElements { //В этот класс мы будем в
             Assert.fail("Can not work with element");
         }
     }
+
     //Метод который проверяет по Елементу(локатору) и Тексту
     public boolean checkTextInElementBoolean(String xPath, String text) {
         try {
@@ -138,6 +139,7 @@ public class ActionWithOurElements { //В этот класс мы будем в
             return false;
         }
     }
+
     //Метод который проверяет по Елементу(локатору) и Тексту с использованием @FindBy
     public boolean checkByWebElementAndTextInName(WebElement element, String text) {
         try {
@@ -197,6 +199,20 @@ public class ActionWithOurElements { //В этот класс мы будем в
         } catch (Exception e) {
             logger.error("Can not work with element " + checkBox);
             Assert.fail("Can not work with element " + checkBox);
+        }
+    }
+
+    public void setCheckboxState(WebElement checkbox, String expectedState) {
+
+        boolean currentState = checkbox.isSelected();
+
+        logger.info("Clicking checkBox");
+        if (currentState == true && expectedState == "unclicked") {
+            logger.info("Click checkbox to make it unclicked");
+            checkbox.click();
+        } else if (currentState == false && expectedState == "clicked") {
+            logger.info("Click checkbox to make it clicked");
+            checkbox.click();
         }
     }
 }

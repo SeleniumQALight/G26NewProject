@@ -28,8 +28,8 @@ public class AddNewProviders extends ParentTest {
         addNewProvidersPage.enterProvidersName("Spare1");
         addNewProvidersPage.enterProvidersNameAddress("Kirova 5");
         addNewProvidersPage.enterProvidersNamePhone("+380737427180");
-        //addNewProvidersPage.clickCheckboxPrivatePerson();
-        //addNewProvidersPage.clickCheckboxIsOurFirm();
+        addNewProvidersPage.clickCheckboxPrivatePerson();
+        addNewProvidersPage.clickCheckboxIsOurFirm();
         addNewProvidersPage.clickProvidersButtonCreate();
         providersPage.checkTitleH1PresentOnPagewithText("Стороны сделок Список");
         providersPage.clickOnProvider("Spare1");
