@@ -10,6 +10,12 @@ public class HomePage extends ParentPage{
     @FindBy(xpath = ".//img[@class='user-image']")
     WebElement rightAvatar;
 
+    @FindBy(xpath = ".//*[@class='fa fa-book']")
+    private WebElement menuDictionary;
+
+    @FindBy(id = "spares")
+    private WebElement spareSubMenu;
+
     public HomePage(WebDriver webDriver) {
         super(webDriver);
     }
@@ -19,3 +25,12 @@ public class HomePage extends ParentPage{
         return actionWithOurElements.isElementPresent(rightAvatar);
     }
 }
+
+    public void clickOnMenuDictionary() {
+
+        actionWithOurElements.clickOnElement(menuDictionary);
+    }
+
+    public void clickOnSubMenuSpares() {
+
+        actionWithOurElements.clickOnElement(spareSubMenu);

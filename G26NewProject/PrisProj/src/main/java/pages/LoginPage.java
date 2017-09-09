@@ -65,4 +65,13 @@ public class LoginPage extends ParentPage {
 
 		return actionWithOurElements.isElementPresent(".//*[contains(text),'+text+')]");
 	}
+
+	public void loginUser(String login, String password) { //Метод который будет работать с тестом addNewSpare
+
+		openLoginPage();
+		enterLoginToInput(login);
+		enterPasswordToInput(password);
+		clickOnSubmitButton();
+		checkTitle("Учет запчастей");
+	}
 }
