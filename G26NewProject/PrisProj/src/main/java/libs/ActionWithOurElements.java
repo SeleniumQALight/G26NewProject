@@ -5,7 +5,10 @@ import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
 
 import static org.hamcrest.CoreMatchers.is;
 
@@ -16,10 +19,12 @@ public class ActionWithOurElements { //В этот класс мы будем в
 
     WebDriver webDriver;
     Logger logger;
+    WebDriverWait webDriverWait15;
 
     public ActionWithOurElements(WebDriver webDriver) {
         this.webDriver = webDriver;
         logger = Logger.getLogger(getClass());
+        webDriverWait15 = new WebDriverWait(webDriver, 15); //Драйвер жди 15 секунд каждые пол секунды он будет счелкать по кнопке
     }
 
     /**
@@ -47,13 +52,14 @@ public class ActionWithOurElements { //В этот класс мы будем в
      */
     public void clickOnElement(WebElement element) {
         try {
+            //прописуем что жди елемент пока и прописуем жди пока елемент не станет кликабельным и передаем ЕЛМЕНТ(по вебдрайверу)
+            webDriverWait15.until(ExpectedConditions.elementToBeClickable(element));
             element.click();
             logger.info("Element was clicked");
         } catch (Exception e) {
             logger.error("Can not work with element" + element);
             Assert.fail("Can not work with element" + element);
         }
-
     }
 
     /**
