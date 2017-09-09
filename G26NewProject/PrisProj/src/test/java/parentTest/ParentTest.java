@@ -9,8 +9,11 @@ import org.junit.Rule;
 import org.junit.rules.TestName;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import pages.AddNewSparePage;
 import pages.HomePage;
 import pages.LoginPage;
+import pages.SparePage;
+import spare.AddNewSpare;
 
 import java.io.File;
 import java.util.concurrent.TimeUnit;
@@ -27,6 +30,8 @@ public class ParentTest {
 	private String pathToScreenShot; //Переменная для изменяемого пути к файлу
 	public LoginPage loginPage; //обьявили переменную loginPage
 	public HomePage homePage; //обьявили переменную homePage
+	public SparePage sparePage;
+	public AddNewSparePage addNewSparePage;
 
 	//Конструктор передает во внутрь класса, настроить обьект. передаем обьект с одного класса в другом
 	//работай с обьектом этого класса
