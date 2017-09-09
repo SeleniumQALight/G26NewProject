@@ -9,11 +9,7 @@ import org.junit.Rule;
 import org.junit.rules.TestName;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import pages.AddNewSparePage;
-import pages.HomePage;
-import pages.LoginPage;
-import pages.SparePage;
-import spare.AddNewSpare;
+import pages.*;
 
 import java.io.File;
 import java.util.concurrent.TimeUnit;
@@ -55,7 +51,9 @@ public class ParentTest {
 		webDriver.manage().window().maximize();
 		webDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		loginPage = new LoginPage(webDriver); //Передали в loginPage webDriver с которым мы будем пользоваться
-		homePage = new HomePage(webDriver); //
+		homePage = new HomePage(webDriver);
+		sparePage = new SparePage(webDriver);//Передали в sparePage webDriver с которым мы будем пользоваться
+		addNewSparePage = new AddNewSparePage(webDriver);
 	}
 
 	@After
