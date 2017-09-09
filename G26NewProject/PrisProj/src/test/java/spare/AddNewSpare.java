@@ -13,7 +13,7 @@ public class AddNewSpare extends ParentTest{
         loginPage.loginUser("Student", "909090");
         homePage.clickOnMenuDictionary();
         homePage.clickOnSubMenuSpares();
-        sparePage.ckeckTitle("Учет запчастей");
+        sparePage.checkTitle("Учет запчастей");
         sparePage.checkTitleH1PresentOnPagewithText("Запчасти Список");
         sparePage.clickOnButtonPlus();
         addNewSparePage.checkTitleH1PresentOnPagewithText("Словарь");
