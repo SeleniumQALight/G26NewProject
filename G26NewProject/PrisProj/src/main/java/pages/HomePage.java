@@ -1,12 +1,14 @@
 package pages;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+
 /**
  * Created by Dmitriy on 24.07.2017.
  */
 
-public class HomePage extends ParentPage{
+public class HomePage extends ParentPage {
     @FindBy(xpath = ".//img[@class='user-image']")
     WebElement rightAvatar;
 
@@ -24,7 +26,6 @@ public class HomePage extends ParentPage{
     public boolean isAvatarPresent() {
         return actionWithOurElements.isElementPresent(rightAvatar);
     }
-}
 
     public void clickOnMenuDictionary() {
 
@@ -34,3 +35,5 @@ public class HomePage extends ParentPage{
     public void clickOnSubMenuSpares() {
 
         actionWithOurElements.clickOnElement(spareSubMenu);
+    }
+}

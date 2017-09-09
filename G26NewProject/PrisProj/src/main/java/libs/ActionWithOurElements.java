@@ -5,6 +5,9 @@ import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
+
+import static org.hamcrest.CoreMatchers.is;
 
 /**
  * Created by Dmitriy on 20.07.2017.
@@ -72,6 +75,43 @@ public class ActionWithOurElements { //В этот класс мы будем в
             return element.isDisplayed();
         }catch (Exception e){
             return false;
+        }
+    }
+
+    /**
+     * Method is checkTextInElement
+     *
+     * @param xPath
+     * @param text
+     */
+    public void checkTextInElement(String xPath, String text) {
+
+        try {
+            // будем дожидаться появление елемента h1
+            // зачеркнутый метод это имееться ввиду что он рабочий но есть еще новей
+            String textFromElement = webDriver.findElement(By.xpath(xPath)).getText();
+            Assert.assertThat("Text in element not mathed", textFromElement, is(text)); //Сравнивает фактич из ожидаемым
+        } catch (Exception e) {
+            logger.error("Can not work with element");
+            Assert.fail("Can not work with element");
+        }
+    }
+
+    // передать в этот метод в каком елементе что выбрать
+    public void selectTextInDropDownByText(WebElement dropDown, String text) {
+        try {
+            //Библиотека умеет работать с ДропДауном и с него получаем все елементы
+            // нужно отталкиваться от мануального тесткейса!!! для работы с дроп дауном
+            // DropDown - это селект
+            // мы получаем все что находиться внутри дропдауна
+            Select optionsFromDropDown = new Select(dropDown);
+            // Выбери нам из текста
+            optionsFromDropDown.selectByVisibleText(text);
+            //optionsFromDropDown.selectByValue(text);
+            logger.info(text + " was selected si DropDown by Text");
+        } catch (Exception e) {
+            logger.error("Can not work with DropDown");
+            Assert.fail("Can not work with DropDown");
         }
     }
 }
