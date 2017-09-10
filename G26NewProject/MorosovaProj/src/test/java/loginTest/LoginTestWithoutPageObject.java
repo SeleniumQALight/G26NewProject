@@ -5,8 +5,12 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 
 import java.io.File;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
 
@@ -73,13 +77,14 @@ public class LoginTestWithoutPageObject
     }
 
     @Test
-    public void validLogon()
+    public void validLogon() throws MalformedURLException
     {
         File fileMM = new File(".././drivers/chromedriver.exe");
 
         System.setProperty("webdriver.chrome.driver", fileMM.getAbsolutePath());
 
-        webDriver = new ChromeDriver();
+       // webDriver = new ChromeDriver();
+        webDriver = new RemoteWebDriver(new URL("http://localhost:4444/"), DesiredCapabilities.chrome());
 
         webDriver.manage().window().maximize();
 
