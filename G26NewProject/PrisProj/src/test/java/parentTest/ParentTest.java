@@ -67,7 +67,7 @@ public class ParentTest {
     @Parameterized.Parameters
     public static Collection testData() throws IOException {
         return Arrays.asList(new Object[][]{
-               {"fireFox"},
+                {"fireFox"},
                 //{"chrome"},
                 //{ "iedriver" },
                 //{ "opera" },
@@ -106,7 +106,7 @@ public class ParentTest {
             System.setProperty("webdriver.ie.driver", file1.getAbsolutePath());
             DesiredCapabilities capabilities = DesiredCapabilities.internetExplorer();
             capabilities.setCapability(CapabilityType.BROWSER_NAME, "IE");
-            capabilities.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS,true);
+            capabilities.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS, true);
             capabilities.setCapability(InternetExplorerDriver.IE_ENSURE_CLEAN_SESSION, true);
             webDriver = new InternetExplorerDriver();
             logger.info(" IE is started");
@@ -155,11 +155,13 @@ public class ParentTest {
     @After
     public void tearDown() throws SQLException {
         if (!(webDriver == null)) { //Если дравера нету но ничего закрывать
+
             if (!isTestPass) {
                 //Только в случаи false если тест упадет
                 utils.screenShot(pathToScreenShot, webDriver); //при каждом закрытии драйвера снимать скрин
             }
-            //webDriver.quit();
+            // quit driver
+            webDriver.quit();
         }
     }
 
