@@ -37,7 +37,7 @@ import static org.hamcrest.CoreMatchers.is;
 @RunWith(value = Parameterized.class)
 
 //Создаем обьекты страниц пейджей
-public class ParentTest {
+public class   ParentTest {
     public WebDriver webDriver; //Обьявили модификатором public чтобы был доступен в обоих package(инкапсуляция)
     private Logger logger = Logger.getLogger(getClass());
     private Utils utils = new Utils(); //Обьявили обьект для снятия скринов
