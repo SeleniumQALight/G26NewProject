@@ -50,7 +50,7 @@ public class LoginTestWithOutPageObject {
         System.out.println("Page was opened");
 
         //Дать команду webDriver -> close - закрывает вкладку quit - закрывает браузер
-        webDriver.quit();
+        //webDriver.quit();
 
     }
 }
